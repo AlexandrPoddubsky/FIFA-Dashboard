@@ -1,0 +1,104 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="7D75B8F6-2DEE-1A6E-A706-831A17CD04F7" name="lineupCatalog">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-24 06:27:15 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<engineerTo>
+<item key="4868DA42-719B-57C1-1720-90253DE167AF" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="lineupID" id="6B550176-22DF-54FD-E4F6-B31FE680AC2A">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-24 06:27:56 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<engineerTo>
+<item key="4868DA42-719B-57C1-1720-90253DE167AF" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+</Attribute>
+<Attribute name="goalKeeper" id="99C6E368-F7CC-DEFD-2D6C-3C0763C390FC">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-24 06:28:31 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<engineerTo>
+<item key="4868DA42-719B-57C1-1720-90253DE167AF" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+</Attribute>
+<Attribute name="defender" id="34BCD37A-F597-DBE0-3308-65004F3F8905">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-24 06:29:52 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<engineerTo>
+<item key="4868DA42-719B-57C1-1720-90253DE167AF" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+</Attribute>
+<Attribute name="midfield" id="88F02948-44D0-F680-26DD-9CFAC36B738C">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-24 06:35:38 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<engineerTo>
+<item key="4868DA42-719B-57C1-1720-90253DE167AF" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+</Attribute>
+<Attribute name="forward" id="934AC275-3C45-814D-4A81-8794960017F3">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-24 06:33:08 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<engineerTo>
+<item key="4868DA42-719B-57C1-1720-90253DE167AF" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="060316E6-EED1-BDBC-6CC0-C42BAA762289" name="lineupCatalog PK">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-24 06:28:18 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<engineerTo>
+<item key="4868DA42-719B-57C1-1720-90253DE167AF" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>6B550176-22DF-54FD-E4F6-B31FE680AC2A</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

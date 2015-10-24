@@ -1,0 +1,9 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<relationalModel class="oracle.dbtools.crest.model.design.relational.RelationalDesign" name="Relational_1" id="4868DA42-719B-57C1-1720-90253DE167AF" mainViewID="5F8F09AD-1E9E-965B-3893-3C239909BA6E">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-24 02:42:12 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<shouldBeOpen>true</shouldBeOpen>
+<selectedRDBMSSite>32076570-2523-435C-2E92-BF29817DFF70</selectedRDBMSSite>
+</relationalModel>
