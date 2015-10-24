@@ -1,0 +1,9 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="FIFADashboard" id="6894A815-9B3F-D10B-A13D-677A6906D5E1" version="3.5">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-24 02:42:11 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>6894A815-9B3F-D10B-A13D-677A6906D5E1</designId>
+</OSDM_Design>

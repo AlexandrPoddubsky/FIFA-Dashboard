@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<LogicalDesign class="oracle.dbtools.crest.model.design.logical.LogicalDesign" name="Logical" id="B1EA2BE6-BB88-846D-02D8-9BC0D0F8AC28" mainViewID="1354F8BA-C89A-68CD-E596-E257D9BAC511">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-24 02:42:12 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+</LogicalDesign>
