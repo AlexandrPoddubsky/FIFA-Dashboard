@@ -1,0 +1,14 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="2B5CB9D6-18FB-B627-C2D5-840311208A6E" name="CountryCatalog_Continent_FK">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-25 21:58:09 UTC</createdTime>
+<generatorID>EB97E570-4C3A-433C-1963-DCDFC13DD05E</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<containerWithKeyObject>9F8DC88E-2970-E2E6-CC10-84E5FB90F938</containerWithKeyObject>
+<deleteRule>NO ACTION</deleteRule>
+<localFKIndex>6142DFCF-E9C4-BC71-1E41-F56E26521137</localFKIndex>
+<keyObject>351037CF-B564-89D8-E997-7450D09B1F5B</keyObject>
+<mandatory>true</mandatory>
+<transferable>true</transferable>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

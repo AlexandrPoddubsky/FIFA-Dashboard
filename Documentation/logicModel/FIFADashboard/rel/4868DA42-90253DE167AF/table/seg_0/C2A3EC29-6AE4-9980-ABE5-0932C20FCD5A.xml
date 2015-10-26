@@ -1,0 +1,80 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="C2A3EC29-6AE4-9980-ABE5-0932C20FCD5A" name="LineupByTeam">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-25 21:58:09 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Team_teamID" id="BE56B030-53E3-16C6-DEE0-16BD61F11432">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-25 21:58:09 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<delegate>452596EE-6902-7DF6-8C42-C0B209E6D5AA</delegate>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="2745788D-34BE-6AA6-8310-E5ED04F696C1" referredColumn="452596EE-6902-7DF6-8C42-C0B209E6D5AA"/>
+</associations>
+</Column>
+<Column name="LineupCatalog_lineupID" id="8CBE3E71-7291-9B07-EA93-514AB60675A4">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-25 21:58:09 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<delegate>340C063D-154E-DE58-4800-9207A5F731E3</delegate>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="9A7401EB-EE26-6C00-85BE-BF404DCA8B3C" referredColumn="340C063D-154E-DE58-4800-9207A5F731E3"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="517D2E65-93EB-B17E-AC3D-6D5BF1C316A3" name="LineupByTeam__IDX">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-25 21:58:09 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="BE56B030-53E3-16C6-DEE0-16BD61F11432"/>
+<colUsage columnID="8CBE3E71-7291-9B07-EA93-514AB60675A4"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="C3AAC492-FBB7-09C4-5499-C8A49FB61461" name="FK_ASS_7">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-25 21:58:09 UTC</createdTime>
+<generatorID>3C8DD5AC-E998-3D03-54F2-3EE37345DDF9</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="BE56B030-53E3-16C6-DEE0-16BD61F11432"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="4EA6BC85-993E-57BC-1E73-1508FA4D8A88" name="FK_ASS_8">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-25 21:58:09 UTC</createdTime>
+<generatorID>3C8DD5AC-E998-3D03-54F2-3EE37345DDF9</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8CBE3E71-7291-9B07-EA93-514AB60675A4"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

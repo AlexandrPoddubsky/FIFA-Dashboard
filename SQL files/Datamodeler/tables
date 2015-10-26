@@ -1,0 +1,249 @@
+-- Generado por Oracle SQL Developer Data Modeler 4.0.2.840
+--   en:        2015-10-25 17:19:59 CST
+--   sitio:      Oracle Database 11g
+--   tipo:      Oracle Database 11g
+
+
+
+
+CREATE TABLE CityCatalog
+  (
+    cityID                   NUMBER (5) NOT NULL ,
+    cityName                 VARCHAR2 (30) NOT NULL ,
+    CountryCatalog_countryID NUMBER (5) NOT NULL
+  ) ;
+ALTER TABLE CityCatalog ADD CONSTRAINT CityCatalog_PK PRIMARY KEY ( cityID ) ;
+
+CREATE TABLE Continent
+  (
+    continentID   NUMBER (5) NOT NULL ,
+    nameContinent VARCHAR2 (30) NOT NULL
+  ) ;
+ALTER TABLE Continent ADD CONSTRAINT Continent_PK PRIMARY KEY ( continentID ) ;
+
+CREATE TABLE CountryCatalog
+  (
+    countryID             NUMBER (5) NOT NULL ,
+    countryName           VARCHAR2 (30) NOT NULL ,
+    Continent_continentID NUMBER (5) NOT NULL
+  ) ;
+ALTER TABLE CountryCatalog ADD CONSTRAINT CountryCatalog_PK PRIMARY KEY ( countryID ) ;
+
+CREATE TABLE Event
+  (
+    EventCatalog_eventID NUMBER (5) NOT NULL ,
+    eventDescription     VARCHAR2 (300) NOT NULL ,
+    startDate            DATE NOT NULL ,
+    endDate              DATE NOT NULL ,
+    countTeams           NUMBER (2) NOT NULL
+  ) ;
+ALTER TABLE Event ADD CONSTRAINT Event_PK PRIMARY KEY ( EventCatalog_eventID ) ;
+
+CREATE TABLE EventCatalog
+  (
+    eventID   NUMBER (5) NOT NULL ,
+    eventName VARCHAR2 (30) NOT NULL
+  ) ;
+ALTER TABLE EventCatalog ADD CONSTRAINT EventCatalog_PK PRIMARY KEY ( eventID ) ;
+
+CREATE TABLE Game
+  (
+    gameID  NUMBER (5) NOT NULL ,
+    team1ID NUMBER (5) NOT NULL ,
+    team2ID NUMBER (5) NOT NULL
+  ) ;
+ALTER TABLE Game ADD CONSTRAINT Game_PK PRIMARY KEY ( gameID ) ;
+
+CREATE TABLE "Group"
+  (
+    groupID NUMBER (5) NOT NULL ,
+    name    VARCHAR2 (30) NOT NULL
+  ) ;
+ALTER TABLE "Group" ADD CONSTRAINT Group_PK PRIMARY KEY ( groupID ) ;
+
+CREATE TABLE LineupByTeam
+  (
+    Team_teamID            NUMBER (5) NOT NULL ,
+    LineupCatalog_lineupID NUMBER (5) NOT NULL
+  ) ;
+ALTER TABLE LineupByTeam ADD CONSTRAINT LineupByTeam__IDX PRIMARY KEY ( Team_teamID, LineupCatalog_lineupID ) ;
+
+CREATE TABLE LineupCatalog
+  (
+    lineupID   NUMBER (5) NOT NULL ,
+    goalKeeper NUMBER (2) ,
+    defender   NUMBER (2) ,
+    midfield   NUMBER (2) ,
+    forward    NUMBER (2)
+  ) ;
+ALTER TABLE LineupCatalog ADD CONSTRAINT LineupCatalog_PK PRIMARY KEY ( lineupID ) ;
+
+CREATE TABLE Player
+  (
+    DNI             VARCHAR2 (30) NOT NULL ,
+    firstName       VARCHAR2 (30) NOT NULL ,
+    lastName1       VARCHAR2 (30) NOT NULL ,
+    lastName2       VARCHAR2 (30) ,
+    clubTshirt      NUMBER (2) ,
+    selectionTshirt NUMBER (2) ,
+    Picture         VARCHAR2 (300)
+  ) ;
+ALTER TABLE Player ADD CONSTRAINT Player_PK PRIMARY KEY ( DNI ) ;
+
+CREATE TABLE PlayerByTeam
+  (
+    Player_DNI  VARCHAR2 (30) NOT NULL ,
+    Team_teamID NUMBER (5) NOT NULL
+  ) ;
+ALTER TABLE PlayerByTeam ADD CONSTRAINT PlayerByTeam__IDX PRIMARY KEY ( Player_DNI, Team_teamID ) ;
+
+CREATE TABLE Stadium
+  (
+    stadiumID    NUMBER (5) NOT NULL ,
+    stadiumName  VARCHAR2 (30) NOT NULL ,
+    googleMapsID NUMBER (5) ,
+    picture      VARCHAR2 (300)
+  ) ;
+ALTER TABLE Stadium ADD CONSTRAINT Stadium_PK PRIMARY KEY ( stadiumID ) ;
+
+CREATE TABLE Statistic
+  (
+    ID              NUMBER (5) NOT NULL ,
+    played          NUMBER (2) NOT NULL ,
+    won             NUMBER (2) NOT NULL ,
+    draw            NUMBER (2) NOT NULL ,
+    lost            NUMBER (2) NOT NULL ,
+    goalsFor        NUMBER (2) NOT NULL ,
+    goalsAgainst    NUMBER (2) NOT NULL ,
+    goalsDifference NUMBER (2) NOT NULL ,
+    fairPlayPoints  NUMBER NOT NULL
+  ) ;
+ALTER TABLE Statistic ADD CONSTRAINT Statistic_PK PRIMARY KEY ( ID ) ;
+
+CREATE TABLE StatisticByGroup
+  (
+    Group_groupID NUMBER (5) NOT NULL ,
+    Statistic_ID  NUMBER (5) NOT NULL
+  ) ;
+ALTER TABLE StatisticByGroup ADD CONSTRAINT StatisticByGroup__IDX PRIMARY KEY ( Group_groupID, Statistic_ID ) ;
+
+CREATE TABLE Team
+  (
+    teamID             NUMBER (5) NOT NULL ,
+    teamName           VARCHAR2 (100) NOT NULL ,
+    captainID          NUMBER (5) NOT NULL ,
+    flagPath           NUMBER (5) NOT NULL ,
+    logoPath           NUMBER (5) ,
+    CityCatalog_cityID NUMBER (5) NOT NULL ,
+    tdCatalog_tdID     NUMBER (5) NOT NULL ,
+    Group_groupID      NUMBER (5) NOT NULL
+  ) ;
+CREATE UNIQUE INDEX Team__IDX ON Team
+  (
+    tdCatalog_tdID ASC
+  )
+  ;
+  ALTER TABLE Team ADD CONSTRAINT Team_PK PRIMARY KEY ( teamID ) ;
+
+CREATE TABLE TeamByEvent
+  (
+    teamID  NUMBER (5) NOT NULL ,
+    eventID NUMBER (5) NOT NULL
+  ) ;
+ALTER TABLE TeamByEvent ADD CONSTRAINT TeamByEvent__IDX PRIMARY KEY ( teamID, eventID ) ;
+
+CREATE TABLE TeamByGame
+  (
+    Game_gameID       NUMBER (5) NOT NULL ,
+    Team_teamID       NUMBER (5) NOT NULL ,
+    goals             NUMBER (2) NOT NULL ,
+    yellowCard        NUMBER (2) NOT NULL ,
+    redCard           NUMBER (2) NOT NULL ,
+    corners           NUMBER (2) NOT NULL ,
+    offside           NUMBER (2) NOT NULL ,
+                      DATETIME DATE NOT NULL ,
+    Stadium_stadiumID NUMBER (5) NOT NULL
+  ) ;
+ALTER TABLE TeamByGame ADD CONSTRAINT TeamByGame_PK PRIMARY KEY ( Game_gameID, Team_teamID ) ;
+
+CREATE TABLE tdCatalog
+  (
+    tdID          NUMBER (5) NOT NULL ,
+    tdFirstName   VARCHAR2 (30) NOT NULL ,
+    tdLastName1   VARCHAR2 (30) NOT NULL ,
+    tdLastName2   VARCHAR2 (30) ,
+    tdNacionality VARCHAR2 (30)
+  ) ;
+ALTER TABLE tdCatalog ADD CONSTRAINT tdCatalog_PK PRIMARY KEY ( tdID ) ;
+
+ALTER TABLE CityCatalog ADD CONSTRAINT CityCatalog_CountryCatalog_FK FOREIGN KEY ( CountryCatalog_countryID ) REFERENCES CountryCatalog ( countryID ) ;
+
+ALTER TABLE CountryCatalog ADD CONSTRAINT CountryCatalog_Continent_FK FOREIGN KEY ( Continent_continentID ) REFERENCES Continent ( continentID ) ;
+
+ALTER TABLE Event ADD CONSTRAINT Event_EventCatalog_FK FOREIGN KEY ( EventCatalog_eventID ) REFERENCES EventCatalog ( eventID ) ;
+
+ALTER TABLE PlayerByTeam ADD CONSTRAINT FK_ASS_10 FOREIGN KEY ( Team_teamID ) REFERENCES Team ( teamID ) ;
+
+ALTER TABLE StatisticByGroup ADD CONSTRAINT FK_ASS_16 FOREIGN KEY ( Group_groupID ) REFERENCES "Group" ( groupID ) ;
+
+ALTER TABLE StatisticByGroup ADD CONSTRAINT FK_ASS_17 FOREIGN KEY ( Statistic_ID ) REFERENCES Statistic ( ID ) ;
+
+ALTER TABLE TeamByEvent ADD CONSTRAINT FK_ASS_5 FOREIGN KEY ( teamID ) REFERENCES Team ( teamID ) ;
+
+ALTER TABLE TeamByEvent ADD CONSTRAINT FK_ASS_6 FOREIGN KEY ( eventID ) REFERENCES Event ( EventCatalog_eventID ) ;
+
+ALTER TABLE LineupByTeam ADD CONSTRAINT FK_ASS_7 FOREIGN KEY ( Team_teamID ) REFERENCES Team ( teamID ) ;
+
+ALTER TABLE LineupByTeam ADD CONSTRAINT FK_ASS_8 FOREIGN KEY ( LineupCatalog_lineupID ) REFERENCES LineupCatalog ( lineupID ) ;
+
+ALTER TABLE PlayerByTeam ADD CONSTRAINT FK_ASS_9 FOREIGN KEY ( Player_DNI ) REFERENCES Player ( DNI ) ;
+
+ALTER TABLE TeamByGame ADD CONSTRAINT TeamByGame_Game_FK FOREIGN KEY ( Game_gameID ) REFERENCES Game ( gameID ) ;
+
+ALTER TABLE TeamByGame ADD CONSTRAINT TeamByGame_Stadium_FK FOREIGN KEY ( Stadium_stadiumID ) REFERENCES Stadium ( stadiumID ) ;
+
+ALTER TABLE TeamByGame ADD CONSTRAINT TeamByGame_Team_FK FOREIGN KEY ( Team_teamID ) REFERENCES Team ( teamID ) ;
+
+ALTER TABLE Team ADD CONSTRAINT Team_CityCatalog_FK FOREIGN KEY ( CityCatalog_cityID ) REFERENCES CityCatalog ( cityID ) ;
+
+ALTER TABLE Team ADD CONSTRAINT Team_Group_FK FOREIGN KEY ( Group_groupID ) REFERENCES "Group" ( groupID ) ;
+
+ALTER TABLE Team ADD CONSTRAINT Team_tdCatalog_FK FOREIGN KEY ( tdCatalog_tdID ) REFERENCES tdCatalog ( tdID ) ;
+
+
+-- Informe de Resumen de Oracle SQL Developer Data Modeler: 
+-- 
+-- CREATE TABLE                            18
+-- CREATE INDEX                             1
+-- ALTER TABLE                             35
+-- CREATE VIEW                              0
+-- CREATE PACKAGE                           0
+-- CREATE PACKAGE BODY                      0
+-- CREATE PROCEDURE                         0
+-- CREATE FUNCTION                          0
+-- CREATE TRIGGER                           0
+-- ALTER TRIGGER                            0
+-- CREATE COLLECTION TYPE                   0
+-- CREATE STRUCTURED TYPE                   0
+-- CREATE STRUCTURED TYPE BODY              0
+-- CREATE CLUSTER                           0
+-- CREATE CONTEXT                           0
+-- CREATE DATABASE                          0
+-- CREATE DIMENSION                         0
+-- CREATE DIRECTORY                         0
+-- CREATE DISK GROUP                        0
+-- CREATE ROLE                              0
+-- CREATE ROLLBACK SEGMENT                  0
+-- CREATE SEQUENCE                          0
+-- CREATE MATERIALIZED VIEW                 0
+-- CREATE SYNONYM                           0
+-- CREATE TABLESPACE                        0
+-- CREATE USER                              0
+-- 
+-- DROP TABLESPACE                          0
+-- DROP DATABASE                            0
+-- 
+-- REDACTION POLICY                         0
+-- 
+-- ERRORS                                   0
+-- WARNINGS                                 0

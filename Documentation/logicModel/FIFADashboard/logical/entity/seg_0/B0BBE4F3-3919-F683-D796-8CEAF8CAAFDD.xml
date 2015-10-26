@@ -1,7 +1,7 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="B9D5392D-61F9-27C9-EAE8-839755D2737B" name="countrySelection">
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="B0BBE4F3-3919-F683-D796-8CEAF8CAAFDD" name="tdCatalog">
 <createdBy>aarguedas</createdBy>
-<createdTime>2015-10-24 03:10:37 UTC</createdTime>
+<createdTime>2015-10-25 21:40:35 UTC</createdTime>
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>FIFADashboard</ownerDesignName>
 <engineerTo>
@@ -16,9 +16,9 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="teamID" id="8C43FD1F-7CCF-CDFF-2B5B-CB81773A5ACD">
+<Attribute name="tdID" id="E93790BC-ABE8-66F6-651C-78318C697DF8">
 <createdBy>aarguedas</createdBy>
-<createdTime>2015-10-24 03:16:55 UTC</createdTime>
+<createdTime>2015-10-25 21:41:04 UTC</createdTime>
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>FIFADashboard</ownerDesignName>
 <engineerTo>
@@ -29,9 +29,9 @@
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>5</dataTypePrecision>
 </Attribute>
-<Attribute name="countryID" id="ABF4E509-2D2B-0589-9C56-8E0207090CEF">
+<Attribute name="tdFirstName" id="55A71080-651F-73D3-99CB-A4B5528C80DC">
 <createdBy>aarguedas</createdBy>
-<createdTime>2015-10-24 03:17:38 UTC</createdTime>
+<createdTime>2015-10-25 21:41:44 UTC</createdTime>
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>FIFADashboard</ownerDesignName>
 <engineerTo>
@@ -39,12 +39,12 @@
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>5</dataTypePrecision>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
 </Attribute>
-<Attribute name="captainID" id="D11D1A0A-D11C-E4D6-5A85-1D0D056DCC60">
+<Attribute name="tdLastName1" id="5BDE15C0-5505-5A83-4473-AEB09A25C4B8">
 <createdBy>aarguedas</createdBy>
-<createdTime>2015-10-24 03:23:44 UTC</createdTime>
+<createdTime>2015-10-25 21:43:34 UTC</createdTime>
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>FIFADashboard</ownerDesignName>
 <engineerTo>
@@ -52,40 +52,42 @@
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>5</dataTypePrecision>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
 </Attribute>
-<Attribute name="tdID" id="C68DEB36-E9E5-4635-121C-A045DF15B552">
+<Attribute name="tdLastName2" id="D0D3FF8E-E8F5-3395-E8E0-919D841C961C">
 <createdBy>aarguedas</createdBy>
-<createdTime>2015-10-24 03:33:30 UTC</createdTime>
+<createdTime>2015-10-25 21:44:03 UTC</createdTime>
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>FIFADashboard</ownerDesignName>
 <engineerTo>
 <item key="4868DA42-719B-57C1-1720-90253DE167AF" value="true"/>
 </engineerTo>
+<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>5</dataTypePrecision>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
 </Attribute>
-<Attribute name="flagPath" id="8C4F432D-11DB-AB6D-2B20-B64013A530B4">
+<Attribute name="tdNacionality" id="CEA6B649-BD94-3713-DD41-792345444649">
 <createdBy>aarguedas</createdBy>
-<createdTime>2015-10-24 05:23:36 UTC</createdTime>
+<createdTime>2015-10-25 21:45:59 UTC</createdTime>
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>FIFADashboard</ownerDesignName>
 <engineerTo>
 <item key="4868DA42-719B-57C1-1720-90253DE167AF" value="true"/>
 </engineerTo>
+<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>5</dataTypePrecision>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
-<identifier id="F29B1AEC-04ED-8986-FD3F-D9C315709400" name="team PK">
+<identifier id="CCAF22B0-FEF0-3A71-4F18-195BCBEC2410" name="tdCatalog PK">
 <createdBy>aarguedas</createdBy>
-<createdTime>2015-10-24 03:17:52 UTC</createdTime>
+<createdTime>2015-10-25 21:41:40 UTC</createdTime>
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>FIFADashboard</ownerDesignName>
 <engineerTo>
@@ -93,7 +95,7 @@
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>
-<attributeRef>8C43FD1F-7CCF-CDFF-2B5B-CB81773A5ACD</attributeRef>
+<attributeRef>E93790BC-ABE8-66F6-651C-78318C697DF8</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>

@@ -1,0 +1,26 @@
+CREATE OR REPLACE PACKAGE BODY insertCatalog AS
+-------------------------------------------------------------------------------
+
+procedure insertContinent ( pContinentName varchar2)
+as
+       BEGIN
+         insert into continent (continentID,continentName)
+         values(continentID_seq.NextVal,pContinentName);
+
+        Exception
+         WHEN VALUE_ERROR THEN
+              DBMS_OUTPUT.PUT_LINE ('Continent error ');
+         WHEN OTHERS THEN
+              DBMS_OUTPUT.PUT_LINE ('Unexpected error');
+              RAISE;
+         commit;
+
+       END;
+       
+
+
+
+       
+-------------------------------------------------------------------------------
+   
+END insertCatalog;

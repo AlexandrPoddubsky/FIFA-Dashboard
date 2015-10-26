@@ -1,0 +1,21 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="LineupByTeam" directorySegmentName="seg_0" id="3C8DD5AC-E998-3D03-54F2-3EE37345DDF9">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-25 21:30:45 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<engineerTo>
+<item key="4868DA42-719B-57C1-1720-90253DE167AF" value="true"/>
+</engineerTo>
+<identifying>false</identifying>
+<nameOnSource>teamID</nameOnSource>
+<nameOnTarget>lineupID</nameOnTarget>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>*</sourceCardinality>
+<sourceEntity>4304A590-189B-9C18-23A3-8E478D5443CA</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>7D75B8F6-2DEE-1A6E-A706-831A17CD04F7</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

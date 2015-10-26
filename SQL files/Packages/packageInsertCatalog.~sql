@@ -1,0 +1,8 @@
+create or replace package insertCatalog is
+-------------------------------------------------------------------------------
+
+procedure insertContinent ( pContinentName varchar2);
+
+
+-------------------------------------------------------------------------------
+END insertCatalog;

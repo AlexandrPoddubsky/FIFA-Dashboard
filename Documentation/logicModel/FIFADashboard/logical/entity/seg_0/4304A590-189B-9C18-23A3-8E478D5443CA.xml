@@ -1,5 +1,5 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="4304A590-189B-9C18-23A3-8E478D5443CA" name="club">
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="4304A590-189B-9C18-23A3-8E478D5443CA" name="Team">
 <createdBy>aarguedas</createdBy>
 <createdTime>2015-10-24 03:28:53 UTC</createdTime>
 <generatorID>Generado por el Usuario</generatorID>
@@ -16,7 +16,7 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="clubID" id="FB95E461-93D6-3E68-4D23-95E745B252AE">
+<Attribute name="teamID" id="FB95E461-93D6-3E68-4D23-95E745B252AE">
 <createdBy>aarguedas</createdBy>
 <createdTime>2015-10-24 03:29:08 UTC</createdTime>
 <generatorID>Generado por el Usuario</generatorID>
@@ -26,8 +26,10 @@
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
 </Attribute>
-<Attribute name="clubName" id="D9842C26-8D17-0F11-BA8F-27425F24B105">
+<Attribute name="teamName" id="D9842C26-8D17-0F11-BA8F-27425F24B105">
 <createdBy>aarguedas</createdBy>
 <createdTime>2015-10-24 03:30:13 UTC</createdTime>
 <generatorID>Generado por el Usuario</generatorID>
@@ -39,31 +41,6 @@
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
 <dataTypeSize>100</dataTypeSize>
-</Attribute>
-<Attribute name="cityID" id="89E38151-86BF-B9B3-23A6-55E1B4D9954A">
-<createdBy>aarguedas</createdBy>
-<createdTime>2015-10-24 03:31:05 UTC</createdTime>
-<generatorID>Generado por el Usuario</generatorID>
-<ownerDesignName>FIFADashboard</ownerDesignName>
-<engineerTo>
-<item key="4868DA42-719B-57C1-1720-90253DE167AF" value="true"/>
-</engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-</Attribute>
-<Attribute name="tdID" id="6F4803F1-1FCE-7B19-5FA3-875805F34C50">
-<createdBy>aarguedas</createdBy>
-<createdTime>2015-10-24 03:32:37 UTC</createdTime>
-<generatorID>Generado por el Usuario</generatorID>
-<ownerDesignName>FIFADashboard</ownerDesignName>
-<engineerTo>
-<item key="4868DA42-719B-57C1-1720-90253DE167AF" value="true"/>
-</engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>5</dataTypePrecision>
 </Attribute>
 <Attribute name="captainID" id="F67328BA-EB7F-055A-E746-1DA11F022644">
 <createdBy>aarguedas</createdBy>
@@ -99,6 +76,49 @@
 <engineerTo>
 <item key="4868DA42-719B-57C1-1720-90253DE167AF" value="true"/>
 </engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+</Attribute>
+<Attribute name="cityID" id="2067F65E-8128-8F45-4CA0-10C5594892C4">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-25 21:39:30 UTC</createdTime>
+<generatorID>CBF40A09-793C-8C4A-D8AF-EC3620142C19</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<engineerTo>
+<item key="4868DA42-719B-57C1-1720-90253DE167AF" value="true"/>
+</engineerTo>
+<referedAttribute>FEC53A8E-5BF3-0CB8-F846-E4708B5B9CEA</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+</Attribute>
+<Attribute name="tdID" id="C2AD3DB2-D853-6DDF-9402-AF92687B2DE0">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-25 21:51:36 UTC</createdTime>
+<generatorID>5E24FC98-F3F9-DBFA-5226-20B6F3516CE2</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<engineerTo>
+<item key="4868DA42-719B-57C1-1720-90253DE167AF" value="true"/>
+</engineerTo>
+<referedAttribute>E93790BC-ABE8-66F6-651C-78318C697DF8</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+</Attribute>
+<Attribute name="groupID" id="0803E1F3-37C9-4C4F-8B0B-1E7053179677">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-25 23:12:21 UTC</createdTime>
+<generatorID>8CC20F36-EC45-86BA-C7CB-C99B721C7ADC</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<engineerTo>
+<item key="4868DA42-719B-57C1-1720-90253DE167AF" value="true"/>
+</engineerTo>
+<referedAttribute>30C3BDDA-E68B-6866-2E90-154E16773486</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
