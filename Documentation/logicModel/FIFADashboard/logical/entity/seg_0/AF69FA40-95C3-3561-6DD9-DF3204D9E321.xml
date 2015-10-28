@@ -1,7 +1,7 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="EFDCF81B-19E7-15AE-0CF1-2D789A8C8052" name="Stadium">
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="AF69FA40-95C3-3561-6DD9-DF3204D9E321" name="UserAdmin">
 <createdBy>aarguedas</createdBy>
-<createdTime>2015-10-24 06:37:03 UTC</createdTime>
+<createdTime>2015-10-27 03:33:29 UTC</createdTime>
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>FIFADashboard</ownerDesignName>
 <engineerTo>
@@ -16,9 +16,9 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="stadiumID" id="08B2169B-6BA2-CC64-E0D3-A908941A3047">
+<Attribute name="userID" id="646E2965-AB40-B07C-736C-65D330A3CCEB">
 <createdBy>aarguedas</createdBy>
-<createdTime>2015-10-24 06:37:12 UTC</createdTime>
+<createdTime>2015-10-27 03:34:11 UTC</createdTime>
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>FIFADashboard</ownerDesignName>
 <engineerTo>
@@ -29,52 +29,25 @@
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>5</dataTypePrecision>
 </Attribute>
-<Attribute name="stadiumName" id="4B5D1C00-29C7-9E2F-FE16-455AC47BDCF1">
+<Attribute name="userName" id="040115CD-7E67-876B-6F64-92202579AA93">
 <createdBy>aarguedas</createdBy>
-<createdTime>2015-10-24 06:37:44 UTC</createdTime>
+<createdTime>2015-10-27 03:34:31 UTC</createdTime>
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>FIFADashboard</ownerDesignName>
 <engineerTo>
 <item key="4868DA42-719B-57C1-1720-90253DE167AF" value="true"/>
 </engineerTo>
+<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
 <dataTypeSize>30</dataTypeSize>
 </Attribute>
-<Attribute name="googleMapsID" id="AA9BA64F-3163-7267-51E1-3F5AEC77C3CE">
-<createdBy>aarguedas</createdBy>
-<createdTime>2015-10-24 06:42:30 UTC</createdTime>
-<generatorID>Generado por el Usuario</generatorID>
-<ownerDesignName>FIFADashboard</ownerDesignName>
-<engineerTo>
-<item key="4868DA42-719B-57C1-1720-90253DE167AF" value="true"/>
-</engineerTo>
-<nullsAllowed>true</nullsAllowed>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>300</dataTypeSize>
-</Attribute>
-<Attribute name="picture" id="AB3C8CD0-18DD-F1AE-B047-92B98629CC1E">
-<createdBy>aarguedas</createdBy>
-<createdTime>2015-10-24 06:38:33 UTC</createdTime>
-<generatorID>Generado por el Usuario</generatorID>
-<ownerDesignName>FIFADashboard</ownerDesignName>
-<engineerTo>
-<item key="4868DA42-719B-57C1-1720-90253DE167AF" value="true"/>
-</engineerTo>
-<nullsAllowed>true</nullsAllowed>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>300</dataTypeSize>
-</Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
-<identifier id="9DB0E788-3E6A-56C3-C6E0-82A54AE08616" name="stadium PK">
+<identifier id="E31BB3E0-0CD8-EE63-339E-5CF5B661D317" name="User PK">
 <createdBy>aarguedas</createdBy>
-<createdTime>2015-10-24 06:37:41 UTC</createdTime>
+<createdTime>2015-10-27 03:35:13 UTC</createdTime>
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>FIFADashboard</ownerDesignName>
 <engineerTo>
@@ -82,7 +55,7 @@
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>
-<attributeRef>08B2169B-6BA2-CC64-E0D3-A908941A3047</attributeRef>
+<attributeRef>646E2965-AB40-B07C-736C-65D330A3CCEB</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>

@@ -1,0 +1,95 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="6E183F93-95D8-E2BB-1326-E06B744F6732" name="Bitacora">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-27 03:48:14 UTC</createdTime>
+<generatorID>233F33C7-41D9-1162-8BF0-F5D504C2B4C3</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="bitacoraID" id="22A734CF-92CF-FA6D-0CEE-A7F869DF0581">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-27 03:48:14 UTC</createdTime>
+<generatorID>57015E8B-0113-1D15-7EEA-35A86D233A7E</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>8</dataTypePrecision>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="userid" id="C04E9595-2C6C-E265-74ED-1170428B644F">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-27 03:48:14 UTC</createdTime>
+<generatorID>A1066A0B-1675-3BEA-7555-4DDF5628548C</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="userName" id="EC7AC650-BFDD-DFC4-C567-3D1D58205436">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-27 03:48:14 UTC</createdTime>
+<generatorID>07C674AF-B258-CDD6-A5EE-B17433BDE522</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="date_Time" id="3C422913-11B7-BF18-CA09-43914A720A2C">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-27 03:48:14 UTC</createdTime>
+<generatorID>9BD85298-28F2-49B0-97DC-9365BA21EE79</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="action" id="532D1398-46DB-C363-549E-03762D603E5B">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-27 03:48:14 UTC</createdTime>
+<generatorID>3EF377EA-9362-BF50-D4DB-2A4DB9FDCDD4</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="description" id="FE5115DC-4931-C3E6-3386-9B9A003932C8">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-27 03:48:14 UTC</createdTime>
+<generatorID>F413271C-034D-BFBC-4FFA-D1C8A8A56DA7</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="0AD8C15A-5013-4AF5-0E24-7043B4E5283D" name="Bitacora_PK">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-27 03:48:14 UTC</createdTime>
+<generatorID>B771AA0C-A2FE-CACB-4DB9-C2B4C9009823</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="22A734CF-92CF-FA6D-0CEE-A7F869DF0581"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,16 +1,16 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="3B378809-A9F8-6C7E-7C37-A94324CBF27B" name="Grupo">
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="F6AB7DE4-37EB-ED56-20C7-636E67EAF36C" name="TypePlayer">
 <createdBy>aarguedas</createdBy>
-<createdTime>2015-10-25 23:17:47 UTC</createdTime>
-<generatorID>4D848F1A-D2CB-514D-AAEE-5982460EF66E</generatorID>
+<createdTime>2015-10-27 02:40:09 UTC</createdTime>
+<generatorID>1F943759-5FC1-1597-E097-D1E44A4B8502</generatorID>
 <ownerDesignName>FIFADashboard</ownerDesignName>
 <allowColumnReorder>false</allowColumnReorder>
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
-<Column name="groupID" id="0438A391-25E3-C8FA-6FC1-973543D2009D">
+<Column name="typeID" id="78253D58-5430-EE09-3A5D-F098721CDFE3">
 <createdBy>aarguedas</createdBy>
-<createdTime>2015-10-25 23:17:47 UTC</createdTime>
-<generatorID>30C3BDDA-E68B-6866-2E90-154E16773486</generatorID>
+<createdTime>2015-10-27 02:40:09 UTC</createdTime>
+<generatorID>315807F6-E703-2F93-70FE-A91B97B72C18</generatorID>
 <ownerDesignName>FIFADashboard</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -18,10 +18,10 @@
 <dataTypePrecision>5</dataTypePrecision>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="groupName" id="DD716FC8-4311-C7DB-30A8-96556F386DF9">
+<Column name="typeName" id="E12FEA9C-0602-84D7-1816-5A958F3B9CA9">
 <createdBy>aarguedas</createdBy>
-<createdTime>2015-10-25 23:17:47 UTC</createdTime>
-<generatorID>2D49BA97-90AA-FA9C-7A0F-9A79FF2427CC</generatorID>
+<createdTime>2015-10-27 02:40:09 UTC</createdTime>
+<generatorID>8B91F90E-2161-2ADC-F3B9-BE1907CFABAE</generatorID>
 <ownerDesignName>FIFADashboard</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -31,16 +31,16 @@
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
-<ind_PK_UK id="46E5A1DC-B70C-ED32-AAC1-F2B5BF7EE9E2" name="Grupo_PK">
+<ind_PK_UK id="74665E02-35FD-E134-747C-D9ED94647532" name="TypePlayer_PK">
 <createdBy>aarguedas</createdBy>
-<createdTime>2015-10-25 23:17:47 UTC</createdTime>
-<generatorID>BBA32E1E-14F9-0181-37D3-0B54E63F85C3</generatorID>
+<createdTime>2015-10-27 02:40:09 UTC</createdTime>
+<generatorID>C6B89F68-343B-84FA-2834-842EF4BCE8D2</generatorID>
 <ownerDesignName>FIFADashboard</ownerDesignName>
 <pk>true</pk>
 <indexState>Primary Constraint</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="0438A391-25E3-C8FA-6FC1-973543D2009D"/>
+<colUsage columnID="78253D58-5430-EE09-3A5D-F098721CDFE3"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

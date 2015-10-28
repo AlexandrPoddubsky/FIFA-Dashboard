@@ -1,0 +1,80 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="73770FFF-0EBF-B09C-6290-9127C4ACF54C" name="PlayerByType">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-27 02:40:09 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Player_DNI" id="7562B149-96E9-AF02-81DB-0F875DCE2D61">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-27 02:40:09 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<delegate>87DAC5B2-81AA-2DB5-699E-0BDDD3839DAF</delegate>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="F68FB706-3A3D-A43F-2729-66BC55C77B54" referredColumn="87DAC5B2-81AA-2DB5-699E-0BDDD3839DAF"/>
+</associations>
+</Column>
+<Column name="TypePlayer_typeID" id="83F8577F-84C0-EA18-7298-A4DCD8ADD355">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-27 02:40:09 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<delegate>78253D58-5430-EE09-3A5D-F098721CDFE3</delegate>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="9C1214D4-C7D6-F672-1262-75625EEFBD83" referredColumn="78253D58-5430-EE09-3A5D-F098721CDFE3"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="D4AE0F31-0070-5E9A-FD93-C994AE091984" name="PlayerByType__IDX">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-27 02:40:09 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="7562B149-96E9-AF02-81DB-0F875DCE2D61"/>
+<colUsage columnID="83F8577F-84C0-EA18-7298-A4DCD8ADD355"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="9EB25196-BD12-01FD-CC6D-11AEAADCA349" name="FK_ASS_18">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-27 02:40:09 UTC</createdTime>
+<generatorID>1BEC4D80-ACBF-23D5-157D-4AB1084D2968</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="7562B149-96E9-AF02-81DB-0F875DCE2D61"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="5FC665B9-8D98-6018-A055-0020304D8922" name="FK_ASS_19">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-27 02:40:09 UTC</createdTime>
+<generatorID>1BEC4D80-ACBF-23D5-157D-4AB1084D2968</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="83F8577F-84C0-EA18-7298-A4DCD8ADD355"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

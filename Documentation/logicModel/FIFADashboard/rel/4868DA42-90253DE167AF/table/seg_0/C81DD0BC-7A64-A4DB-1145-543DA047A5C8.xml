@@ -7,7 +7,7 @@
 <allowColumnReorder>false</allowColumnReorder>
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
-<Column name="ID" id="8B4064BA-CDDB-59F0-D058-28A10021077B">
+<Column name="statID" id="8B4064BA-CDDB-59F0-D058-28A10021077B">
 <createdBy>aarguedas</createdBy>
 <createdTime>2015-10-25 23:17:47 UTC</createdTime>
 <generatorID>35E2B8D7-F527-3AC4-C41F-9FA6900985D1</generatorID>

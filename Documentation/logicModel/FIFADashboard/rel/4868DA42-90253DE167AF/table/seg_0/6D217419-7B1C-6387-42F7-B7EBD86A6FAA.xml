@@ -1,0 +1,146 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="6D217419-7B1C-6387-42F7-B7EBD86A6FAA" name="PlayerByGame">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-27 02:40:09 UTC</createdTime>
+<generatorID>DACA301E-E34D-3568-B7DE-D17319EA4721</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="yellowCard" id="22F770A1-E182-000D-ED94-56CC6E434B40">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-27 02:40:09 UTC</createdTime>
+<generatorID>0C6C708C-41F2-C056-0A27-005227663E4C</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="redCard" id="5E74C5E2-E491-1F77-F379-A5681CAF4AC9">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-27 02:40:09 UTC</createdTime>
+<generatorID>3851D0BC-2FE6-6E0E-E18A-B1EA45B34F17</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="state" id="D81E3477-EC45-121D-2070-CD32FF1E0A02">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-27 02:40:09 UTC</createdTime>
+<generatorID>C2DD8B09-EA7E-32BD-9E90-FC821B80F16B</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Goals" id="F100BD56-C7D7-BBE1-1F32-16C756167D86">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-27 02:40:09 UTC</createdTime>
+<generatorID>A8297EA8-FFE4-F664-CEEB-34BDF799502B</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Player_DNI" id="C8753F2C-C9AD-5F33-D3CC-7F0A725FF5AD">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-27 02:48:46 UTC</createdTime>
+<generatorID>15D28338-68DC-3566-B3DF-D3DA43EB002F</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<delegate>87DAC5B2-81AA-2DB5-699E-0BDDD3839DAF</delegate>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="2FA658A1-CB71-C827-585E-554A15D60B64" referredColumn="87DAC5B2-81AA-2DB5-699E-0BDDD3839DAF"/>
+</associations>
+</Column>
+<Column name="Game_gameID" id="883077EF-FA9A-8507-31E8-433A923E2148">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-27 02:48:46 UTC</createdTime>
+<generatorID>157CB690-0FE2-F575-ADD7-C5F28E655C6A</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<delegate>0F600DB4-6247-067E-62EC-49BC61D0B976</delegate>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="41148645-8C8D-0482-DABE-89FF8DEC2781" referredColumn="0F600DB4-6247-067E-62EC-49BC61D0B976"/>
+</associations>
+</Column>
+<Column name="Corner" id="A5F62C45-EEC6-66CF-5506-085516C3590A">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-27 03:48:14 UTC</createdTime>
+<generatorID>721C8742-5BED-9186-29C0-99361419B5B9</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="5135EF1D-7CB6-01DF-2DF6-0A8AC708B97A" name="PlayerByGame_PKv2">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-27 03:48:14 UTC</createdTime>
+<generatorID>71B8C076-5E5C-6F0F-0CE3-25F5D134E3F3</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C8753F2C-C9AD-5F33-D3CC-7F0A725FF5AD"/>
+<colUsage columnID="883077EF-FA9A-8507-31E8-433A923E2148"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="8D0EAED1-5DDE-0276-2EF8-24EF7D9DB1E9" name="PlayerByGame_PK">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-27 02:40:09 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<indexState>Unique Constraint</indexState>
+<indexColumnUsage>
+<colUsage columnID="C8753F2C-C9AD-5F33-D3CC-7F0A725FF5AD"/>
+<colUsage columnID="883077EF-FA9A-8507-31E8-433A923E2148"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="80AA2D0B-9635-0ED5-64C6-833CD596D814" name="PlayerByGame_Player_FK">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-27 02:48:46 UTC</createdTime>
+<generatorID>50B1B621-0A5F-9CE7-8422-5A9286A03FCE</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C8753F2C-C9AD-5F33-D3CC-7F0A725FF5AD"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="0EB59E2B-6080-85CD-2685-141C02D5EE10" name="PlayerByGame_Game_FK">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-27 02:48:46 UTC</createdTime>
+<generatorID>BBA97124-A454-1AB3-61AB-5CE427168E2E</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="883077EF-FA9A-8507-31E8-433A923E2148"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

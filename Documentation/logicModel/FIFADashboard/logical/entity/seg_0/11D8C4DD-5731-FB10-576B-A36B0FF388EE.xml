@@ -69,6 +69,19 @@
 <logicalDatatype>LOGDT024</logicalDatatype>
 <dataTypeSize>30</dataTypeSize>
 </Attribute>
+<Attribute name="captain" id="02F77274-A2AE-2280-0622-F9AE3866822B">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-28 01:06:55 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<engineerTo>
+<item key="4868DA42-719B-57C1-1720-90253DE167AF" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+</Attribute>
 <Attribute name="clubTshirt" id="2E4E0B7F-D9A9-0410-DA95-9A3140A59520">
 <createdBy>aarguedas</createdBy>
 <createdTime>2015-10-24 02:52:19 UTC</createdTime>

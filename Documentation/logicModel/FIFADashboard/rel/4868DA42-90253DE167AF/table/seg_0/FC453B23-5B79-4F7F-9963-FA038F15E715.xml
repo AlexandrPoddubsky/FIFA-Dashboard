@@ -88,6 +88,17 @@
 <dataTypeSize>300</dataTypeSize>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
+<Column name="captain" id="267055F2-C258-6D15-87A5-935D38A42C1D">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-28 01:07:35 UTC</createdTime>
+<generatorID>02F77274-A2AE-2280-0622-F9AE3866822B</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="8DEE9ABA-6231-3CFB-4419-8883575E562B" name="Player_PK">

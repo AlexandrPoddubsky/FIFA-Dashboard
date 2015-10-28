@@ -40,6 +40,32 @@
 <dataTypePrecision>5</dataTypePrecision>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
+<Column name="Stadium_stadiumID" id="30985A26-C503-4BF1-3811-871E1A8162C0">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-27 02:40:09 UTC</createdTime>
+<generatorID>26813370-42DA-70C7-BE50-3E32430E6E8B</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<delegate>10909C0A-4856-5AC2-0D02-A844DC53566E</delegate>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="AAC69D64-8ADD-E260-261F-209541DF7864" referredColumn="10909C0A-4856-5AC2-0D02-A844DC53566E"/>
+</associations>
+</Column>
+<Column name="date_Time" id="2A6F737F-02B4-C523-287A-854233124E83">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-27 04:10:46 UTC</createdTime>
+<generatorID>65994220-BC01-EED8-2010-56E4EBFC14F1</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="21B5D4FC-B38F-9D24-5100-BB49B8CF4EB1" name="Game_PK">
@@ -52,6 +78,17 @@
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="0F600DB4-6247-067E-62EC-49BC61D0B976"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="6B45D905-9EF4-4AB0-A846-EA6957475FFA" name="Game_Stadium_FK">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-27 02:40:09 UTC</createdTime>
+<generatorID>7965DAC5-2A95-4579-FE2A-DC93814AB5A9</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="30985A26-C503-4BF1-3811-871E1A8162C0"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

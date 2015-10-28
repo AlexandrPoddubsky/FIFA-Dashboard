@@ -67,7 +67,7 @@
 <use>1</use>
 <logicalDatatype>LOGDT007</logicalDatatype>
 </Attribute>
-<Attribute name="countTeams" id="FBE23604-151F-4EF6-C13C-E23DA43BB589">
+<Attribute name="maxTeams" id="FBE23604-151F-4EF6-C13C-E23DA43BB589">
 <createdBy>aarguedas</createdBy>
 <createdTime>2015-10-25 21:14:45 UTC</createdTime>
 <generatorID>Generado por el Usuario</generatorID>

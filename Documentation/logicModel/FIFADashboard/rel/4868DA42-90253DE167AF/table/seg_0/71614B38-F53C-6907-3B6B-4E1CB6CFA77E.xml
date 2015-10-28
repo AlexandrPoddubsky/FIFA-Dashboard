@@ -95,7 +95,7 @@
 <colAssociation fkAssociation="F7E3D9C1-65E3-FB5D-B693-A70A92E6CB75" referredColumn="1CE4D2C4-10D2-3367-0ACD-DDF29A1898A8"/>
 </associations>
 </Column>
-<Column name="Group_groupID" id="241D39AD-CBD7-17C2-E518-A79C08FF8059">
+<Column name="Grupo_groupID" id="241D39AD-CBD7-17C2-E518-A79C08FF8059">
 <createdBy>aarguedas</createdBy>
 <createdTime>2015-10-25 23:17:47 UTC</createdTime>
 <generatorID>0803E1F3-37C9-4C4F-8B0B-1E7053179677</generatorID>
@@ -159,7 +159,7 @@
 <colUsage columnID="02AAF758-A39F-234F-25F1-4859DBFAB27A"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="16CB4634-397B-C877-F572-A6728CEA9950" name="Team_Group_FK">
+<ind_PK_UK id="16CB4634-397B-C877-F572-A6728CEA9950" name="Team_Grupo_FK">
 <createdBy>aarguedas</createdBy>
 <createdTime>2015-10-25 23:17:47 UTC</createdTime>
 <generatorID>8CC20F36-EC45-86BA-C7CB-C99B721C7ADC</generatorID>

@@ -54,7 +54,7 @@
 <logicalDatatype>LOGDT007</logicalDatatype>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="countTeams" id="1000A29A-3559-D574-3241-923E2E1A946B">
+<Column name="maxTeams" id="1000A29A-3559-D574-3241-923E2E1A946B">
 <createdBy>aarguedas</createdBy>
 <createdTime>2015-10-25 21:22:35 UTC</createdTime>
 <generatorID>FBE23604-151F-4EF6-C13C-E23DA43BB589</generatorID>

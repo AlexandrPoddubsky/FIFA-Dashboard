@@ -1,7 +1,7 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="FCFAF058-A693-8EEE-9A97-D744478E9BE5" name="Statistic">
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="DACA301E-E34D-3568-B7DE-D17319EA4721" name="PlayerByGame">
 <createdBy>aarguedas</createdBy>
-<createdTime>2015-10-25 22:47:19 UTC</createdTime>
+<createdTime>2015-10-27 02:12:55 UTC</createdTime>
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>FIFADashboard</ownerDesignName>
 <engineerTo>
@@ -16,22 +16,37 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="statID" id="35E2B8D7-F527-3AC4-C41F-9FA6900985D1">
+<Attribute name="gameID" id="157CB690-0FE2-F575-ADD7-C5F28E655C6A">
 <createdBy>aarguedas</createdBy>
-<createdTime>2015-10-25 22:48:08 UTC</createdTime>
-<generatorID>Generado por el Usuario</generatorID>
+<createdTime>2015-10-27 02:48:37 UTC</createdTime>
+<generatorID>BBA97124-A454-1AB3-61AB-5CE427168E2E</generatorID>
 <ownerDesignName>FIFADashboard</ownerDesignName>
 <engineerTo>
 <item key="4868DA42-719B-57C1-1720-90253DE167AF" value="true"/>
 </engineerTo>
+<referedAttribute>4A218BB2-C42B-4F2C-74A1-D1A1FDE20505</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>5</dataTypePrecision>
 </Attribute>
-<Attribute name="played" id="25E125EE-3110-678F-EDBA-FD2856941291">
+<Attribute name="DNI" id="15D28338-68DC-3566-B3DF-D3DA43EB002F">
 <createdBy>aarguedas</createdBy>
-<createdTime>2015-10-25 22:55:15 UTC</createdTime>
+<createdTime>2015-10-27 02:48:25 UTC</createdTime>
+<generatorID>50B1B621-0A5F-9CE7-8422-5A9286A03FCE</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<engineerTo>
+<item key="4868DA42-719B-57C1-1720-90253DE167AF" value="true"/>
+</engineerTo>
+<referedAttribute>24512D2A-C36F-A3A3-D558-7AB87FE2C842</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+</Attribute>
+<Attribute name="yellowCard" id="0C6C708C-41F2-C056-0A27-005227663E4C">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-27 02:26:53 UTC</createdTime>
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>FIFADashboard</ownerDesignName>
 <engineerTo>
@@ -42,9 +57,9 @@
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>2</dataTypePrecision>
 </Attribute>
-<Attribute name="won" id="E8DF6B9F-A054-5FD8-001D-A45AEE54D8CE">
+<Attribute name="redCard" id="3851D0BC-2FE6-6E0E-E18A-B1EA45B34F17">
 <createdBy>aarguedas</createdBy>
-<createdTime>2015-10-25 22:56:22 UTC</createdTime>
+<createdTime>2015-10-27 02:28:36 UTC</createdTime>
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>FIFADashboard</ownerDesignName>
 <engineerTo>
@@ -55,9 +70,9 @@
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>2</dataTypePrecision>
 </Attribute>
-<Attribute name="draw" id="1102DF24-FFD6-4E0B-37E1-076F63CB544D">
+<Attribute name="state" id="C2DD8B09-EA7E-32BD-9E90-FC821B80F16B">
 <createdBy>aarguedas</createdBy>
-<createdTime>2015-10-25 22:57:41 UTC</createdTime>
+<createdTime>2015-10-27 02:29:56 UTC</createdTime>
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>FIFADashboard</ownerDesignName>
 <engineerTo>
@@ -68,9 +83,9 @@
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>2</dataTypePrecision>
 </Attribute>
-<Attribute name="lost" id="E1331D50-DA32-DD59-E3F9-5576FB50FAB3">
+<Attribute name="Goals" id="A8297EA8-FFE4-F664-CEEB-34BDF799502B">
 <createdBy>aarguedas</createdBy>
-<createdTime>2015-10-25 22:58:31 UTC</createdTime>
+<createdTime>2015-10-27 02:37:33 UTC</createdTime>
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>FIFADashboard</ownerDesignName>
 <engineerTo>
@@ -81,9 +96,9 @@
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>2</dataTypePrecision>
 </Attribute>
-<Attribute name="goalsFor" id="F0B21926-B32A-A6A8-0421-C9D9109CF371">
+<Attribute name="Corner" id="721C8742-5BED-9186-29C0-99361419B5B9">
 <createdBy>aarguedas</createdBy>
-<createdTime>2015-10-25 22:59:00 UTC</createdTime>
+<createdTime>2015-10-27 02:58:58 UTC</createdTime>
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>FIFADashboard</ownerDesignName>
 <engineerTo>
@@ -93,50 +108,12 @@
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>2</dataTypePrecision>
-</Attribute>
-<Attribute name="goalsAgainst" id="3C37F0F3-A2F0-5D3D-A31B-0834B55DFB21">
-<createdBy>aarguedas</createdBy>
-<createdTime>2015-10-25 22:59:31 UTC</createdTime>
-<generatorID>Generado por el Usuario</generatorID>
-<ownerDesignName>FIFADashboard</ownerDesignName>
-<engineerTo>
-<item key="4868DA42-719B-57C1-1720-90253DE167AF" value="true"/>
-</engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>2</dataTypePrecision>
-</Attribute>
-<Attribute name="goalsDifference" id="F62921FE-2FFF-0E78-6F68-CAE455FC0662">
-<createdBy>aarguedas</createdBy>
-<createdTime>2015-10-25 23:00:20 UTC</createdTime>
-<generatorID>Generado por el Usuario</generatorID>
-<ownerDesignName>FIFADashboard</ownerDesignName>
-<engineerTo>
-<item key="4868DA42-719B-57C1-1720-90253DE167AF" value="true"/>
-</engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>2</dataTypePrecision>
-</Attribute>
-<Attribute name="fairPlayPoints" id="B6482BFC-8916-622F-631F-FB064E33D40D">
-<createdBy>aarguedas</createdBy>
-<createdTime>2015-10-25 23:01:17 UTC</createdTime>
-<generatorID>Generado por el Usuario</generatorID>
-<ownerDesignName>FIFADashboard</ownerDesignName>
-<engineerTo>
-<item key="4868DA42-719B-57C1-1720-90253DE167AF" value="true"/>
-</engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
-<identifier id="B5CA91F2-A171-9704-05D6-433B10A587DF" name="Statistic PK">
+<identifier id="71B8C076-5E5C-6F0F-0CE3-25F5D134E3F3" name="PlayerByGame PK">
 <createdBy>aarguedas</createdBy>
-<createdTime>2015-10-25 22:55:36 UTC</createdTime>
+<createdTime>2015-10-27 03:47:26 UTC</createdTime>
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>FIFADashboard</ownerDesignName>
 <engineerTo>
@@ -144,7 +121,10 @@
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>
-<attributeRef>35E2B8D7-F527-3AC4-C41F-9FA6900985D1</attributeRef>
+<attributeRef>15D28338-68DC-3566-B3DF-D3DA43EB002F</attributeRef>
+<attributeRef>157CB690-0FE2-F575-ADD7-C5F28E655C6A</attributeRef>
+<attributeRef>157CB690-0FE2-F575-ADD7-C5F28E655C6A</attributeRef>
+<attributeRef>15D28338-68DC-3566-B3DF-D3DA43EB002F</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>
