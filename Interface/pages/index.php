@@ -4,12 +4,92 @@
    * Alexis Arguedas, Gabriela Garro, Yanil Gómez
    * -------------------------------------------------
    * index.php - Created: 27/10/2015
-   * The admin dashboard, from which it can overview everything about the website.
+   * The admin dashboard, from which it can overview everything about the website and introduce changes
    */
-    /*include('../session.php');
+    include('../session.php');
     if(!isset($_SESSION['usernameID'])) {
-        header("Location: index.php#notloggedin");
-    }*/
+        header("Location: ../index.php#notloggedin");
+    }
+    //check if the user inputted anything new
+    //create new team
+    if (isset($_POST['newTeam'])) {
+        if (empty($_POST["teamName"]) ||
+            empty($_POST["teamType"]) ||
+            empty($_POST["state"])) {
+            echo "Null values";
+        }
+        else {
+            $teamType = intval($_POST["teamType"]);
+            $city = intval($_POST["state"]);
+            $teamLogo = "";
+            $teamFlag = "";
+            $tdirector = "";
+            $captain = "";
+            $query = 'BEGIN inserts.team(:teamName, :captainID, :flagpath, :logopath, 
+                :cityID, :tdirector, :teamType); END;';
+            $compiled = oci_parse($connection, $query);
+            oci_bind_by_name($compiled, ':teamName', $_POST['teamName'], 100);
+            oci_bind_by_name($compiled, ':captainID', $captain, 200);
+            oci_bind_by_name($compiled, ':flagpath', $teamFlag, 200);
+            oci_bind_by_name($compiled, ':logopath', $teamLogo, 200);
+            oci_bind_by_name($compiled, ':cityID', $city, 200);
+            oci_bind_by_name($compiled, ':tdirector', $tdirector, 200);
+            oci_bind_by_name($compiled, ':teamType', $teamType, 200);
+            oci_execute($compiled, OCI_NO_AUTO_COMMIT);
+            oci_commit($connection);
+            echo "The team " . $_POST['teamName'] . " was created. ";
+            //get the team id
+            $query = 'BEGIN get.teamID(:teamName, :teamID); END;';
+            $compiled = oci_parse($connection, $query);
+            oci_bind_by_name($compiled, ':teamName', $_POST['teamName'], 100);
+            oci_bind_by_name($compiled, ':teamID', $teamID, 200);
+            oci_execute($compiled, OCI_NO_AUTO_COMMIT);
+            oci_commit($connection);
+            //store the pictures
+            if (!empty($_FILES["teamFlag"]["name"])) {
+                $target_dir = "../pictures/teamFlags/";
+                $target_file = $target_dir . basename($_FILES["teamFlag"]["name"]);
+                $uploadOk = 1;
+                $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
+                $target_file = $target_dir . $teamID . "." . $imageFileType;
+                //check if image file is an actual image or a fake image
+                $check = getimagesize($_FILES["teamFlag"]["tmp_name"]);
+                if ($check !== false) {
+                    //echo "File is an image - " . $check["mime"] . ".";
+                    $uploadOk = 1;
+                } else {
+                    echo "File is not an image.";
+                    $uploadOk = 0;
+                }
+                if ($_FILES["teamFlag"]["size"] > 5242880) {
+                    echo "Sorry, your file is too large.";
+                    $uploadOk = 0;
+                }
+                if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+                && $imageFileType != "gif" ) {
+                    echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+                    $uploadOk = 0;
+                }
+                if ($uploadOk == 0) {
+                echo "Sorry, your file was not uploaded.";
+                // if everything is ok, try to upload file
+                } else {
+                    if (move_uploaded_file($_FILES["teamFlag"]["tmp_name"], $target_file)) {
+                        echo "The file ". basename( $_FILES["teamFlag"]["name"]). " has been uploaded.";
+                    } else {
+                        echo "Sorry, there was an error uploading your file.";
+                    }
+                }
+                $query = 'BEGIN updates.flag(:teamID, :fileLocation); END;';
+                $compiled = oci_parse($connection, $query);
+                oci_bind_by_name($compiled, ':teamID', $teamID, 10);
+                oci_bind_by_name($compiled, ':fileLocation', $target_file, 200);
+                oci_execute($compiled, OCI_NO_AUTO_COMMIT);
+                oci_commit($connection);
+            }  
+        }
+              
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -49,6 +129,126 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <script>
+        //add or delete a picture depending on the type of team the user is trying to input
+        function changePictures(value) {
+            if (value == "2") {
+                var teamPictures = document.getElementById("team-pictures");
+                var title = document.createElement("h3");
+                title.id = "logoTitle";
+                title.innerHTML = "Team logo";
+                teamPictures.appendChild(title);
+                var inputPicture = document.createElement("input");
+                inputPicture.type = "file";
+                inputPicture.name = "team-logo";
+                inputPicture.id = "team-logo";
+                inputPicture.accept = "image/*";
+                teamPictures.appendChild(inputPicture);
+                document.getElementById("team-logo").className = "form-control";
+            }
+            else if (value == "1") {
+                if (!!document.getElementById("team-logo")) {
+                    var logoTitle = document.getElementById("logoTitle");
+                    logoTitle.parentNode.removeChild(logoTitle);
+                    var inputPicture = document.getElementById("team-logo");
+                    inputPicture.parentNode.removeChild(inputPicture);
+                }
+                    
+            }
+        }
+
+        <?php 
+            $countryArray = array();
+            $countryArrayValues = array();
+            $string = ""; // string that goes on to be echoed to declare the countries array
+            $values = ""; //string to store the country values
+            $cursor = oci_new_cursor($connection);
+            $query = 'BEGIN getCatalog.country(:cursor); END;';
+            $compiled = oci_parse($connection, $query);
+            oci_bind_by_name($compiled, ':cursor', $cursor, -1, OCI_B_CURSOR);
+            oci_execute($compiled);
+            oci_execute($cursor, OCI_DEFAULT);
+            $count = 1;
+            //output the code to $string and save the country name to our own array
+            while (($row = oci_fetch_array($cursor, OCI_ASSOC+OCI_RETURN_NULLS)) != false) {
+                $string = $string . "\"" .  $row['TYPENAME'] . "\", ";
+                $countryArray[$count] = $row['TYPENAME'];
+                $values = $values . "\"" . $row['TYPENAMEID'] . "\", ";
+                $countryArrayValues[$count] = $row['TYPENAMEID'];
+                $count++;
+            }
+            oci_free_statement($compiled);
+            oci_free_statement($cursor);
+            //remove the last comma
+            $string = substr($string, 0, -2);
+            $values = substr($values, 0, -2);
+            echo "var countryArray = new Array(" . $string . ");";
+            echo "var countryArrayValues= new Array(" . $values . ");";
+        ?>
+        var citiesArray = new Array();
+        var citiesArrayValues = new Array();
+        citiesArray[0] = "";
+        <?php
+            //start assigning cities to countries
+            for ($i = 1; $i <= count($countryArrayValues); $i++) {
+                $countryID = $countryArrayValues[$i];
+                $string = "";
+                $values = "";
+                $cursor = oci_new_cursor($connection);
+                $query = 'BEGIN getCatalog.city(:countryID, :cursor); END;';
+                $compiled = oci_parse($connection, $query);
+                oci_bind_by_name($compiled, ':cursor', $cursor, -1, OCI_B_CURSOR);
+                oci_bind_by_name($compiled, ':countryID', $countryID, 50);
+                oci_execute($compiled);
+                oci_execute($cursor, OCI_DEFAULT);       //execute the cursor like a normal statement
+   
+                while (($row = oci_fetch_array($cursor, OCI_ASSOC+OCI_RETURN_NULLS)) != false) {
+                    $string = $string . $row['TYPENAME'] . "|";
+                    $values = $values . $row['TYPENAMEID'] . "|";
+                }
+                oci_free_statement($compiled);
+                oci_free_statement($cursor);
+                $string = substr($string, 0, -1);
+                $values = substr($values, 0, -1);
+                echo "citiesArray[" . $i . "] = \"" . $string . "\";\n";
+                echo "citiesArrayValues[" . $i . "] = \"" . $values . "\";\n";
+            }
+        ?>
+
+        function populateStates( countryElementId, stateElementId ) {
+            var selectedCountryIndex = document.getElementById( countryElementId ).selectedIndex;
+            var stateElement = document.getElementById( stateElementId );
+            stateElement.length=0;  // Fixed by Julian Woods
+            stateElement.options[0] = new Option('Select State','');
+            stateElement.selectedIndex = 0;
+            
+            var state_arr = citiesArray[selectedCountryIndex].split("|");
+            var state_arr_values = citiesArrayValues[selectedCountryIndex].split("|");
+            
+            for (var i=0; i<state_arr.length; i++) {
+                stateElement.options[stateElement.length] = new Option(state_arr[i],state_arr_values[i]);
+            }
+        }
+
+        function populateCountries(countryElementId, stateElementId){
+            // given the id of the <select> tag as function argument, it inserts <option> tags
+            var countryElement = document.getElementById(countryElementId);
+            countryElement.length = 0;
+            countryElement.options[0] = new Option('Select Country','-1');
+            countryElement.selectedIndex = 0;
+            for (var i = 0; i < countryArray.length; i++) {
+                countryElement.options[countryElement.length] = new Option(countryArray[i],countryArrayValues[i]);
+            }
+
+            // Assigned all countries. Now assign event listener for the states.
+
+            if( stateElementId ){
+                countryElement.onchange = function(){
+                    populateStates(countryElementId, stateElementId );
+                };
+            }
+        }
+    </script>
 
 </head>
 
@@ -386,6 +586,17 @@
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-users fa-fw"></i> Teams<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="#" data-toggle="modal" data-target="#createNewTeamModal">Create new team</a>
+                                </li>
+                                <li>
+                                    <a href="#">View registered teams</a>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </div>
@@ -956,6 +1167,66 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="../dist/js/sb-admin-2.js"></script>
+
+    <!--CREATE NEW TEAM MODAL-->
+    <div class="modal fade" id="createNewTeamModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a type="close" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="fa fa-times fa-2x"></i></span></a>
+                    <h1>Register New Team</h1>
+                </div>
+                <div class="modal-body">
+                    <form role="form" action="index.php" method="POST" class="registration-form" enctype="multipart/form-data">
+                        <div class="error">
+                            <?php //in case there's an error
+                                if (isset($_SESSION['newTeamError'])) echo $_SESSION['newTeamError']  . "<br>";
+                            ?>
+                        </div>
+                        <h3>Choose team type <b> *</b></h3>
+                        <select name="teamType" id="teamType" onchange="changePictures(this.value)" class="form-email form-control">
+                            <option>Select team type</option>
+                            <option value="1">Country selection</option>
+                            <option value="2">Club</option>
+                        </select>
+                        <div class="team-pictures" id="team-pictures">
+                            <h3>Team flag <b> *</b></h3>
+                            <input type="file" name="teamFlag" id = "teamFlag" accept="image/*" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <h3>Team name <b> *</b></h3>
+                            <input type="text" name="teamName" placeholder="Team name..." class="form-control" value="" autocomplete="off">
+                            <div class="row">
+                                <div class = "col-md-6">
+                                    <h3>Country <b> *</b></h3>
+                                    <select id="country" name ="country" class="form-control"></select>
+                                </div>
+                                <div class = "col-md-6">
+                                    <h3>City <b> *</b></h3>
+                                    <select name ="state" id ="state" class="form-control"></select>
+                                    <script>
+                                        populateCountries("country", "state");
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <div class = "container">
+                            <div class ="row">
+                                <div class = "col-md-2">
+                                    <button type="button" class="btn btn-dark btn-lg" data-dismiss="modal">Close</button>
+                                </div>
+                                <div class = "col-md-2">
+                                    <input name = "newTeam" class="btn btn-dark btn-lg" type = "submit" value = "Register team">
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </body>
 
