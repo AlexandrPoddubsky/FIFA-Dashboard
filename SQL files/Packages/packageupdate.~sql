@@ -1,0 +1,6 @@
+create or replace package updates is
+
+procedure flag (pTeamID number, pflagpath varchar2);
+
+
+END updates;

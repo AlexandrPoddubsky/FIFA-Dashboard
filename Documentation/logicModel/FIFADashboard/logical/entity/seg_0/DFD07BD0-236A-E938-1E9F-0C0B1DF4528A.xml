@@ -1,7 +1,7 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="DACA301E-E34D-3568-B7DE-D17319EA4721" name="actionCatalog">
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="DFD07BD0-236A-E938-1E9F-0C0B1DF4528A" name="teamTypeCatalog">
 <createdBy>aarguedas</createdBy>
-<createdTime>2015-10-27 02:12:55 UTC</createdTime>
+<createdTime>2015-10-28 23:38:03 UTC</createdTime>
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>FIFADashboard</ownerDesignName>
 <engineerTo>
@@ -16,9 +16,9 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="ActionID" id="759EF864-14CB-A755-4936-A3619CB4373F">
+<Attribute name="teamTypeID" id="2B20F8AC-0BD2-ACD7-E8FB-AD8332F88ABA">
 <createdBy>aarguedas</createdBy>
-<createdTime>2015-10-29 02:10:09 UTC</createdTime>
+<createdTime>2015-10-28 23:38:20 UTC</createdTime>
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>FIFADashboard</ownerDesignName>
 <engineerTo>
@@ -29,9 +29,9 @@
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>5</dataTypePrecision>
 </Attribute>
-<Attribute name="actionName" id="8169354D-BE68-1B8F-00C9-C7B3B0E0A3A3">
+<Attribute name="teamTypeName" id="0D765947-C798-668E-31F1-6C7EB2230B78">
 <createdBy>aarguedas</createdBy>
-<createdTime>2015-10-29 02:17:24 UTC</createdTime>
+<createdTime>2015-10-28 23:38:54 UTC</createdTime>
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>FIFADashboard</ownerDesignName>
 <engineerTo>
@@ -44,9 +44,9 @@
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
-<identifier id="71B8C076-5E5C-6F0F-0CE3-25F5D134E3F3" name="PlayerByGame PK">
+<identifier id="49327822-AD0F-477C-61A3-2A1D62478A07" name="teamTypeCatalog PK">
 <createdBy>aarguedas</createdBy>
-<createdTime>2015-10-27 03:47:26 UTC</createdTime>
+<createdTime>2015-10-28 23:38:49 UTC</createdTime>
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>FIFADashboard</ownerDesignName>
 <engineerTo>
@@ -54,7 +54,7 @@
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>
-<attributeRef>759EF864-14CB-A755-4936-A3619CB4373F</attributeRef>
+<attributeRef>2B20F8AC-0BD2-ACD7-E8FB-AD8332F88ABA</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>

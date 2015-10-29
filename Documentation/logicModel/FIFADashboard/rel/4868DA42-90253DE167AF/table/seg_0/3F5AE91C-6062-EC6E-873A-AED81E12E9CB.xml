@@ -40,7 +40,7 @@
 <dataTypePrecision>5</dataTypePrecision>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="Stadium_stadiumID" id="30985A26-C503-4BF1-3811-871E1A8162C0">
+<Column name="StadiumCatalog_stadiumID" id="30985A26-C503-4BF1-3811-871E1A8162C0">
 <createdBy>aarguedas</createdBy>
 <createdTime>2015-10-27 02:40:09 UTC</createdTime>
 <generatorID>26813370-42DA-70C7-BE50-3E32430E6E8B</generatorID>
@@ -80,7 +80,7 @@
 <colUsage columnID="0F600DB4-6247-067E-62EC-49BC61D0B976"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="6B45D905-9EF4-4AB0-A846-EA6957475FFA" name="Game_Stadium_FK">
+<ind_PK_UK id="6B45D905-9EF4-4AB0-A846-EA6957475FFA" name="Game_StadiumCatalog_FK">
 <createdBy>aarguedas</createdBy>
 <createdTime>2015-10-27 02:40:09 UTC</createdTime>
 <generatorID>7965DAC5-2A95-4579-FE2A-DC93814AB5A9</generatorID>

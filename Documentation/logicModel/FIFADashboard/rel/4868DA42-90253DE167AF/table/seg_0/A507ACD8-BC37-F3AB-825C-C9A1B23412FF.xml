@@ -1,15 +1,15 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="2FF218ED-BC7F-FA3E-DB8C-87F5BDD09CA5" name="StatisticByGroup">
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="A507ACD8-BC37-F3AB-825C-C9A1B23412FF" name="statisticByGroup">
 <createdBy>aarguedas</createdBy>
-<createdTime>2015-10-25 23:17:47 UTC</createdTime>
+<createdTime>2015-10-29 02:00:40 UTC</createdTime>
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>FIFADashboard</ownerDesignName>
 <allowColumnReorder>false</allowColumnReorder>
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
-<Column name="Group_groupID" id="08E22841-A2D4-DF3C-7554-AA9091A41E43">
+<Column name="GrupCatalog_groupID" id="8EA39C11-7FF9-1263-DA10-6E9E1AB8A907">
 <createdBy>aarguedas</createdBy>
-<createdTime>2015-10-25 23:17:47 UTC</createdTime>
+<createdTime>2015-10-29 02:00:40 UTC</createdTime>
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>FIFADashboard</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
@@ -20,12 +20,12 @@
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
-<colAssociation fkAssociation="4D2E51D5-3653-A19C-E276-6674413D9CC9" referredColumn="0438A391-25E3-C8FA-6FC1-973543D2009D"/>
+<colAssociation fkAssociation="99664B06-3C6C-79EA-577D-EC56F39DB2CC" referredColumn="0438A391-25E3-C8FA-6FC1-973543D2009D"/>
 </associations>
 </Column>
-<Column name="Statistic_ID" id="DE04A659-2157-BB35-9C47-12E72078A43E">
+<Column name="Statistic_statID" id="D075E849-1962-B54A-12D9-0DEC1EAD9143">
 <createdBy>aarguedas</createdBy>
-<createdTime>2015-10-25 23:17:47 UTC</createdTime>
+<createdTime>2015-10-29 02:00:40 UTC</createdTime>
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>FIFADashboard</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
@@ -36,44 +36,44 @@
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
-<colAssociation fkAssociation="5A16603C-31D6-FB8D-6643-296CE3B41814" referredColumn="8B4064BA-CDDB-59F0-D058-28A10021077B"/>
+<colAssociation fkAssociation="1557EFF3-6083-7ADE-B673-417B0A77126D" referredColumn="8B4064BA-CDDB-59F0-D058-28A10021077B"/>
 </associations>
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
-<ind_PK_UK id="CFE6102C-504C-F9A0-06B2-92669F360D08" name="StatisticByGroup__IDX">
+<ind_PK_UK id="A1F2DFFA-A428-4A24-60C5-5B1BE361024D" name="statisticByGroup__IDX">
 <createdBy>aarguedas</createdBy>
-<createdTime>2015-10-25 23:17:47 UTC</createdTime>
+<createdTime>2015-10-29 02:00:40 UTC</createdTime>
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>FIFADashboard</ownerDesignName>
 <pk>true</pk>
 <indexState>Primary Constraint</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="08E22841-A2D4-DF3C-7554-AA9091A41E43"/>
-<colUsage columnID="DE04A659-2157-BB35-9C47-12E72078A43E"/>
+<colUsage columnID="8EA39C11-7FF9-1263-DA10-6E9E1AB8A907"/>
+<colUsage columnID="D075E849-1962-B54A-12D9-0DEC1EAD9143"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="C637C6AF-1A3B-0308-8922-76B41674910B" name="FK_ASS_16">
+<ind_PK_UK id="E267886C-882B-E80E-06BA-5D545B28BA5B" name="FK_ASS_5">
 <createdBy>aarguedas</createdBy>
-<createdTime>2015-10-25 23:17:47 UTC</createdTime>
-<generatorID>BEE81268-1CFD-0472-8FE2-C31442EEEDE0</generatorID>
+<createdTime>2015-10-29 02:00:40 UTC</createdTime>
+<generatorID>30FDC230-6718-ED6A-86D5-8FE5E55012CC</generatorID>
 <ownerDesignName>FIFADashboard</ownerDesignName>
 <indexState>Foreign Key</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="08E22841-A2D4-DF3C-7554-AA9091A41E43"/>
+<colUsage columnID="8EA39C11-7FF9-1263-DA10-6E9E1AB8A907"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="29AE506B-EF23-BED4-4F19-A4E66BD73711" name="FK_ASS_17">
+<ind_PK_UK id="F964660A-D9C5-54DC-9F39-4623E01AC5A6" name="FK_ASS_6">
 <createdBy>aarguedas</createdBy>
-<createdTime>2015-10-25 23:17:47 UTC</createdTime>
-<generatorID>BEE81268-1CFD-0472-8FE2-C31442EEEDE0</generatorID>
+<createdTime>2015-10-29 02:00:40 UTC</createdTime>
+<generatorID>30FDC230-6718-ED6A-86D5-8FE5E55012CC</generatorID>
 <ownerDesignName>FIFADashboard</ownerDesignName>
 <indexState>Foreign Key</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="DE04A659-2157-BB35-9C47-12E72078A43E"/>
+<colUsage columnID="D075E849-1962-B54A-12D9-0DEC1EAD9143"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

@@ -1,0 +1,56 @@
+CREATE OR REPLACE PACKAGE BODY updates AS
+-------------------------------------------------------------------------------
+
+procedure flag (pTeamID number, pflagpath varchar2)
+  --update the column flagpath on the table team using the parameter pflagpath
+as
+       BEGIN        
+           UPDATE Team t
+           SET t.flagpath = pflagpath
+           WHERE pTeamID = t.teamid;
+         
+        Exception
+         WHEN NO_DATA_FOUND THEN
+              DBMS_OUTPUT.PUT_LINE ('Team no found:' || pTeamID);
+         commit;
+
+       END;
+       
+-------------------------------------------------------------------------------
+
+procedure logo (pTeamID number, pLogoPath varchar2)
+  --update the column logopath on the table team using the parameter plogopath
+as
+       BEGIN        
+           UPDATE Team t
+           SET t.logopath = pLogoPath
+           WHERE pTeamID = t.teamid;
+         
+        Exception
+         WHEN NO_DATA_FOUND THEN
+              DBMS_OUTPUT.PUT_LINE ('Team no found:' || pTeamID);
+         commit;
+
+       END;
+       
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+       
+
+
+
+   -- SET Birthday = to_date(pBirthday,'DD/MM/YYYY')
+           
+
+-------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------
+
+
+
+END updates;

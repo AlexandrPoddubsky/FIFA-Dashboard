@@ -1,5 +1,5 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="E62E09B1-E8D8-F58C-69A3-1BE79F0B722D" name="Stadium">
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="E62E09B1-E8D8-F58C-69A3-1BE79F0B722D" name="StadiumCatalog">
 <createdBy>aarguedas</createdBy>
 <createdTime>2015-10-25 21:22:35 UTC</createdTime>
 <generatorID>EFDCF81B-19E7-15AE-0CF1-2D789A8C8052</generatorID>
@@ -53,9 +53,20 @@
 <dataTypeSize>300</dataTypeSize>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
+<Column name="Capacity" id="22C9E65A-5897-2642-D177-8D8676AC82ED">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-29 01:38:24 UTC</createdTime>
+<generatorID>947117B2-EA66-B4C4-97A9-98EBE2190CEE</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>6</dataTypePrecision>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
-<ind_PK_UK id="B5A30664-747C-2565-D2D5-17A914FCC169" name="Stadium_PK">
+<ind_PK_UK id="B5A30664-747C-2565-D2D5-17A914FCC169" name="StadiumCatalog_PK">
 <createdBy>aarguedas</createdBy>
 <createdTime>2015-10-25 21:22:35 UTC</createdTime>
 <generatorID>9DB0E788-3E6A-56C3-C6E0-82A54AE08616</generatorID>

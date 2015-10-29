@@ -1,19 +1,20 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="StatisticByGroup" directorySegmentName="seg_0" id="BEE81268-1CFD-0472-8FE2-C31442EEEDE0">
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Relation_22" directorySegmentName="seg_0" id="8AB2A389-1C0B-0693-A3FD-B3C4EDEB65C8">
 <createdBy>aarguedas</createdBy>
-<createdTime>2015-10-25 23:13:36 UTC</createdTime>
+<createdTime>2015-10-29 02:30:58 UTC</createdTime>
 <generatorID>Generado por el Usuario</generatorID>
 <ownerDesignName>FIFADashboard</ownerDesignName>
 <engineerTo>
 <item key="4868DA42-719B-57C1-1720-90253DE167AF" value="true"/>
 </engineerTo>
-<identifying>false</identifying>
+<sourcePk>18B84B63-961E-C84A-FD90-031215D0A3DC</sourcePk>
+<identifying>true</identifying>
 <optionalSource>true</optionalSource>
 <optionalTarget>false</optionalTarget>
-<sourceCardinality>*</sourceCardinality>
-<sourceEntity>4D848F1A-D2CB-514D-AAEE-5982460EF66E</sourceEntity>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>11D8C4DD-5731-FB10-576B-A36B0FF388EE</sourceEntity>
 <targetCardinalityString>*</targetCardinalityString>
-<targetEntity>FCFAF058-A693-8EEE-9A97-D744478E9BE5</targetEntity>
+<targetEntity>1852D6FC-551D-8B77-898E-5D0907B06DB3</targetEntity>
 <transferable>true</transferable>
 <deleteRule>NO ACTION</deleteRule>
 </Relation>

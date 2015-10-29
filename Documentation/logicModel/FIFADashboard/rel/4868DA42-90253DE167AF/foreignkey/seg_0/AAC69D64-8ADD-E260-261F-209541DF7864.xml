@@ -1,5 +1,5 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="AAC69D64-8ADD-E260-261F-209541DF7864" name="Game_Stadium_FK">
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="AAC69D64-8ADD-E260-261F-209541DF7864" name="Game_StadiumCatalog_FK">
 <createdBy>aarguedas</createdBy>
 <createdTime>2015-10-27 02:40:09 UTC</createdTime>
 <generatorID>7965DAC5-2A95-4579-FE2A-DC93814AB5A9</generatorID>

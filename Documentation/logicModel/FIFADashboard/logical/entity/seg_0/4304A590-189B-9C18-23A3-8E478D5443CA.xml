@@ -63,10 +63,11 @@
 <engineerTo>
 <item key="4868DA42-719B-57C1-1720-90253DE167AF" value="true"/>
 </engineerTo>
+<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>5</dataTypePrecision>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>300</dataTypeSize>
 </Attribute>
 <Attribute name="logoPath" id="240072FF-65C5-FFF7-16C8-81CDC568AFA4">
 <createdBy>aarguedas</createdBy>
@@ -79,8 +80,8 @@
 <nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>5</dataTypePrecision>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>300</dataTypeSize>
 </Attribute>
 <Attribute name="cityID" id="2067F65E-8128-8F45-4CA0-10C5594892C4">
 <createdBy>aarguedas</createdBy>
@@ -110,20 +111,6 @@
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>5</dataTypePrecision>
 </Attribute>
-<Attribute name="groupID" id="0803E1F3-37C9-4C4F-8B0B-1E7053179677">
-<createdBy>aarguedas</createdBy>
-<createdTime>2015-10-25 23:12:21 UTC</createdTime>
-<generatorID>8CC20F36-EC45-86BA-C7CB-C99B721C7ADC</generatorID>
-<ownerDesignName>FIFADashboard</ownerDesignName>
-<engineerTo>
-<item key="4868DA42-719B-57C1-1720-90253DE167AF" value="true"/>
-</engineerTo>
-<referedAttribute>30C3BDDA-E68B-6866-2E90-154E16773486</referedAttribute>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>5</dataTypePrecision>
-</Attribute>
 <Attribute name="homeStadiumID" id="34A5FED3-F612-E80F-45CB-2DCA8A31744D">
 <createdBy>aarguedas</createdBy>
 <createdTime>2015-10-28 04:04:39 UTC</createdTime>
@@ -133,6 +120,34 @@
 <item key="4868DA42-719B-57C1-1720-90253DE167AF" value="true"/>
 </engineerTo>
 <nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+</Attribute>
+<Attribute name="teamTypeID" id="C2FC3561-B36A-EE43-5ACE-02A418DA5FE4">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-28 23:40:43 UTC</createdTime>
+<generatorID>A36FDC5C-754F-EC57-76DB-DDF2FFF8DF81</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<engineerTo>
+<item key="4868DA42-719B-57C1-1720-90253DE167AF" value="true"/>
+</engineerTo>
+<referedAttribute>2B20F8AC-0BD2-ACD7-E8FB-AD8332F88ABA</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+</Attribute>
+<Attribute name="groupID" id="290D3500-A24A-7595-0A24-4C4F18B70EDA">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-29 01:59:51 UTC</createdTime>
+<generatorID>6C37AA86-F8D8-35E2-48EA-3715E9B21D63</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<engineerTo>
+<item key="4868DA42-719B-57C1-1720-90253DE167AF" value="true"/>
+</engineerTo>
+<referedAttribute>30C3BDDA-E68B-6866-2E90-154E16773486</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>

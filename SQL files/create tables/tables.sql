@@ -67,12 +67,12 @@ ALTER TABLE Game ADD CONSTRAINT Game_PK PRIMARY KEY ( gameID ) ;
 
 -------------------------------------------------------------------------------
 
-CREATE TABLE Grupo
+CREATE TABLE GrupoCatalog
   (
     groupID NUMBER (5) NOT NULL ,
     groupName    VARCHAR2 (30) NOT NULL
   ) ;
-ALTER TABLE Grupo ADD CONSTRAINT Group_PK PRIMARY KEY ( groupID ) ;
+ALTER TABLE GrupoCatalog ADD CONSTRAINT Group_PK PRIMARY KEY ( groupID ) ;
 
 -------------------------------------------------------------------------------
 
@@ -113,17 +113,12 @@ ALTER TABLE Player ADD CONSTRAINT Player_PK PRIMARY KEY ( DNI ) ;
 -------------------------------------------------------------------------------
 
 CREATE TABLE PlayerByGame
-  (
-    yellowCard  NUMBER (2) NOT NULL ,
-    redCard     NUMBER (2) NOT NULL ,
-    state       NUMBER (2) NOT NULL ,
-    Goals       NUMBER (2) NOT NULL ,
-    playerDNI  VARCHAR2 (30) NOT NULL ,
-    gameID NUMBER (5) NOT NULL ,
-    Corner      NUMBER (2) NOT NULL
+(
+    playerByGameID NUMBER (5) NOT NULL ,
+    DNI            VARCHAR2 (30) NOT NULL ,
+    gameID         NUMBER (5) NOT NULL
   ) ;
-ALTER TABLE PlayerByGame ADD CONSTRAINT PlayerByGameDNI_PK PRIMARY KEY ( playerDNI, gameID ) ;
-ALTER TABLE PlayerByGame ADD CONSTRAINT PlayerByGameID_PK UNIQUE ( playerDNI , gameID ) ;
+ALTER TABLE PlayerByGame ADD CONSTRAINT PlayerByGameID_PK PRIMARY KEY ( playerByGameID ) ;
 -------------------------------------------------------------------------------
 
 CREATE TABLE PlayerByTeam
@@ -144,14 +139,15 @@ ALTER TABLE PlayerByType ADD CONSTRAINT PlayerByType_PK PRIMARY KEY ( playerDNI,
 
 -------------------------------------------------------------------------------
 
-CREATE TABLE Stadium
+CREATE TABLE StadiumCatalog
   (
     stadiumID    NUMBER (5) NOT NULL ,
     stadiumName  VARCHAR2 (30) NOT NULL ,
     googleMapsID VARCHAR2 (300) ,
-    picture      VARCHAR2 (300)
+    picture      VARCHAR2 (300),
+    capacity     NUMBER (6) NOT NULL
   ) ;
-ALTER TABLE Stadium ADD CONSTRAINT Stadium_PK PRIMARY KEY ( stadiumID ) ;
+ALTER TABLE StadiumCatalog ADD CONSTRAINT Stadium_PK PRIMARY KEY ( stadiumID ) ;
 
 -------------------------------------------------------------------------------
 
@@ -184,19 +180,25 @@ CREATE TABLE Team
   (
     teamID             NUMBER (5) NOT NULL ,
     teamName           VARCHAR2 (100) NOT NULL ,
-    captainID          NUMBER (5) NOT NULL ,
-    flagPath           NUMBER (5) NOT NULL ,
-    logoPath           NUMBER (5) ,
+    captainID          NUMBER (5)  ,
+    flagPath           VARCHAR2 (300),
+    logoPath           VARCHAR2 (300),
     cityID             NUMBER (5) NOT NULL ,
-    tdID               NUMBER (5) NOT NULL ,
-    groupID            NUMBER (5)
+    tdID               NUMBER (5) ,
+    teamTypeID         NUMBER (5) NOT NULL 
+    
   ) ;
   
+  CREATE UNIQUE INDEX Team__IDX ON Team
+  (
+    tdID ASC
+  );
 
   ALTER TABLE Team ADD CONSTRAINT Team_PK PRIMARY KEY ( teamID ) ;
-  ALTER TABLE Team ADD homeStadiumID number(5);
   
+ 
 -------------------------------------------------------------------------------
+
 
 CREATE TABLE TeamByEvent
   (
@@ -222,23 +224,26 @@ CREATE TABLE UserAdmin
 ALTER TABLE UserAdmin ADD CONSTRAINT UserAdmin_PK PRIMARY KEY ( userID ) ;
 ALTER TABLE UserAdmin add constraint useremail_uk unique(useremail);
 -------------------------------------------------------------------------------
-
-
-CREATE TABLE TeamByGame
+CREATE TABLE actionByPlayerByGame
   (
-    gameID       NUMBER (5) NOT NULL ,
-    teamID       NUMBER (5) NOT NULL ,
-    goals        NUMBER (2) NOT NULL ,
-    yellowCard   NUMBER (2) NOT NULL ,
-    redCard      NUMBER (2) NOT NULL ,
-    corners      NUMBER (2) NOT NULL ,
-    offside      NUMBER (2) NOT NULL ,
-    dateTime     DATE NOT NULL ,
-    stadiumID    NUMBER (5) NOT NULL
+    actionID             NUMBER (5) NOT NULL ,
+    actionTime           DATE ,
+    playerByGameID       NUMBER (5) NOT NULL
   ) ;
-ALTER TABLE TeamByGame ADD CONSTRAINT TeamByGame_PK PRIMARY KEY (gameID, teamID ) ;
+  ALTER TABLE actionByPlayerByGame ADD CONSTRAINT actionByPlayerByGame_PK PRIMARY KEY ( actionID ) ;
+-------------------------------------------------------------------------------
+CREATE TABLE actionCatalog
+  (
+    actionID   NUMBER (5) NOT NULL ,
+    actionName VARCHAR2 (30) NOT NULL
+  ) ;
+ALTER TABLE actionCatalog ADD CONSTRAINT actionCatalog_PK PRIMARY KEY ( actionID ) ;
 
 -------------------------------------------------------------------------------
+
+
+
+
 
 CREATE TABLE tdCatalog
   (
@@ -251,14 +256,20 @@ CREATE TABLE tdCatalog
   
 ALTER TABLE tdCatalog ADD CONSTRAINT tdCatalog_PK PRIMARY KEY ( tdID ) ;
 -------------------------------------------------------------------------------
+CREATE TABLE teamTypeCatalog
+  (
+    teamTypeID   NUMBER (5) NOT NULL ,
+    teamTypeName VARCHAR2 (30) NOT NULL
+  ) ;
+  
+ ALTER TABLE teamTypeCatalog ADD CONSTRAINT teamTypeCatalog_PK PRIMARY KEY ( teamTypeID ) ;
+------------------------------------------------------------------------------------------
 
 ALTER TABLE CityCatalog ADD CONSTRAINT CountryCatalog_FK FOREIGN KEY ( countryID ) REFERENCES CountryCatalog ( countryID ) ;
 
 ALTER TABLE CountryCatalog ADD CONSTRAINT Continent_FK FOREIGN KEY (continentID ) REFERENCES Continent ( continentID ) ;
 
 ALTER TABLE Event ADD CONSTRAINT EventCatalog_FK FOREIGN KEY ( eventID ) REFERENCES EventCatalog ( eventID ) ;
-
-ALTER TABLE PlayerByTeam ADD CONSTRAINT PlayerByTeam_Team_FK FOREIGN KEY ( teamID ) REFERENCES Team ( teamID ) ;
 
 ALTER TABLE PlayerByType ADD CONSTRAINT PlayerByType_Player_FK FOREIGN KEY ( playerDNI ) REFERENCES Player ( DNI ) ;
 
@@ -274,20 +285,23 @@ ALTER TABLE LineupByTeam ADD CONSTRAINT LineupByTeam_Lineup_FK FOREIGN KEY ( lin
 
 ALTER TABLE PlayerByTeam ADD CONSTRAINT PlayerByTeam_Player_FK FOREIGN KEY ( playerDNI ) REFERENCES Player ( DNI ) ;
 
-ALTER TABLE Game ADD CONSTRAINT Game_Stadium_FK FOREIGN KEY ( stadiumID ) REFERENCES Stadium ( stadiumID ) ;
+ALTER TABLE Game ADD CONSTRAINT Game_Stadium_FK FOREIGN KEY ( stadiumID ) REFERENCES Stadiumcatalog ( stadiumID ) ;
 
 ALTER TABLE PlayerByGame ADD CONSTRAINT PlayerByGame_Game_FK FOREIGN KEY ( gameID ) REFERENCES Game ( gameID ) ;
 
-ALTER TABLE PlayerByGame ADD CONSTRAINT PlayerByGame_Player_FK FOREIGN KEY ( playerDNI ) REFERENCES Player ( DNI ) ;
+ALTER TABLE PlayerByGame ADD CONSTRAINT PlayerByGame_Player_FK FOREIGN KEY ( DNI ) REFERENCES Player ( DNI ) ;
 
 ALTER TABLE Team ADD CONSTRAINT cityID_FK FOREIGN KEY ( cityID ) REFERENCES CityCatalog ( cityID ) ;
 
-ALTER TABLE Team ADD CONSTRAINT cityID_FK FOREIGN KEY ( cityID ) REFERENCES CityCatalog ( cityID ) ;
-
-ALTER TABLE Team ADD CONSTRAINT Team_GroupID_FK FOREIGN KEY ( groupID ) REFERENCES grupo ( groupID ) ;
+ALTER TABLE Team ADD CONSTRAINT Team_GroupID_FK FOREIGN KEY ( groupID ) REFERENCES groupCatalog ( groupID ) ;
 
 ALTER TABLE Team ADD CONSTRAINT Team_tdCatalog_FK FOREIGN KEY ( tdID ) REFERENCES tdCatalog ( tdID ) ;
 
+ALTER TABLE Team ADD CONSTRAINT Team_teamTypeCatalog_FK FOREIGN KEY ( teamTypeID ) REFERENCES teamTypeCatalog ( teamTypeID ) ;
+
+ALTER TABLE actionByPlayerByGame ADD CONSTRAINT actionByPlayerByGame_FK FOREIGN KEY ( playerByGameID ) REFERENCES PlayerByGame ( playerByGameID ) ;
+
+ALTER TABLE actionByPlayerByGame ADD CONSTRAINT actionIDByPlayerByGame_FK FOREIGN KEY ( ActionID ) REFERENCES actionCatalog ( ActionID ) ;
 
 -------------------------------------------------------------------------------
 
