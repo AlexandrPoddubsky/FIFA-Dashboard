@@ -21,6 +21,7 @@ as
 procedure event ( pdescription varchar2, pstartdate date,penddate date, pmaxteams number, pcountry number)
 as
        BEGIN
+         beforeInsert_team;
          insert into event (eventID,eventdescription,startdate,enddate,maxteams,countryID)
          values(eventID_seq.NextVal,pdescription,pstartdate,penddate,pmaxteams,pcountry);
 

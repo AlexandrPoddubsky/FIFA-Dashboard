@@ -22,6 +22,7 @@
    <object objectType="Entity" objectID="B0BBE4F3-3919-F683-D796-8CEAF8CAAFDD" name="tdCatalog" seqName="seg_0"/>
    <object objectType="Entity" objectID="DFD07BD0-236A-E938-1E9F-0C0B1DF4528A" name="teamTypeCatalog" seqName="seg_0"/>
    <object objectType="Relation" objectID="3C8DD5AC-E998-3D03-54F2-3EE37345DDF9" name="LineupByTeam" seqName="seg_0"/>
+   <object objectType="Relation" objectID="27650B07-521D-039D-DB05-B671A227A9ED" name="PlayerByTeam" seqName="seg_0"/>
    <object objectType="Relation" objectID="1BEC4D80-ACBF-23D5-157D-4AB1084D2968" name="PlayerByType" seqName="seg_0"/>
    <object objectType="Relation" objectID="904D2F7E-D577-366A-6623-09DE463E9F6C" name="Relation_15" seqName="seg_0"/>
    <object objectType="Relation" objectID="EB97E570-4C3A-433C-1963-DCDFC13DD05E" name="Relation_16" seqName="seg_0"/>

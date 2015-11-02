@@ -45,10 +45,11 @@
 <createdTime>2015-10-25 21:22:35 UTC</createdTime>
 <generatorID>31D9EE20-ADFE-CAC8-69A4-7981BA43E4F1</generatorID>
 <ownerDesignName>FIFADashboard</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>5</dataTypePrecision>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>300</dataTypeSize>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 <Column name="logoPath" id="52F59C74-1D8C-B817-D41F-568336F7F43F">
@@ -59,8 +60,8 @@
 <nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>5</dataTypePrecision>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>300</dataTypeSize>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 <Column name="CityCatalog_cityID" id="2047AAF2-FB75-6428-2C9C-BFC6E488D482">

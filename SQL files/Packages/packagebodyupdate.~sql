@@ -34,7 +34,22 @@ as
        END;
        
 -------------------------------------------------------------------------------
+procedure picture (pPlayerID number, pPicture varchar2)
+  --update the column logopath on the table team using the parameter plogopath
+as
+       BEGIN        
+           UPDATE Player p
+           SET p.picture = pPicture
+           WHERE pplayerID = p.dni;
+         
+        Exception
+         WHEN NO_DATA_FOUND THEN
+              DBMS_OUTPUT.PUT_LINE ('Team no found:' || pTeamID);
+         commit;
+
+       END;
 -------------------------------------------------------------------------------
+
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------

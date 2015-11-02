@@ -3,6 +3,18 @@
 --   sitio:      Oracle Database 11g
 --   tipo:      Oracle Database 11g
 
+CREATE TABLE Bitacora
+  (
+    bitacoraID      NUMBER (8) NOT NULL ,
+    userConected    VARCHAR2 (50) ,
+    schedule        VARCHAR2 (10),
+    date_Time       DATE ,
+    tableName       VARCHAR2 (30),
+    action          VARCHAR2 (30) ,
+    descrip         VARCHAR2 (50)
+  ) ;
+ALTER TABLE Bitacora ADD CONSTRAINT Bitacora_PK PRIMARY KEY ( bitacoraID ) ;
+
 
 CREATE TABLE Continent
   (

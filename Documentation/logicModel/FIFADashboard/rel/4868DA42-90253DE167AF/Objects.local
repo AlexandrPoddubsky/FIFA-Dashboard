@@ -12,7 +12,8 @@
    <object objectType="Table" objectID="FBF18CF6-5786-492C-4A84-9B49D389AC01" name="LineupCatalog" seqName="seg_0"/>
    <object objectType="Table" objectID="FC60689F-25A9-62E2-C4B5-662FC08AA4DA" name="Parameter" seqName="seg_0"/>
    <object objectType="Table" objectID="FC453B23-5B79-4F7F-9963-FA038F15E715" name="Player" seqName="seg_0"/>
-   <object objectType="Table" objectID="82B4D2A9-0DE2-C9B6-6971-36F1B23E18CC" name="PlayerByGamev1" seqName="seg_0"/>
+   <object objectType="Table" objectID="82B4D2A9-0DE2-C9B6-6971-36F1B23E18CC" name="PlayerByGame" seqName="seg_0"/>
+   <object objectType="Table" objectID="C6AE7E13-4DD1-6997-F212-4E3DED8A67AA" name="PlayerByTeam" seqName="seg_0"/>
    <object objectType="Table" objectID="73770FFF-0EBF-B09C-6290-9127C4ACF54C" name="PlayerByType" seqName="seg_0"/>
    <object objectType="Table" objectID="E62E09B1-E8D8-F58C-69A3-1BE79F0B722D" name="StadiumCatalog" seqName="seg_0"/>
    <object objectType="Table" objectID="C81DD0BC-7A64-A4DB-1145-543DA047A5C8" name="Statistic" seqName="seg_0"/>
@@ -28,12 +29,14 @@
    <object objectType="FKIndexAssociation" objectID="2D63C998-C9DC-73AB-983D-858D596FEF46" name="CityCatalog_CountryCatalog_FK" seqName="seg_0"/>
    <object objectType="FKIndexAssociation" objectID="2B5CB9D6-18FB-B627-C2D5-840311208A6E" name="CountryCatalog_Continent_FK" seqName="seg_0"/>
    <object objectType="FKIndexAssociation" objectID="4D289EFE-A221-3EA0-5326-17383358DBCA" name="Event_EventCatalog_FK" seqName="seg_0"/>
+   <object objectType="FKIndexAssociation" objectID="56F6A0A7-2CA7-1D14-76BE-4AACB6A1249A" name="FK_ASS_1" seqName="seg_0"/>
    <object objectType="FKIndexAssociation" objectID="F68FB706-3A3D-A43F-2729-66BC55C77B54" name="FK_ASS_18" seqName="seg_0"/>
    <object objectType="FKIndexAssociation" objectID="9C1214D4-C7D6-F672-1262-75625EEFBD83" name="FK_ASS_19" seqName="seg_0"/>
+   <object objectType="FKIndexAssociation" objectID="8530A751-B9CF-13A4-48E4-314505E6EA2E" name="FK_ASS_2" seqName="seg_0"/>
    <object objectType="FKIndexAssociation" objectID="16D1F629-D31F-84CE-79A9-15DAF58021BC" name="FK_ASS_5" seqName="seg_0"/>
    <object objectType="FKIndexAssociation" objectID="99664B06-3C6C-79EA-577D-EC56F39DB2CC" name="FK_ASS_5" seqName="seg_0"/>
-   <object objectType="FKIndexAssociation" objectID="AB0EB97C-4FF7-61B2-8687-6C28F7B8ECD0" name="FK_ASS_6" seqName="seg_0"/>
    <object objectType="FKIndexAssociation" objectID="1557EFF3-6083-7ADE-B673-417B0A77126D" name="FK_ASS_6" seqName="seg_0"/>
+   <object objectType="FKIndexAssociation" objectID="AB0EB97C-4FF7-61B2-8687-6C28F7B8ECD0" name="FK_ASS_6" seqName="seg_0"/>
    <object objectType="FKIndexAssociation" objectID="2745788D-34BE-6AA6-8310-E5ED04F696C1" name="FK_ASS_7" seqName="seg_0"/>
    <object objectType="FKIndexAssociation" objectID="9A7401EB-EE26-6C00-85BE-BF404DCA8B3C" name="FK_ASS_8" seqName="seg_0"/>
    <object objectType="FKIndexAssociation" objectID="AAC69D64-8ADD-E260-261F-209541DF7864" name="Game_StadiumCatalog_FK" seqName="seg_0"/>

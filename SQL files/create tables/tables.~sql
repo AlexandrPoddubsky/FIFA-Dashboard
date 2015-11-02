@@ -3,6 +3,16 @@
 --   sitio:      Oracle Database 11g
 --   tipo:      Oracle Database 11g
 
+CREATE TABLE Bitacora
+  (
+    bitacoraID  NUMBER (8) NOT NULL ,
+    userName    VARCHAR2 (50) ,
+    date_Time   DATE ,
+    action      VARCHAR2 (30) ,
+    descrip     VARCHAR2 (50)
+  ) ;
+ALTER TABLE Bitacora ADD CONSTRAINT Bitacora_PK PRIMARY KEY ( bitacoraID ) ;
+
 
 CREATE TABLE Continent
   (
@@ -180,13 +190,13 @@ CREATE TABLE Team
   (
     teamID             NUMBER (5) NOT NULL ,
     teamName           VARCHAR2 (100) NOT NULL ,
-    captainID          NUMBER (5) NOT NULL ,
-    flagPath           NUMBER (5) NOT NULL ,
-    logoPath           NUMBER (5) ,
+    captainID          NUMBER (5)  ,
+    flagPath           VARCHAR2 (300),
+    logoPath           VARCHAR2 (300),
     cityID             NUMBER (5) NOT NULL ,
-    tdID               NUMBER (5) NOT NULL ,
-    teamTypeID         NUMBER (5) NOT NULL ,
-    groupID            NUMBER (5)
+    tdID               NUMBER (5) ,
+    teamTypeID         NUMBER (5) NOT NULL 
+    
   ) ;
   
   CREATE UNIQUE INDEX Team__IDX ON Team
