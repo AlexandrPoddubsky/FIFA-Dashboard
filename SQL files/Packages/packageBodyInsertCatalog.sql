@@ -123,5 +123,73 @@ begin
        END;
        
 -------------------------------------------------------------------------------
+
+procedure typePlayer (pTypePlayerName varchar2) as
+begin
+      insert into typePlayerCatalog (playerTypeID, Playertypename )
+      values (typePlayerID_seq.Nextval, pTypePlayerName);
+            
+       Exception
+         WHEN VALUE_ERROR THEN
+              DBMS_OUTPUT.PUT_LINE ('Type player catalog error ');
+         WHEN OTHERS THEN
+              DBMS_OUTPUT.PUT_LINE ('Unexpected error');
+              RAISE;
+         commit;
+
+       END;
+       
+-------------------------------------------------------------------------------
+
+procedure action (pActionName varchar2) as
+begin
+      insert into actionCatalog (actionID, actionName )
+      values (actionID_seq.Nextval, pActionName);
+            
+       Exception
+         WHEN VALUE_ERROR THEN
+              DBMS_OUTPUT.PUT_LINE ('Action catalog error ');
+         WHEN OTHERS THEN
+              DBMS_OUTPUT.PUT_LINE ('Unexpected error');
+              RAISE;
+         commit;
+
+       END;
+       
+-------------------------------------------------------------------------------
+
+procedure groupcatalog (pGroupName varchar2) as
+begin
+      insert into groupCatalog (groupID, groupName )
+      values (groupID_seq.Nextval, pGroupName);
+            
+       Exception
+         WHEN VALUE_ERROR THEN
+              DBMS_OUTPUT.PUT_LINE ('Group catalog error ');
+         WHEN OTHERS THEN
+              DBMS_OUTPUT.PUT_LINE ('Unexpected error');
+              RAISE;
+         commit;
+
+       END;
+       
+-------------------------------------------------------------------------------
+
+procedure teamType (pTeamTypeName varchar2) as
+begin
+      insert into teamTypeCatalog (teamTypeID, teamTypeName )
+      values (teamTypeID_seq.Nextval, pTeamTypeName);
+            
+       Exception
+         WHEN VALUE_ERROR THEN
+              DBMS_OUTPUT.PUT_LINE ('Team type catalog error ');
+         WHEN OTHERS THEN
+              DBMS_OUTPUT.PUT_LINE ('Unexpected error');
+              RAISE;
+         commit;
+
+       END;
+       
+-------------------------------------------------------------------------------
    
 END insertCatalog;

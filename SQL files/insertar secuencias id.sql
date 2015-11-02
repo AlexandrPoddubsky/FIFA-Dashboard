@@ -111,3 +111,43 @@ CREATE SEQUENCE adminId_seq
   INCREMENT BY 1
   CACHE 20;
 ---------------------------------------------------  
+
+--secuencia para manejo de id de TYPE PLAYER
+
+CREATE SEQUENCE typePlayerId_seq
+  MINVALUE 0
+  MAXVALUE 999999999999999999999999999
+  START WITH 1
+  INCREMENT BY 1
+  CACHE 20;
+---------------------------------------------------  
+
+--secuencia para manejo de id de ACTION
+
+CREATE SEQUENCE actionId_seq
+  MINVALUE 0
+  MAXVALUE 999999999999999999999999999
+  START WITH 1
+  INCREMENT BY 1
+  CACHE 20;
+---------------------------------------------------  
+
+--secuencia para manejo de id de TEAM TYPE
+
+CREATE SEQUENCE teamTypeId_seq
+  MINVALUE 0
+  MAXVALUE 999999999999999999999999999
+  START WITH 1
+  INCREMENT BY 1
+  CACHE 20;
+---------------------------------------------------  
+
+--secuencia para manejo de id de BITACORA
+
+CREATE SEQUENCE bitacoraId_seq
+  MINVALUE 0
+  MAXVALUE 999999999999999999999999999
+  START WITH 1
+  INCREMENT BY 1
+  CACHE 20;
+---------------------------------------------------  
