@@ -1,0 +1,647 @@
+
+Conectado a: Oracle Database 11g Enterprise Edition Release 11.2.0.1.0 - Production
+With the Partitioning, OLAP, Data Mining and Real Application Testing options
+Exportación realizada en el juego de caracteres WE8MSWIN1252 y el juego de caracteres NCHAR AL16UTF16
+
+Exportando toda la base de datos ...
+. exportando definiciones de tablespace
+. exportando perfiles
+. exportando definiciones de usuario
+. exportando roles
+. exportando costos de recursos
+. exportando definiciones de segmentos de rollback
+. exportando enlaces a la base de datos
+. exportando números de secuencia
+. exportando alias de directorios
+. exportando espacios de nombres de contexto
+. exportando nombres de bibliotecas de funciones ajenas
+. exportando sinónimos de tipo público
+. exportando sinónimos de tipo privado
+. exportando definiciones de tipos de objetos
+. exportando acciones y objetos de procedimiento del sistema
+. exportando acciones y objetos de procedimiento pre-esquema
+. exportando definiciones de cluster
+. exportando las tablas de SYSTEM a través de la Ruta de Acceso Convencional ...
+. exportando la tabla                           AUD$       1913 filas exportadas
+. exportando la tabla                    DEF$_AQCALL          0 filas exportadas
+. exportando la tabla                   DEF$_AQERROR          0 filas exportadas
+. exportando la tabla                  DEF$_CALLDEST          0 filas exportadas
+. exportando la tabla               DEF$_DEFAULTDEST          0 filas exportadas
+. exportando la tabla               DEF$_DESTINATION          0 filas exportadas
+. exportando la tabla                     DEF$_ERROR          0 filas exportadas
+. exportando la tabla                       DEF$_LOB          0 filas exportadas
+. exportando la tabla                    DEF$_ORIGIN          0 filas exportadas
+. exportando la tabla                DEF$_PROPAGATOR          0 filas exportadas
+. exportando la tabla       DEF$_PUSHED_TRANSACTIONS          0 filas exportadas
+. exportando la tabla               MVIEW$_ADV_INDEX          0 filas exportadas
+. exportando la tabla                 MVIEW$_ADV_OWB
+. exportando la tabla           MVIEW$_ADV_PARTITION          0 filas exportadas
+. exportando la tabla                            OL$
+. exportando la tabla                       OL$HINTS
+. exportando la tabla                       OL$NODES
+. exportando la tabla        REPCAT$_AUDIT_ATTRIBUTE          2 filas exportadas
+. exportando la tabla           REPCAT$_AUDIT_COLUMN          0 filas exportadas
+. exportando la tabla           REPCAT$_COLUMN_GROUP          0 filas exportadas
+. exportando la tabla               REPCAT$_CONFLICT          0 filas exportadas
+. exportando la tabla                    REPCAT$_DDL          0 filas exportadas
+. exportando la tabla             REPCAT$_EXCEPTIONS          0 filas exportadas
+. exportando la tabla              REPCAT$_EXTENSION          0 filas exportadas
+. exportando la tabla         REPCAT$_FLAVOR_OBJECTS          0 filas exportadas
+. exportando la tabla                REPCAT$_FLAVORS          0 filas exportadas
+. exportando la tabla              REPCAT$_GENERATED          0 filas exportadas
+. exportando la tabla         REPCAT$_GROUPED_COLUMN          0 filas exportadas
+. exportando la tabla      REPCAT$_INSTANTIATION_DDL          0 filas exportadas
+. exportando la tabla            REPCAT$_KEY_COLUMNS          0 filas exportadas
+. exportando la tabla           REPCAT$_OBJECT_PARMS          0 filas exportadas
+. exportando la tabla           REPCAT$_OBJECT_TYPES         28 filas exportadas
+. exportando la tabla       REPCAT$_PARAMETER_COLUMN          0 filas exportadas
+. exportando la tabla               REPCAT$_PRIORITY          0 filas exportadas
+. exportando la tabla         REPCAT$_PRIORITY_GROUP          0 filas exportadas
+. exportando la tabla      REPCAT$_REFRESH_TEMPLATES          0 filas exportadas
+. exportando la tabla                 REPCAT$_REPCAT          0 filas exportadas
+. exportando la tabla              REPCAT$_REPCATLOG          0 filas exportadas
+. exportando la tabla              REPCAT$_REPCOLUMN          0 filas exportadas
+. exportando la tabla         REPCAT$_REPGROUP_PRIVS          0 filas exportadas
+. exportando la tabla              REPCAT$_REPOBJECT          0 filas exportadas
+. exportando la tabla                REPCAT$_REPPROP          0 filas exportadas
+. exportando la tabla              REPCAT$_REPSCHEMA          0 filas exportadas
+. exportando la tabla    REPCAT$_RESOL_STATS_CONTROL          0 filas exportadas
+. exportando la tabla             REPCAT$_RESOLUTION          0 filas exportadas
+. exportando la tabla      REPCAT$_RESOLUTION_METHOD         19 filas exportadas
+. exportando la tabla  REPCAT$_RESOLUTION_STATISTICS          0 filas exportadas
+. exportando la tabla          REPCAT$_RUNTIME_PARMS          0 filas exportadas
+. exportando la tabla           REPCAT$_SITE_OBJECTS          0 filas exportadas
+. exportando la tabla              REPCAT$_SITES_NEW          0 filas exportadas
+. exportando la tabla              REPCAT$_SNAPGROUP          0 filas exportadas
+. exportando la tabla       REPCAT$_TEMPLATE_OBJECTS          0 filas exportadas
+. exportando la tabla         REPCAT$_TEMPLATE_PARMS          0 filas exportadas
+. exportando la tabla     REPCAT$_TEMPLATE_REFGROUPS          0 filas exportadas
+. exportando la tabla         REPCAT$_TEMPLATE_SITES          0 filas exportadas
+. exportando la tabla        REPCAT$_TEMPLATE_STATUS          3 filas exportadas
+. exportando la tabla       REPCAT$_TEMPLATE_TARGETS          0 filas exportadas
+. exportando la tabla         REPCAT$_TEMPLATE_TYPES          2 filas exportadas
+. exportando la tabla    REPCAT$_USER_AUTHORIZATIONS          0 filas exportadas
+. exportando la tabla       REPCAT$_USER_PARM_VALUES          0 filas exportadas
+. exportando la tabla        SQLPLUS_PRODUCT_PROFILE          0 filas exportadas
+. exportando las tablas de OUTLN a través de la Ruta de Acceso Convencional ...
+. exportando la tabla                            OL$          0 filas exportadas
+. exportando la tabla                       OL$HINTS          0 filas exportadas
+. exportando la tabla                       OL$NODES          0 filas exportadas
+. exportando las tablas de ORDDATA a través de la Ruta de Acceso Convencional ...
+. exportando la tabla       ORDDCM_ANON_ACTION_TYPES          4 filas exportadas
+. exportando la tabla              ORDDCM_ANON_ATTRS         37 filas exportadas
+. exportando la tabla          ORDDCM_ANON_ATTRS_TMP
+. exportando la tabla          ORDDCM_ANON_ATTRS_WRK          0 filas exportadas
+. exportando la tabla              ORDDCM_ANON_RULES          3 filas exportadas
+. exportando la tabla          ORDDCM_ANON_RULES_TMP
+. exportando la tabla          ORDDCM_ANON_RULES_WRK          0 filas exportadas
+. exportando la tabla         ORDDCM_ANON_RULE_TYPES          3 filas exportadas
+. exportando la tabla               ORDDCM_CT_ACTION          7 filas exportadas
+. exportando la tabla           ORDDCM_CT_ACTION_TMP
+. exportando la tabla           ORDDCM_CT_ACTION_WRK          0 filas exportadas
+. exportando la tabla               ORDDCM_CT_DAREFS         74 filas exportadas
+. exportando la tabla           ORDDCM_CT_DAREFS_TMP
+. exportando la tabla           ORDDCM_CT_DAREFS_WRK          0 filas exportadas
+. exportando la tabla         ORDDCM_CT_LOCATORPATHS         95 filas exportadas
+. exportando la tabla     ORDDCM_CT_LOCATORPATHS_TMP
+. exportando la tabla     ORDDCM_CT_LOCATORPATHS_WRK          0 filas exportadas
+. exportando la tabla            ORDDCM_CT_MACRO_DEP          1 filas exportadas
+. exportando la tabla        ORDDCM_CT_MACRO_DEP_WRK          0 filas exportadas
+. exportando la tabla            ORDDCM_CT_MACRO_PAR          2 filas exportadas
+. exportando la tabla        ORDDCM_CT_MACRO_PAR_WRK          0 filas exportadas
+. exportando la tabla                 ORDDCM_CT_PRED         61 filas exportadas
+. exportando la tabla            ORDDCM_CT_PRED_OPRD         51 filas exportadas
+. exportando la tabla        ORDDCM_CT_PRED_OPRD_TMP
+. exportando la tabla        ORDDCM_CT_PRED_OPRD_WRK          0 filas exportadas
+. exportando la tabla             ORDDCM_CT_PRED_PAR          3 filas exportadas
+. exportando la tabla         ORDDCM_CT_PRED_PAR_TMP
+. exportando la tabla         ORDDCM_CT_PRED_PAR_WRK          0 filas exportadas
+. exportando la tabla             ORDDCM_CT_PRED_SET          9 filas exportadas
+. exportando la tabla         ORDDCM_CT_PRED_SET_TMP
+. exportando la tabla         ORDDCM_CT_PRED_SET_WRK          0 filas exportadas
+. exportando la tabla             ORDDCM_CT_PRED_TMP
+. exportando la tabla             ORDDCM_CT_PRED_WRK          0 filas exportadas
+. exportando la tabla              ORDDCM_DATA_MODEL          1 filas exportadas
+. exportando la tabla          ORDDCM_DATA_MODEL_WRK          0 filas exportadas
+. exportando la tabla              ORDDCM_DICT_ATTRS       2418 filas exportadas
+. exportando la tabla          ORDDCM_DICT_ATTRS_TMP
+. exportando la tabla          ORDDCM_DICT_ATTRS_WRK          0 filas exportadas
+. exportando la tabla                ORDDCM_DOC_REFS          7 filas exportadas
+. exportando la tabla            ORDDCM_DOC_REFS_TMP
+. exportando la tabla            ORDDCM_DOC_REFS_WRK          0 filas exportadas
+. exportando la tabla                    ORDDCM_DOCS          9 filas exportadas
+. exportando la tabla                ORDDCM_DOCS_TMP
+. exportando la tabla                ORDDCM_DOCS_WRK          0 filas exportadas
+. exportando la tabla               ORDDCM_DOC_TYPES          8 filas exportadas
+. exportando la tabla            ORDDCM_INSTALL_DOCS          9 filas exportadas
+. exportando la tabla           ORDDCM_INTERNAL_TAGS         42 filas exportadas
+. exportando la tabla        ORDDCM_MAPPED_PATHS_TMP
+. exportando la tabla            ORDDCM_MAPPING_DOCS          1 filas exportadas
+. exportando la tabla        ORDDCM_MAPPING_DOCS_TMP
+. exportando la tabla        ORDDCM_MAPPING_DOCS_WRK          0 filas exportadas
+. exportando la tabla            ORDDCM_PREFS_LOOKUP         13 filas exportadas
+. exportando la tabla    ORDDCM_PREFS_DEF_VALUES_TAB          7 filas exportadas
+. exportando la tabla  ORDDCM_PREFS_VALID_VALUES_TAB         33 filas exportadas
+. exportando la tabla               ORDDCM_PRV_ATTRS          3 filas exportadas
+. exportando la tabla           ORDDCM_PRV_ATTRS_TMP
+. exportando la tabla           ORDDCM_PRV_ATTRS_WRK          0 filas exportadas
+. exportando la tabla          ORDDCM_RT_PREF_PARAMS         13 filas exportadas
+. exportando la tabla      ORDDCM_RT_PREF_PARAMS_TMP
+. exportando la tabla      ORDDCM_RT_PREF_PARAMS_WRK          0 filas exportadas
+. exportando la tabla               ORDDCM_STD_ATTRS       2415 filas exportadas
+. exportando la tabla           ORDDCM_STD_ATTRS_TMP
+. exportando la tabla           ORDDCM_STD_ATTRS_WRK          0 filas exportadas
+. exportando la tabla         ORDDCM_STORED_TAGS_TMP
+. exportando la tabla                ORDDCM_UID_DEFS        245 filas exportadas
+. exportando la tabla            ORDDCM_UID_DEFS_TMP
+. exportando la tabla            ORDDCM_UID_DEFS_WRK          0 filas exportadas
+. exportando la tabla               ORDDCM_VR_DT_MAP         32 filas exportadas
+. exportando las tablas de OLAPSYS a través de la Ruta de Acceso Convencional ...
+. exportando la tabla             CWM$CLASSIFICATION         41 filas exportadas
+. exportando la tabla        CWM$CLASSIFICATIONENTRY          5 filas exportadas
+. exportando la tabla         CWM$CLASSIFICATIONTYPE         15 filas exportadas
+. exportando la tabla                     CWM$DOMAIN         21 filas exportadas
+. exportando la tabla                   CWM$FUNCTION         14 filas exportadas
+. exportando la tabla                      CWM$MODEL          2 filas exportadas
+. exportando la tabla                 CWM$OBJECTTYPE         15 filas exportadas
+. exportando la tabla                  CWM$PARAMETER          5 filas exportadas
+. exportando la tabla                    CWM$PROJECT          3 filas exportadas
+. exportando la tabla        CWM2$AWCUBECREATEACCESS
+. exportando la tabla            CWM2$AWCUBELOADPARM          1 filas exportadas
+. exportando la tabla            CWM2$AWCUBELOADTYPE          2 filas exportadas
+. exportando la tabla         CWM2$AWDIMCREATEACCESS
+. exportando la tabla             CWM2$AWDIMLOADPARM          4 filas exportadas
+. exportando la tabla             CWM2$AWDIMLOADTYPE          2 filas exportadas
+. exportando la tabla   CWM2$_AW_NEXT_TEMP_CUST_MEAS
+. exportando la tabla    CWM2$_AW_TEMP_CUST_MEAS_MAP
+. exportando la tabla                      CWM2$CUBE          0 filas exportadas
+. exportando la tabla                 CWM2$DIMENSION          0 filas exportadas
+. exportando la tabla        CWM2$DIMENSIONATTRIBUTE          0 filas exportadas
+. exportando la tabla                 CWM2$HIERARCHY          0 filas exportadas
+. exportando la tabla                     CWM2$LEVEL          0 filas exportadas
+. exportando la tabla            CWM2$LEVELATTRIBUTE          0 filas exportadas
+. exportando la tabla                   CWM2$MEASURE          0 filas exportadas
+. exportando la tabla         CWM2$MRALL_DESCRIPTORS         41 filas exportadas
+. exportando la tabla    CWM2$OLAPEXPORTCOMMANDTABLE
+. exportando la tabla     CWM2$OLAPEXPORTOBJECTTABLE
+. exportando la tabla          CWM2$OLAPMANAGERTABLE
+. exportando la tabla         CWM2$OLAPVALIDATETABLE
+. exportando la tabla              CWM2$_TEMP_VALUES
+. exportando la tabla             OLAP_SESSION_CUBES
+. exportando la tabla              OLAP_SESSION_DIMS
+. exportando la tabla           OLAP_SESSION_OBJECTS
+. exportando las tablas de MDDATA a través de la Ruta de Acceso Convencional ...
+. exportando las tablas de SPATIAL_WFS_ADMIN_USR a través de la Ruta de Acceso Convencional ...
+. exportando las tablas de SPATIAL_CSW_ADMIN_USR a través de la Ruta de Acceso Convencional ...
+. exportando las tablas de SYSMAN a través de la Ruta de Acceso Convencional ...
+. exportando la tabla       AQ$_MGMT_LOADER_QTABLE_G          0 filas exportadas
+. exportando la tabla       AQ$_MGMT_LOADER_QTABLE_H          0 filas exportadas
+. exportando la tabla       AQ$_MGMT_LOADER_QTABLE_I          0 filas exportadas
+. exportando la tabla       AQ$_MGMT_LOADER_QTABLE_L          0 filas exportadas
+. exportando la tabla       AQ$_MGMT_LOADER_QTABLE_S          2 filas exportadas
+. exportando la tabla       AQ$_MGMT_LOADER_QTABLE_T          0 filas exportadas
+. exportando la tabla       AQ$_MGMT_NOTIFY_QTABLE_G          0 filas exportadas
+. exportando la tabla       AQ$_MGMT_NOTIFY_QTABLE_H          0 filas exportadas
+. exportando la tabla       AQ$_MGMT_NOTIFY_QTABLE_I          0 filas exportadas
+. exportando la tabla       AQ$_MGMT_NOTIFY_QTABLE_L          0 filas exportadas
+. exportando la tabla       AQ$_MGMT_NOTIFY_QTABLE_S          2 filas exportadas
+. exportando la tabla       AQ$_MGMT_NOTIFY_QTABLE_T          0 filas exportadas
+. exportando la tabla              EMDW_TRACE_CONFIG          9 filas exportadas
+. exportando la tabla     EM_PAGE_CONDITION_METADATA          7 filas exportadas
+. exportando la tabla          EM_PAGE_CUST_METADATA          4 filas exportadas
+. exportando la tabla                 ESM_COLLECTION        113 filas exportadas
+. exportando la tabla           EUME2E_ASSOCS_LOOKUP          9 filas exportadas
+. exportando la tabla            MGMT_ADMIN_LICENSES         19 filas exportadas
+. exportando la tabla            MGMT_AGENT_SEC_INFO          1 filas exportadas
+. exportando la tabla          MGMT_ALL_TARGET_PROPS          5 filas exportadas
+. exportando la tabla    MGMT_ARU_FAMILY_PRODUCT_MAP       1660 filas exportadas
+. exportando la tabla             MGMT_ARU_LANGUAGES         40 filas exportadas
+. exportando la tabla        MGMT_ARU_OUI_COMPONENTS        393 filas exportadas
+. exportando la tabla             MGMT_ARU_PLATFORMS         76 filas exportadas
+. exportando la tabla   MGMT_ARU_PRODUCT_RELEASE_MAP       5956 filas exportadas
+. exportando la tabla              MGMT_ARU_PRODUCTS        744 filas exportadas
+. exportando la tabla              MGMT_ARU_RELEASES        863 filas exportadas
+. exportando la tabla         MGMT_AUDIT_DESTINATION          1 filas exportadas
+. exportando la tabla              MGMT_AUDIT_MASTER          1 filas exportadas
+. exportando la tabla              MGMT_AVAILABILITY          9 filas exportadas
+. exportando la tabla       MGMT_AVAILABILITY_MARKER          5 filas exportadas
+. exportando la tabla        MGMT_AVAILABLE_SEARCHES         15 filas exportadas
+. exportando la tabla       MGMT_BAM_OSESSION_ALERTS          0 filas exportadas
+. exportando la tabla      MGMT_BAM_OSESSION_METRICS          0 filas exportadas
+. exportando la tabla       MGMT_BAM_OSESSION_STATUS          0 filas exportadas
+. exportando la tabla    MGMT_BLACKOUT_PROXY_TARGETS          5 filas exportadas
+. exportando la tabla           MGMT_BLACKOUT_REASON         60 filas exportadas
+. exportando la tabla         MGMT_BLACKOUT_SCHEDULE          0 filas exportadas
+. exportando la tabla          MGMT_BLACKOUT_WINDOWS          0 filas exportadas
+. exportando la tabla              MGMT_BSLN_METRICS          6 filas exportadas
+. exportando la tabla              MGMT_BSLN_RAWDATA          0 filas exportadas
+. exportando la tabla                 MGMT_CALLBACKS         87 filas exportadas
+. exportando la tabla                MGMT_CATEGORIES         12 filas exportadas
+. exportando la tabla          MGMT_CATEGORY_CLASSES          2 filas exportadas
+. exportando la tabla              MGMT_CATEGORY_MAP        637 filas exportadas
+. exportando la tabla    MGMT_COLLECTION_CREDENTIALS          0 filas exportadas
+. exportando la tabla   MGMT_COLLECTION_METRIC_TASKS        195 filas exportadas
+. exportando la tabla               MGMT_COLLECTIONS        201 filas exportadas
+. exportando la tabla   MGMT_COLLECTION_TASK_CONTEXT          0 filas exportadas
+. exportando la tabla          MGMT_COLLECTION_TASKS         28 filas exportadas
+. exportando la tabla MGMT_COLLECTION_TEMPLATE_CREDS          0 filas exportadas
+. exportando la tabla        MGMT_COLLECTION_WORKERS          0 filas exportadas
+. exportando la tabla         MGMT_COLL_ITEM_METRICS        217 filas exportadas
+. exportando la tabla      MGMT_COLL_ITEM_PROPERTIES         48 filas exportadas
+. exportando la tabla                MGMT_COLL_ITEMS        254 filas exportadas
+. exportando la tabla         MGMT_CORRECTIVE_ACTION          2 filas exportadas
+. exportando la tabla             MGMT_CREATED_USERS          4 filas exportadas
+. exportando la tabla    MGMT_CREDENTIAL_SET_COLUMNS         86 filas exportadas
+. exportando la tabla   MGMT_CREDENTIAL_SET_COL_VALS          8 filas exportadas
+. exportando la tabla           MGMT_CREDENTIAL_SETS         35 filas exportadas
+. exportando la tabla              MGMT_CREDENTIALS2          3 filas exportadas
+. exportando la tabla   MGMT_CREDENTIAL_TYPE_COLUMNS         45 filas exportadas
+. exportando la tabla  MGMT_CREDENTIAL_TYPE_COL_VALS          3 filas exportadas
+. exportando la tabla       MGMT_CREDENTIAL_TYPE_REF          9 filas exportadas
+. exportando la tabla          MGMT_CREDENTIAL_TYPES         19 filas exportadas
+. exportando la tabla        MGMT_CS_CONFIG_STANDARD          3 filas exportadas
+. exportando la tabla              MGMT_CS_HIERARCHY        117 filas exportadas
+. exportando la tabla                MGMT_CS_KEYWORD          3 filas exportadas
+. exportando la tabla                   MGMT_CS_RULE         94 filas exportadas
+. exportando la tabla             MGMT_CS_RULEFOLDER         23 filas exportadas
+. exportando la tabla      MGMT_CURRENT_AVAILABILITY          5 filas exportadas
+. exportando la tabla     MGMT_CURRENT_METRIC_ERRORS          3 filas exportadas
+. exportando la tabla           MGMT_CURRENT_METRICS        281 filas exportadas
+. exportando la tabla         MGMT_CURRENT_VIOLATION         84 filas exportadas
+. exportando la tabla       MGMT_DB_CONTROLFILES_ECM          2 filas exportadas
+. exportando la tabla          MGMT_DB_DATAFILES_ECM          7 filas exportadas
+. exportando la tabla    MGMT_DB_DBNINSTANCEINFO_ECM          1 filas exportadas
+. exportando la tabla           MGMT_DB_FEATUREUSAGE        152 filas exportadas
+. exportando la tabla      MGMT_DB_HDM_METRIC_HELPER          1 filas exportadas
+. exportando la tabla        MGMT_DB_INIT_PARAMS_ECM        342 filas exportadas
+. exportando la tabla            MGMT_DB_LICENSE_ECM          1 filas exportadas
+. exportando la tabla            MGMT_DB_OPTIONS_ECM         11 filas exportadas
+. exportando la tabla      MGMT_DB_RECTSSETTINGS_ECM          1 filas exportadas
+. exportando la tabla    MGMT_DB_RECUSERSETTINGS_ECM          1 filas exportadas
+. exportando la tabla           MGMT_DB_REDOLOGS_ECM          3 filas exportadas
+. exportando la tabla      MGMT_DB_ROLLBACK_SEGS_ECM          1 filas exportadas
+. exportando la tabla                MGMT_DB_SGA_ECM          9 filas exportadas
+. exportando la tabla        MGMT_DB_TABLESPACES_ECM          7 filas exportadas
+. exportando la tabla      MGMT_DELTA_COMP_SUMMARIES          0 filas exportadas
+. exportando la tabla      MGMT_DELTA_SUMMARY_ERRORS          0 filas exportadas
+. exportando la tabla                MGMT_DELTA_SNAP          2 filas exportadas
+. exportando la tabla       MGMT_DEPLOYMENT_SECTIONS          1 filas exportadas
+. exportando la tabla      MGMT_DIROBJ_USERS_HOTLIST          0 filas exportadas
+. exportando la tabla                MGMT_DM_ALITEMS         48 filas exportadas
+. exportando la tabla              MGMT_DM_RULEENTRY         45 filas exportadas
+. exportando la tabla          MGMT_DM_RULETEMPLATES         19 filas exportadas
+. exportando la tabla               MGMT_ECM_ARU_MAP         29 filas exportadas
+. exportando la tabla        MGMT_ECM_CSA_OUT_OF_BOX          1 filas exportadas
+. exportando la tabla          MGMT_ECM_GEN_SNAPSHOT          6 filas exportadas
+. exportando la tabla   MGMT_ECM_HOST_CONFIGS_TO_DEL          0 filas exportadas
+. exportando la tabla    MGMT_ECM_MD_ALL_TBL_COLUMNS        702 filas exportadas
+. exportando la tabla          MGMT_ECM_MD_HIST_TBLS         39 filas exportadas
+. exportando la tabla             MGMT_ECM_RESOURCES         14 filas exportadas
+. exportando la tabla   MGMT_ECM_SNAP_COMPONENT_INFO          4 filas exportadas
+. exportando la tabla              MGMT_ECM_SNAPSHOT          1 filas exportadas
+. exportando la tabla   MGMT_ECM_SNAPSHOT_MD_COLUMNS        837 filas exportadas
+. exportando la tabla    MGMT_ECM_SNAPSHOT_MD_TABLES        122 filas exportadas
+. exportando la tabla     MGMT_ECM_SNAPSHOT_METADATA         53 filas exportadas
+. exportando la tabla                  MGMT_EMD_PING          1 filas exportadas
+. exportando la tabla            MGMT_EMD_PING_CHECK          1 filas exportadas
+. exportando la tabla    MGMT_ENTERPRISE_CREDENTIALS          0 filas exportadas
+. exportando la tabla              MGMT_ERROR_MASTER         12 filas exportadas
+. exportando la tabla                MGMT_ESA_REPORT       1204 filas exportadas
+. exportando la tabla        MGMT_FAILOVER_CALLBACKS          4 filas exportadas
+. exportando la tabla            MGMT_FAILOVER_TABLE          0 filas exportadas
+. exportando la tabla        MGMT_FBP_PATCHING_GUIDS          3 filas exportadas
+. exportando la tabla          MGMT_FLAT_ROLE_GRANTS          0 filas exportadas
+. exportando la tabla         MGMT_FLAT_TARGET_ASSOC          3 filas exportadas
+. exportando la tabla       MGMT_GROUP_DEFAULT_CHART          9 filas exportadas
+. exportando la tabla               MGMT_HA_INFO_ECM          1 filas exportadas
+. exportando la tabla                   MGMT_HA_MTTR          1 filas exportadas
+. exportando la tabla        MGMT_HA_RMAN_CONFIG_ECM          1 filas exportadas
+. exportando la tabla            MGMT_HC_CPU_DETAILS          8 filas exportadas
+. exportando la tabla       MGMT_HC_FS_MOUNT_DETAILS          1 filas exportadas
+. exportando la tabla        MGMT_HC_HARDWARE_MASTER          1 filas exportadas
+. exportando la tabla         MGMT_HC_IOCARD_DETAILS          1 filas exportadas
+. exportando la tabla            MGMT_HC_NIC_DETAILS          2 filas exportadas
+. exportando la tabla          MGMT_HC_OS_PROPERTIES         20 filas exportadas
+. exportando la tabla             MGMT_HC_OS_SUMMARY          1 filas exportadas
+. exportando la tabla         MGMT_HC_SYSTEM_SUMMARY          1 filas exportadas
+. exportando la tabla      MGMT_HC_VENDOR_SW_SUMMARY         12 filas exportadas
+. exportando la tabla          MGMT_HOST_CREDENTIALS          0 filas exportadas
+. exportando la tabla    MGMT_HTTP_SESSION_CALLBACKS          1 filas exportadas
+. exportando la tabla             MGMT_INV_COMPONENT        144 filas exportadas
+. exportando la tabla             MGMT_INV_CONTAINER          2 filas exportadas
+. exportando la tabla    MGMT_INV_CONTAINER_PROPERTY          3 filas exportadas
+. exportando la tabla       MGMT_INV_DEPENDENCY_RULE        266 filas exportadas
+. exportando la tabla               MGMT_INV_SUMMARY          2 filas exportadas
+. exportando la tabla    MGMT_IP_ELEM_DEFAULT_PARAMS        130 filas exportadas
+. exportando la tabla     MGMT_IP_ELEM_PARAM_CLASSES        116 filas exportadas
+. exportando la tabla      MGMT_IP_ELEM_TARGET_TYPES         86 filas exportadas
+. exportando la tabla             MGMT_IP_REPORT_DEF        124 filas exportadas
+. exportando la tabla    MGMT_IP_REPORT_DEF_ELEMENTS        349 filas exportadas
+. exportando la tabla   MGMT_IP_REPORT_DEF_JIT_TYPES        135 filas exportadas
+. exportando la tabla        MGMT_IP_REPORT_ELEM_DEF         77 filas exportadas
+. exportando la tabla     MGMT_IP_REPORT_ELEM_PARAMS       2167 filas exportadas
+. exportando la tabla         MGMT_IP_SQL_STATEMENTS         31 filas exportadas
+. exportando la tabla                       MGMT_JOB          6 filas exportadas
+. exportando la tabla             MGMT_JOB_CALLBACKS          6 filas exportadas
+. exportando la tabla               MGMT_JOB_COMMAND        146 filas exportadas
+. exportando la tabla   MGMT_JOB_COMMAND_BLOCK_PROCS          3 filas exportadas
+. exportando la tabla           MGMT_JOB_CREDENTIALS          0 filas exportadas
+. exportando la tabla           MGMT_JOB_CRED_PARAMS        101 filas exportadas
+. exportando la tabla   MGMT_JOB_DISPLAY_ERROR_CODES          8 filas exportadas
+. exportando la tabla      MGMT_JOB_EMD_STATUS_QUEUE          0 filas exportadas
+. exportando la tabla                 MGMT_JOB_EVENT          1 filas exportadas
+. exportando la tabla              MGMT_JOB_EXECPLAN       1849 filas exportadas
+. exportando la tabla          MGMT_JOB_EXEC_SUMMARY          7 filas exportadas
+. exportando la tabla             MGMT_JOB_EXECUTION         16 filas exportadas
+. exportando la tabla               MGMT_JOB_HISTORY         16 filas exportadas
+. exportando la tabla          MGMT_JOB_LARGE_PARAMS          2 filas exportadas
+. exportando la tabla             MGMT_JOB_LOCK_INFO          6 filas exportadas
+. exportando la tabla          MGMT_JOB_LOCK_TARGETS          6 filas exportadas
+. exportando la tabla             MGMT_JOB_PARAMETER          6 filas exportadas
+. exportando la tabla          MGMT_JOB_PARAM_SOURCE        652 filas exportadas
+. exportando la tabla           MGMT_JOB_PROP_PARAMS         25 filas exportadas
+. exportando la tabla        MGMT_JOB_PURGE_CRITERIA          3 filas exportadas
+. exportando la tabla        MGMT_JOB_PURGE_POLICIES          4 filas exportadas
+. exportando la tabla          MGMT_JOB_PURGE_VALUES          3 filas exportadas
+. exportando la tabla              MGMT_JOB_SCHEDULE          4 filas exportadas
+. exportando la tabla              MGMT_JOB_SEC_INFO         12 filas exportadas
+. exportando la tabla   MGMT_JOB_SINGLE_TARGET_TYPES        137 filas exportadas
+. exportando la tabla            MGMT_JOB_SQL_PARAMS         10 filas exportadas
+. exportando la tabla         MGMT_JOB_STATE_CHANGES          7 filas exportadas
+. exportando la tabla           MGMT_JOB_STEP_PARAMS       5277 filas exportadas
+. exportando la tabla          MGMT_JOB_SUBST_PARAMS         24 filas exportadas
+. exportando la tabla     MGMT_JOB_TYPE_DISPLAY_INFO         87 filas exportadas
+. exportando la tabla             MGMT_JOB_TYPE_INFO        187 filas exportadas
+. exportando la tabla     MGMT_JOB_TYPE_MAX_VERSIONS        180 filas exportadas
+. exportando la tabla MGMT_JOB_TYPE_PARAM_DSPLY_INFO        300 filas exportadas
+. exportando la tabla   MGMT_JOB_TYPE_PARAM_URI_INFO          7 filas exportadas
+. exportando la tabla         MGMT_JOB_TYPE_URI_INFO         99 filas exportadas
+. exportando la tabla           MGMT_JOB_USER_PARAMS         15 filas exportadas
+. exportando la tabla          MGMT_JOB_VALUE_PARAMS        180 filas exportadas
+. exportando la tabla               PARAM_VALUES_TAB        308 filas exportadas
+. exportando la tabla    MGMT_LAST_SYNC_LOAD_DETAILS          1 filas exportadas
+. exportando la tabla            MGMT_LAST_VIOLATION        654 filas exportadas
+. exportando la tabla   MGMT_LICENSABLE_TARGET_TYPES         49 filas exportadas
+. exportando la tabla      MGMT_LICENSE_CONFIRMATION          0 filas exportadas
+. exportando la tabla       MGMT_LICENSE_DEFINITIONS         59 filas exportadas
+. exportando la tabla          MGMT_LICENSED_TARGETS         10 filas exportadas
+. exportando la tabla        MGMT_LOADER_DESIGNATORS         40 filas exportadas
+. exportando la tabla             MGMT_LOADER_QTABLE          0 filas exportadas
+. exportando la tabla          MGMT_LOGIN_ASSISTANTS          2 filas exportadas
+. exportando la tabla   MGMT_MASTER_CHANGED_CALLBACK          1 filas exportadas
+. exportando la tabla                  MGMT_MESSAGES      23311 filas exportadas
+. exportando la tabla             MGMT_METADATA_SETS         76 filas exportadas
+. exportando la tabla     MGMT_METRIC_DEPENDENCY_DEF         16 filas exportadas
+. exportando la tabla             MGMT_METRIC_ERRORS          3 filas exportadas
+. exportando la tabla                   MGMT_METRICS      12796 filas exportadas
+. exportando la tabla    MGMT_METRICS_COMPOSITE_KEYS        112 filas exportadas
+. exportando la tabla               MGMT_METRICS_EXT         20 filas exportadas
+. exportando la tabla               MGMT_METRICS_RAW       4097 filas exportadas
+. exportando la tabla              MGMT_METRICS_1DAY        546 filas exportadas
+. exportando la tabla             MGMT_METRICS_1HOUR       3929 filas exportadas
+. exportando la tabla           MGMT_METRIC_VERSIONS        273 filas exportadas
+. exportando la tabla       MGMT_MP_HOMEPAGE_REPORTS         30 filas exportadas
+. exportando la tabla        MGMT_NESTED_JOB_TARGETS        126 filas exportadas
+. exportando la tabla            MGMT_NOTIFY_DEVICES          0 filas exportadas
+. exportando la tabla    MGMT_NOTIFY_FORMAT_HANDLERS          6 filas exportadas
+. exportando la tabla       MGMT_NOTIFY_INPUT_QTABLE          0 filas exportadas
+. exportando la tabla   MGMT_NOTIFY_JOB_RULE_CONFIGS          1 filas exportadas
+. exportando la tabla          MGMT_NOTIFY_NOTIFYEES          0 filas exportadas
+. exportando la tabla           MGMT_NOTIFY_PROFILES          3 filas exportadas
+. exportando la tabla             MGMT_NOTIFY_QTABLE          0 filas exportadas
+. exportando la tabla             MGMT_NOTIFY_QUEUES         27 filas exportadas
+. exportando la tabla       MGMT_NOTIFY_RULE_CONFIGS         41 filas exportadas
+. exportando la tabla              MGMT_NOTIFY_RULES          7 filas exportadas
+. exportando la tabla            MGMT_OMS_PARAMETERS         15 filas exportadas
+. exportando la tabla         MGMT_OPERATIONS_MASTER         25 filas exportadas
+. exportando la tabla               MGMT_OUI_ARU_MAP         27 filas exportadas
+. exportando la tabla          MGMT_PAF_APPLICATIONS         13 filas exportadas
+. exportando la tabla MGMT_PAF_COMP_JOBTYPE_MAPPINGS          2 filas exportadas
+. exportando la tabla        MGMT_PAF_JOBTYPE_PARAMS         17 filas exportadas
+. exportando la tabla              MGMT_PAF_JOBTYPES          4 filas exportadas
+. exportando la tabla          MGMT_PAF_MSG_QTABLE_1          0 filas exportadas
+. exportando la tabla          MGMT_PAF_MSG_QTABLE_2          0 filas exportadas
+. exportando la tabla          MGMT_PAF_PARAM_GROUPS          6 filas exportadas
+. exportando la tabla            MGMT_PAF_PROCEDURES          7 filas exportadas
+. exportando la tabla          MGMT_PAF_TEXTUAL_DATA          7 filas exportadas
+. exportando la tabla                MGMT_PARAMETERS         84 filas exportadas
+. exportando la tabla       MGMT_PDP_COLUMN_METADATA          3 filas exportadas
+. exportando la tabla              MGMT_PDP_METADATA          2 filas exportadas
+. exportando la tabla        MGMT_PDP_PARAM_METADATA          9 filas exportadas
+. exportando la tabla      MGMT_PDP_SETTING_METADATA          3 filas exportadas
+. exportando la tabla         MGMT_PERFORMANCE_NAMES        106 filas exportadas
+. exportando la tabla                  MGMT_POLICIES       3302 filas exportadas
+. exportando la tabla              MGMT_POLICY_ASSOC       1118 filas exportadas
+. exportando la tabla          MGMT_POLICY_ASSOC_CFG       1170 filas exportadas
+. exportando la tabla   MGMT_POLICY_ASSOC_CFG_PARAMS        713 filas exportadas
+. exportando la tabla MGMT_POLICY_ASSOC_EVAL_DETAILS        476 filas exportadas
+. exportando la tabla    MGMT_POLICY_ASSOC_EVAL_SUMM        167 filas exportadas
+. exportando la tabla          MGMT_POLICY_BIND_VARS        169 filas exportadas
+. exportando la tabla         MGMT_POLICY_PARAMETERS         27 filas exportadas
+. exportando la tabla      MGMT_POLICY_TYPE_VERSIONS        585 filas exportadas
+. exportando la tabla      MGMT_POLICY_VIOL_CTXT_DEF        642 filas exportadas
+. exportando la tabla               MGMT_PRIV_GRANTS        134 filas exportadas
+. exportando la tabla             MGMT_PRIV_INCLUDES         13 filas exportadas
+. exportando la tabla                     MGMT_PRIVS         24 filas exportadas
+. exportando la tabla              MGMT_PURGE_POLICY         16 filas exportadas
+. exportando la tabla        MGMT_PURGE_POLICY_GROUP          7 filas exportadas
+. exportando la tabla MGMT_PURGE_POLICY_TARGET_STATE         36 filas exportadas
+. exportando la tabla           MGMT_REBUILD_INDEXES          1 filas exportadas
+. exportando la tabla    MGMT_REPOS_TIME_COEFFICIENT          0 filas exportadas
+. exportando la tabla               MGMT_ROLE_GRANTS          1 filas exportadas
+. exportando la tabla                     MGMT_ROLES          1 filas exportadas
+. exportando la tabla           MGMT_ROWSET_HANDLERS         14 filas exportadas
+. exportando la tabla        MGMT_RT_BOOTSTRAP_TIMES          5 filas exportadas
+. exportando la tabla                  MGMT_SEC_INFO          1 filas exportadas
+. exportando la tabla       MGMT_SNAPSHOT_METRIC_MAP        221 filas exportadas
+. exportando la tabla             MGMT_SPACE_METRICS          1 filas exportadas
+. exportando la tabla MGMT_STORAGE_REPORT_UI_TARGETS
+. exportando la tabla      MGMT_STORAGE_TMP_NFS_DATA
+. exportando la tabla     MGMT_STRING_METRIC_HISTORY         44 filas exportadas
+. exportando la tabla    MGMT_SWLIB_DATA_DIRECTORIES          1 filas exportadas
+. exportando la tabla         MGMT_SWLIB_DIRECTORIES         88 filas exportadas
+. exportando la tabla            MGMT_SWLIB_ENTITIES        180 filas exportadas
+. exportando la tabla         MGMT_SWLIB_ENTITY_DATA        150 filas exportadas
+. exportando la tabla    MGMT_SWLIB_ENTITY_DOCUMENTS        364 filas exportadas
+. exportando la tabla   MGMT_SWLIB_ENTITY_PARAMETERS        180 filas exportadas
+. exportando la tabla   MGMT_SWLIB_ENTITY_REFERENCES          2 filas exportadas
+. exportando la tabla    MGMT_SWLIB_ENTITY_REVISIONS        182 filas exportadas
+. exportando la tabla     MGMT_SWLIB_MATURITY_STATUS          3 filas exportadas
+. exportando la tabla MGMT_SWLIB_REVISION_PARAMETERS        728 filas exportadas
+. exportando la tabla    MGMT_SYSTEM_PERFORMANCE_LOG        838 filas exportadas
+. exportando la tabla      MGMT_TARGET_ADD_CALLBACKS         13 filas exportadas
+. exportando la tabla         MGMT_TARGET_ASSOC_DEFS         15 filas exportadas
+. exportando la tabla        MGMT_TARGET_ASSOC_ERROR          4 filas exportadas
+. exportando la tabla             MGMT_TARGET_ASSOCS          6 filas exportadas
+. exportando la tabla       MGMT_TARGET_ASSOC_STATUS          4 filas exportadas
+. exportando la tabla        MGMT_TARGET_CREDENTIALS          1 filas exportadas
+. exportando la tabla  MGMT_TARGET_DELETE_EXCEPTIONS         35 filas exportadas
+. exportando la tabla          MGMT_TARGET_PROP_DEFS        288 filas exportadas
+. exportando la tabla         MGMT_TARGET_PROPERTIES        203 filas exportadas
+. exportando la tabla       MGMT_TARGET_ROLLUP_TIMES        130 filas exportadas
+. exportando la tabla                   MGMT_TARGETS          5 filas exportadas
+. exportando la tabla          MGMT_TARGET_TEMP_LIST
+. exportando la tabla MGMT_TARGET_TYPE_COMPONENT_MAP          5 filas exportadas
+. exportando la tabla              MGMT_TARGET_TYPES         28 filas exportadas
+. exportando la tabla      MGMT_TARGET_TYPE_VERSIONS         37 filas exportadas
+. exportando la tabla               MGMT_TASK_QTABLE         28 filas exportadas
+. exportando la tabla        MGMT_TASK_WORKER_COUNTS          2 filas exportadas
+. exportando la tabla           MGMT_TYPE_PROPERTIES         75 filas exportadas
+. exportando la tabla            MGMT_USER_CALLBACKS         27 filas exportadas
+. exportando la tabla                  MGMT_USER_CAS          2 filas exportadas
+. exportando la tabla              MGMT_USER_CONTEXT          4 filas exportadas
+. exportando la tabla              MGMT_USER_FOLDERS         24 filas exportadas
+. exportando la tabla                 MGMT_USER_JOBS          0 filas exportadas
+. exportando la tabla          MGMT_USER_REPORT_DEFS          0 filas exportadas
+. exportando la tabla     MGMT_USER_SUBTAB_COL_PREFS         41 filas exportadas
+. exportando la tabla              MGMT_USER_TARGETS          0 filas exportadas
+. exportando la tabla            MGMT_USER_TEMPLATES          0 filas exportadas
+. exportando la tabla     MGMT_V_CLUSTER_MEMBER_LIST
+. exportando la tabla  MGMT_V_CLUSTER_RAC_POL_DETAIL
+. exportando la tabla                  MGMT_VERSIONS          5 filas exportadas
+. exportando la tabla     MGMT_VIEW_USER_CREDENTIALS          1 filas exportadas
+. exportando la tabla         MGMT_VIOLATION_CONTEXT        118 filas exportadas
+. exportando la tabla                MGMT_VIOLATIONS        667 filas exportadas
+. exportando la tabla   MGMT_V_RAC_ASSOC_MEMBER_LIST
+. exportando la tabla         MGMT_V_RAC_MEMBER_LIST
+. exportando las tablas de MGMT_VIEW a través de la Ruta de Acceso Convencional ...
+. exportando las tablas de FLOWS_FILES a través de la Ruta de Acceso Convencional ...
+. exportando las tablas de APEX_PUBLIC_USER a través de la Ruta de Acceso Convencional ...
+. exportando las tablas de APEX_030200 a través de la Ruta de Acceso Convencional ...
+. exportando la tabla          WWV_COLUMN_EXCEPTIONS          3 filas exportadas
+. exportando la tabla  WWV_FLOW_ACTIVITY_LOG_NUMBER$          1 filas exportadas
+. exportando la tabla       WWV_FLOW_ALT_CONFIG_PICK         37 filas exportadas
+. exportando la tabla    WWV_FLOW_APPLICATION_GROUPS          1 filas exportadas
+. exportando la tabla                WWV_FLOW_BANNER         10 filas exportadas
+. exportando la tabla      WWV_FLOW_BUTTON_TEMPLATES         12 filas exportadas
+. exportando la tabla                  WWV_FLOW_CALS         11 filas exportadas
+. exportando la tabla         WWV_FLOW_CAL_TEMPLATES          9 filas exportadas
+. exportando la tabla              WWV_FLOW_CHARSETS         32 filas exportadas
+. exportando la tabla WWV_FLOW_CLICKTHRU_LOG_NUMBER$          1 filas exportadas
+. exportando la tabla             WWV_FLOW_COMPANIES          3 filas exportadas
+. exportando la tabla       WWV_FLOW_COMPANY_SCHEMAS          1 filas exportadas
+. exportando la tabla         WWV_FLOW_COMPANY_TYPES         32 filas exportadas
+. exportando la tabla          WWV_FLOW_COMPUTATIONS         14 filas exportadas
+. exportando la tabla             WWV_FLOW_COUNTRIES        240 filas exportadas
+. exportando la tabla    WWV_FLOW_CUSTOM_AUTH_SETUPS         11 filas exportadas
+. exportando la tabla               WWV_FLOW_DB_AUTH          1 filas exportadas
+. exportando la tabla       WWV_FLOW_DEVELOPER_ROLES          9 filas exportadas
+. exportando la tabla           WWV_FLOW_DICTIONARY$      70601 filas exportadas
+. exportando la tabla               WWV_FLOW_DUAL100        100 filas exportadas
+. exportando la tabla       WWV_FLOW_FIELD_TEMPLATES         36 filas exportadas
+. exportando la tabla          WWV_FLOW_FLASH_CHARTS          5 filas exportadas
+. exportando la tabla    WWV_FLOW_FLASH_CHART_SERIES          5 filas exportadas
+. exportando la tabla              WWV_FLOW_FND_USER          1 filas exportadas
+. exportando la tabla       WWV_FLOW_HNT_COLUMN_INFO         58 filas exportadas
+. exportando la tabla        WWV_FLOW_HNT_TABLE_INFO          8 filas exportadas
+. exportando la tabla              WWV_FLOW_ICON_BAR         12 filas exportadas
+. exportando la tabla               WWV_FLOW_INSTALL          2 filas exportadas
+. exportando la tabla                 WWV_FLOW_ITEMS         89 filas exportadas
+. exportando la tabla       WWV_FLOW_JOB_BIND_VALUES          0 filas exportadas
+. exportando la tabla          WWV_FLOW_LANGUAGE_MAP         90 filas exportadas
+. exportando la tabla             WWV_FLOW_LANGUAGES        132 filas exportadas
+. exportando la tabla            WWV_FLOW_LIST_ITEMS       3048 filas exportadas
+. exportando la tabla   WWV_FLOW_LIST_OF_VALUES_DATA       4184 filas exportadas
+. exportando la tabla                 WWV_FLOW_LISTS        601 filas exportadas
+. exportando la tabla      WWV_FLOW_LISTS_OF_VALUES$        959 filas exportadas
+. exportando la tabla        WWV_FLOW_LIST_TEMPLATES        105 filas exportadas
+. exportando la tabla              WWV_FLOW_LOV_TEMP
+. exportando la tabla            WWV_FLOW_LOV_VALUES          6 filas exportadas
+. exportando la tabla          WWV_FLOW_MENU_OPTIONS       1452 filas exportadas
+. exportando la tabla                 WWV_FLOW_MENUS          7 filas exportadas
+. exportando la tabla        WWV_FLOW_MENU_TEMPLATES          8 filas exportadas
+. exportando la tabla             WWV_FLOW_MESSAGES$       3706 filas exportadas
+. exportando la tabla     WWV_FLOW_PAGE_GENERIC_ATTR         44 filas exportadas
+. exportando la tabla           WWV_FLOW_PAGE_GROUPS        105 filas exportadas
+. exportando la tabla            WWV_FLOW_PAGE_PLUGS       7417 filas exportadas
+. exportando la tabla   WWV_FLOW_PAGE_PLUG_TEMPLATES        166 filas exportadas
+. exportando la tabla      WWV_FLOW_PASSWORD_HISTORY          1 filas exportadas
+. exportando la tabla               WWV_FLOW_PATCHES          9 filas exportadas
+. exportando la tabla        WWV_FLOW_PICK_END_USERS          4 filas exportadas
+. exportando la tabla       WWV_FLOW_PICK_PAGE_VIEWS          5 filas exportadas
+. exportando la tabla        WWV_FLOW_PLATFORM_PREFS         21 filas exportadas
+. exportando la tabla    WWV_FLOW_POPUP_LOV_TEMPLATE         10 filas exportadas
+. exportando la tabla            WWV_FLOW_PROCESSING         45 filas exportadas
+. exportando la tabla          WWV_FLOW_QUERY_COLUMN         18 filas exportadas
+. exportando la tabla       WWV_FLOW_QUERY_CONDITION          6 filas exportadas
+. exportando la tabla      WWV_FLOW_QUERY_DEFINITION          6 filas exportadas
+. exportando la tabla          WWV_FLOW_QUERY_OBJECT          6 filas exportadas
+. exportando la tabla         WWV_FLOW_RANDOM_IMAGES         42 filas exportadas
+. exportando la tabla  WWV_FLOW_REGION_REPORT_COLUMN       7918 filas exportadas
+. exportando la tabla   WWV_FLOW_REGION_UPD_RPT_COLS        439 filas exportadas
+. exportando la tabla    WWV_FLOW_RESTRICTED_SCHEMAS         46 filas exportadas
+. exportando la tabla         WWV_FLOW_ROW_TEMPLATES         54 filas exportadas
+. exportando la tabla                      WWV_FLOWS         10 filas exportadas
+. exportando la tabla      WWV_FLOW_SECURITY_SCHEMES         19 filas exportadas
+. exportando la tabla             WWV_FLOW_SHORTCUTS         39 filas exportadas
+. exportando la tabla          WWV_FLOW_STANDARD_CSS         27 filas exportadas
+. exportando la tabla        WWV_FLOW_STANDARD_ICONS        319 filas exportadas
+. exportando la tabla           WWV_FLOW_STANDARD_JS          2 filas exportadas
+. exportando la tabla         WWV_FLOW_STEP_BRANCHES       3255 filas exportadas
+. exportando la tabla          WWV_FLOW_STEP_BUTTONS       3513 filas exportadas
+. exportando la tabla     WWV_FLOW_STEP_COMPUTATIONS        984 filas exportadas
+. exportando la tabla        WWV_FLOW_STEP_ITEM_HELP       6335 filas exportadas
+. exportando la tabla            WWV_FLOW_STEP_ITEMS       9673 filas exportadas
+. exportando la tabla       WWV_FLOW_STEP_PROCESSING       2239 filas exportadas
+. exportando la tabla                 WWV_FLOW_STEPS       1755 filas exportadas
+. exportando la tabla      WWV_FLOW_STEP_VALIDATIONS       1990 filas exportadas
+. exportando la tabla    WWV_FLOW_SW_CREATE_KEYWORDS         10 filas exportadas
+. exportando la tabla      WWV_FLOW_SW_MAIN_KEYWORDS        199 filas exportadas
+. exportando la tabla       WWV_FLOW_SW_SET_KEYWORDS          4 filas exportadas
+. exportando la tabla        WWV_FLOW_SW_SQLPLUS_CMD          8 filas exportadas
+. exportando la tabla                  WWV_FLOW_TABS          3 filas exportadas
+. exportando la tabla             WWV_FLOW_TEMPLATES         64 filas exportadas
+. exportando la tabla            WWV_FLOW_TEMP_TABLE
+. exportando la tabla            WWV_FLOW_TEMP_TREES
+. exportando la tabla                WWV_FLOW_THEMES         10 filas exportadas
+. exportando la tabla         WWV_FLOW_TOPLEVEL_TABS          5 filas exportadas
+. exportando la tabla    WWV_FLOW_TRANSLATABLE_COLS$        232 filas exportadas
+. exportando la tabla                 WWV_FLOW_TREES          3 filas exportadas
+. exportando la tabla      WWV_FLOW_UPGRADE_PROGRESS         89 filas exportadas
+. exportando la tabla  WWV_FLOW_UPG_TAB_NAME_CHANGES         42 filas exportadas
+. exportando la tabla      WWV_FLOW_UPG_TAB_OBSOLETE         17 filas exportadas
+. exportando la tabla  WWV_FLOW_USER_ACCESS_LOG_NUM$          1 filas exportadas
+. exportando la tabla     WWV_FLOW_WORKSHEET_COLUMNS        721 filas exportadas
+. exportando la tabla        WWV_FLOW_WORKSHEET_RPTS         30 filas exportadas
+. exportando la tabla            WWV_FLOW_WORKSHEETS         30 filas exportadas
+. exportando la tabla    WWV_FLOW_WORKSPACE_REQ_SIZE         14 filas exportadas
+. exportando la tabla               WWV_MIG_EXPORTER          5 filas exportadas
+. exportando la tabla                  WWV_MIG_FORMS          0 filas exportadas
+. exportando la tabla              WWV_MIG_FRM_MENUS          0 filas exportadas
+. exportando la tabla WWV_MIG_FRM_OLB_XMLTAGTABLEMAP         45 filas exportadas
+. exportando la tabla     WWV_MIG_FRM_XMLTAGTABLEMAP         36 filas exportadas
+. exportando la tabla    WWV_MIG_MENU_XMLTAGTABLEMAP          7 filas exportadas
+. exportando la tabla                    WWV_MIG_OLB          0 filas exportadas
+. exportando la tabla             WWV_MIG_PLSQL_LIBS          0 filas exportadas
+. exportando la tabla         WWV_MIG_RESERVED_WORDS         87 filas exportadas
+. exportando la tabla                   WWV_MIG_RPTS          0 filas exportadas
+. exportando la tabla     WWV_MIG_RPT_XMLTAGTABLEMAP         15 filas exportadas
+. exportando las tablas de OWBSYS a través de la Ruta de Acceso Convencional ...
+. exportando las tablas de OWBSYS_AUDIT a través de la Ruta de Acceso Convencional ...
+. exportando las tablas de ADMINF a través de la Ruta de Acceso Convencional ...
+. exportando la tabla                       BITACORA          3 filas exportadas
+. exportando la tabla                    CITYCATALOG       2447 filas exportadas
+. exportando la tabla               CONTINENTCATALOG          6 filas exportadas
+. exportando la tabla                 COUNTRYCATALOG        249 filas exportadas
+. exportando la tabla                           TEAM          7 filas exportadas
+. exportando la tabla                TEAMTYPECATALOG          2 filas exportadas
+. exportando la tabla                      USERADMIN          3 filas exportadas
+. exportando sinónimos
+. exportando vistas
+. exportando restricciones de integridad referencial
+. exportando procedimientos almacenados
+. exportando operadores
+. exportando tipos de índice
+. exportando índices bitmap, funcionales y extensibles
+. exportando acciones de posttables
+. exportando disparadores
+. exportando vistas materializadas
+. exportando logs de instantáneas
+. exportando colas de trabajo
+. exportando grupos de refrescamiento y secundarios
+. exportando dimensiones
+. exportando acciones y objetos de procedimiento post-esquema
+. exportando tabla de historial de usuario
+. exportando opciones de auditoría por defecto y del sistema
+. exportando estadísticas
+La exportación ha terminado correctamente y sin advertencias.

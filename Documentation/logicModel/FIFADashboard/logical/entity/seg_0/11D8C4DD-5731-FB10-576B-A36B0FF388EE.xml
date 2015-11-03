@@ -124,6 +124,48 @@
 <logicalDatatype>LOGDT024</logicalDatatype>
 <dataTypeSize>300</dataTypeSize>
 </Attribute>
+<Attribute name="clubCaptain" id="5B8A29B2-F088-D58E-5F24-52EEFFFFF815">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-11-03 06:32:49 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<engineerTo>
+<item key="4868DA42-719B-57C1-1720-90253DE167AF" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>1</dataTypePrecision>
+</Attribute>
+<Attribute name="selectionCaptain" id="B3BF56A9-5AFD-9622-8A84-19338046B47B">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-11-03 06:33:43 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<engineerTo>
+<item key="4868DA42-719B-57C1-1720-90253DE167AF" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>1</dataTypePrecision>
+</Attribute>
+<Attribute name="countryID" id="D9A0E498-6ED4-6EED-84DE-19BB2B875992">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-11-03 06:34:09 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<engineerTo>
+<item key="4868DA42-719B-57C1-1720-90253DE167AF" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>3</dataTypeSize>
+</Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
 <identifier id="18B84B63-961E-C84A-FD90-031215D0A3DC" name="Player PK">

@@ -1,50 +1,30 @@
 
-create or replace trigger beforeInsert_event
-       before insert
-       on bitacora for each row
-begin
-  :new.bitacoraID :=bitacoraID_seq.Nextval;
-  :new.userName:=user;
-  :new.date_Time:= sysdate;
-  :new.action:='Insert';
-  :new.descrip:='Insert a new event'; 
-end;
-------------------------------------------------------------------------
-create or replace trigger beforeInsert_game
-       before insert
-       on bitacora for each row
-begin
-  :new.bitacoraID :=bitacoraID_seq.Nextval;
-  :new.userName:=user;
-  :new.date_Time:= sysdate;
-  :new.action:='Insert';
-  :new.descrip:='Insert a new game'; 
-  commit;
-end;
 
-------------------------------------------------------------------------
-create or replace trigger beforeInsert_game
-       before insert
-       on bitacora for each row
-begin
-  :new.bitacoraID :=bitacoraID_seq.Nextval;
-  :new.userName:=user;
-  :new.date_Time:= sysdate;
-  :new.action:='Insert';
-  :new.descrip:='Insert a new game'; 
-    commit;
-end;
 ------------------------------------------------------------------------
 create or replace trigger beforeInsert_team
        before insert
        on Team for each row
 begin
-     INSERT INTO bitacora(bitacoraid,username,date_time,action,descrip)
-     VALUES (bitacoraID_seq.Nextval,'adminf',sysdate,'Insert','Inserting new Event');
-    commit;
+     INSERT INTO Logbook(LogbookID,Userconected,Schedule,Date_Time,Tablename,Action,Descrip)
+     VALUES (LogbookID_seq.Nextval,'ADMINF',user,sysdate,'TEAM','Insert','Inserting new TEAM');
 end;
 
 ------------------------------------------------------------------------------
+create or replace trigger beforeInsert_player
+       before insert
+       on player for each row
+begin
+     INSERT INTO Logbook(LogbookID,Userconected,Schedule,Date_Time,Tablename,Action,Descrip)
+     VALUES (LogbookID_seq.Nextval,'ADMINF',user,sysdate,'Player','Insert','Inserting new Player');
+end;
+------------------------------------------------------------------------------
+create or replace trigger beforeInsert_game
+       before insert
+       on game for each row
+begin
+     INSERT INTO Logbook(LogbookID,Userconected,Schedule,Date_Time,Tablename,Action,Descrip)
+     VALUES (LogbookID_seq.Nextval,'ADMINF',user,sysdate,'Game','Insert','Inserting new Game');
+end;
 ------------------------------------------------------------------------------
 
 create or replace trigger beforeInsert_team
@@ -68,29 +48,3 @@ END;
 
 
 
-
-
-create or replace trigger beforeInsert_department
-       before insert
-       on ge.department for each row
-begin
-  :new.Usuario_creacion:=user;
-  :new.Fec_creacion:= sysdate;
-end;
-
-create or replace trigger beforeUpDate_employee
-       before UpDate
-       on ge.employee for each row
-begin
-  :new.Usuario_ultima_modificacion:=user;
-  :new.Fecha_ultima_modificacion:= sysdate;
-end;
-
-
-create or replace trigger beforeUpDate_department
-       before UpDate
-       on ge.department for each row
-begin
-  :new.Usuario_ultima_modificacion:=user;
-  :new.Fecha_ultima_modificacion:= sysdate;
-end;

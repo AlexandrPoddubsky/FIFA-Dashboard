@@ -44,7 +44,7 @@ as
          
         Exception
          WHEN NO_DATA_FOUND THEN
-              DBMS_OUTPUT.PUT_LINE ('Team no found:' || pTeamID);
+              DBMS_OUTPUT.PUT_LINE ('Team no found:' || pPlayerID);
          commit;
 
        END;

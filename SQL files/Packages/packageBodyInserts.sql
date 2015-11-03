@@ -58,12 +58,12 @@ as
 -------------------------------------------------------------------------------
 
 procedure player ( pDNI varchar2, pFirstName varchar2, pLastName1 varchar2, pLastName2 varchar2, pClubTshirt number,
-               pSelectionTshirt number, pPicture varchar2, pCaptain char)
+               pSelectionTshirt number, pclubCaptain number,pselectionCaptain number,pcountryID varchar2)
 as
        BEGIN
-         insert into player (DNI,firstname,lastname1,lastname2,clubtshirt,selectiontshirt,picture,captain)
+         insert into player (DNI,firstname,lastname1,lastname2,clubtshirt,selectiontshirt,clubcaptain,selectioncaptain,countryid)
          values(pDNI , pFirstName , pLastName1 , pLastName2 , pClubTshirt ,
-               pSelectionTshirt , pPicture , pCaptain );
+               pSelectionTshirt , pclubCaptain,pselectionCaptain,pcountryID );
 
         Exception
          WHEN VALUE_ERROR THEN
@@ -75,6 +75,31 @@ as
 
        END;
 
+-------------------------------------------------------------------------------
+procedure PlayerbyTeam ( pteamID number, pplayerDNI varchar2)
+as
+       BEGIN
+        
+         insert into Playerbyteam (playerDNI,Teamid)
+         values(pplayerDNI,pteamID); 
+
+        Exception
+         WHEN VALUE_ERROR THEN
+              DBMS_OUTPUT.PUT_LINE ('Insert PlayerbyTeam error ');
+         WHEN OTHERS THEN
+              DBMS_OUTPUT.PUT_LINE ('Unexpected error');
+              RAISE;
+         commit;
+         
+                 
+       END;
+  
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
 -------------------------------------------------------------------------------
 
 END inserts;

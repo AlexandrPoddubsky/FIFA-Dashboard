@@ -34,7 +34,7 @@ as
        END;
        
 -------------------------------------------------------------------------------
-procedure picture (pPlayerID number, pPicture varchar2)
+procedure playerPicture (pPlayerID number, pPicture varchar2)
   --update the column logopath on the table team using the parameter plogopath
 as
        BEGIN        

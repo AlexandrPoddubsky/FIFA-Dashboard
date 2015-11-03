@@ -3,9 +3,9 @@
 --   sitio:      Oracle Database 11g
 --   tipo:      Oracle Database 11g
 
-CREATE TABLE Bitacora
+CREATE TABLE LogBook
   (
-    bitacoraID      NUMBER (8) NOT NULL ,
+    LogBookID      NUMBER (8) NOT NULL ,
     userConected    VARCHAR2 (50) ,
     schedule        VARCHAR2 (10),
     date_Time       DATE ,
@@ -13,7 +13,7 @@ CREATE TABLE Bitacora
     action          VARCHAR2 (30) ,
     descrip         VARCHAR2 (50)
   ) ;
-ALTER TABLE Bitacora ADD CONSTRAINT Bitacora_PK PRIMARY KEY ( bitacoraID ) ;
+ALTER TABLE LogBook ADD CONSTRAINT LogBook_PK PRIMARY KEY ( LogBookID ) ;
 
 
 CREATE TABLE Continent
@@ -111,16 +111,21 @@ ALTER TABLE LineupCatalog ADD CONSTRAINT LineupCatalog_PK PRIMARY KEY ( lineupID
 
 CREATE TABLE Player
   (
-    DNI             VARCHAR2 (30) NOT NULL ,
-    firstName       VARCHAR2 (30) NOT NULL ,
-    lastName1       VARCHAR2 (30) NOT NULL ,
-    lastName2       VARCHAR2 (30) ,
-    clubTshirt      NUMBER (2) ,
-    selectionTshirt NUMBER (2) ,
-    Picture         VARCHAR2 (300) ,
-    captain         CHAR (1) NOT NULL
+    DNI                VARCHAR2 (30) NOT NULL ,
+    firstName          VARCHAR2 (30) NOT NULL ,
+    lastName1          VARCHAR2 (30) NOT NULL ,
+    lastName2          VARCHAR2 (30) ,
+    clubTshirt         NUMBER (2) ,
+    selectionTshirt    NUMBER (2) ,
+    Picture            VARCHAR2 (300) ,
+    clubcaptain        NUMBER (1) ,
+    selectioncaptain   NUMBER (1) ,
+    CountryID          VARCHAR2 (3)
   ) ;
 ALTER TABLE Player ADD CONSTRAINT Player_PK PRIMARY KEY ( DNI ) ;
+
+
+--ALTER TABLE Player add constraint DNI_uk unique(DNI);
 
 -------------------------------------------------------------------------------
 
@@ -314,6 +319,8 @@ ALTER TABLE Team ADD CONSTRAINT Team_teamTypeCatalog_FK FOREIGN KEY ( teamTypeID
 ALTER TABLE actionByPlayerByGame ADD CONSTRAINT actionByPlayerByGame_FK FOREIGN KEY ( playerByGameID ) REFERENCES PlayerByGame ( playerByGameID ) ;
 
 ALTER TABLE actionByPlayerByGame ADD CONSTRAINT actionIDByPlayerByGame_FK FOREIGN KEY ( ActionID ) REFERENCES actionCatalog ( ActionID ) ;
+
+ALTER TABLE Player ADD CONSTRAINT country_FK FOREIGN KEY ( countryID ) REFERENCES countrycatalog ( countryID ) ;
 
 -------------------------------------------------------------------------------
 
