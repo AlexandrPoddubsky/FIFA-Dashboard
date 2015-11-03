@@ -16,7 +16,7 @@
         if (empty($_POST["teamName"]) ||
             empty($_POST["teamType"]) ||
             empty($_POST["state"])) {
-            echo "Null values";
+            echo "Null obbligatory values";
         }
         else {
             $teamType = intval($_POST["teamType"]);
@@ -87,8 +87,143 @@
                 oci_execute($compiled, OCI_NO_AUTO_COMMIT);
                 oci_commit($connection);
             }  
+            if (!empty($_FILES["teamLogo"]["name"])) {
+                $target_dir = "../pictures/teamLogos/";
+                $target_file = $target_dir . basename($_FILES["teamLogo"]["name"]);
+                $uploadOk = 1;
+                $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
+                $target_file = $target_dir . $teamID . "." . $imageFileType;
+                //check if image file is an actual image or a fake image
+                $check = getimagesize($_FILES["teamLogo"]["tmp_name"]);
+                if ($check !== false) {
+                    //echo "File is an image - " . $check["mime"] . ".";
+                    $uploadOk = 1;
+                } else {
+                    echo "File is not an image.";
+                    $uploadOk = 0;
+                }
+                if ($_FILES["teamLogo"]["size"] > 5242880) {
+                    echo "Sorry, your file is too large.";
+                    $uploadOk = 0;
+                }
+                if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+                && $imageFileType != "gif" ) {
+                    echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+                    $uploadOk = 0;
+                }
+                if ($uploadOk == 0) {
+                echo "Sorry, your file was not uploaded.";
+                // if everything is ok, try to upload file
+                } else {
+                    if (move_uploaded_file($_FILES["teamLogo"]["tmp_name"], $target_file)) {
+                        echo "The file ". basename( $_FILES["teamLogo"]["name"]). " has been uploaded.";
+                    } else {
+                        echo "Sorry, there was an error uploading your file.";
+                    }
+                }
+                $query = 'BEGIN updates.flag(:teamID, :fileLocation); END;';
+                $compiled = oci_parse($connection, $query);
+                oci_bind_by_name($compiled, ':teamID', $teamID, 10);
+                oci_bind_by_name($compiled, ':fileLocation', $target_file, 200);
+                oci_execute($compiled, OCI_NO_AUTO_COMMIT);
+                oci_commit($connection);
+            }
+        }        
+    }
+    //add new player
+    if (isset($_POST['newPlayer'])) {
+        if (empty($_POST["firstName"]) ||
+            empty($_POST["lastName"]) ||
+            empty($_POST["DNI"])) {
+            echo "Null obbligatory values";
         }
-              
+        else {
+            //check if clubNumber was set
+            if (empty($_POST['clubNumber'])) {
+                $clubNumber = 0;
+            }
+            else {
+                $clubNumber = intval($_POST['clubNumber']);
+            }
+            //check if selectionNumber was set
+            if (empty($_POST['selectionNumber'])) {
+                $selectionNumber = 0;
+            }
+            else {
+                $selectionNumber = intval($_POST['selectionNumber']);
+            }
+            $query = 'BEGIN inserts.player(:DNI, :firstName, :lastName, :lastName2, :clubTShirt, 
+                :selectionTShirt, :clubCaptain, :selectionCaptain, :countryID); END;';
+            $compiled = oci_parse($connection, $query);
+            oci_bind_by_name($compiled, ':DNI', $_POST['DNI'], 100);
+            oci_bind_by_name($compiled, ':firstName', $_POST['firstName'], 200);
+            oci_bind_by_name($compiled, ':lastName', $_POST['lastName'], 200);
+            oci_bind_by_name($compiled, ':lastName2', $_POST['lastName2'], 200);
+            oci_bind_by_name($compiled, ':clubTShirt', $clubNumber, 200);
+            oci_bind_by_name($compiled, ':selectionTShirt', $selectionNumber, 200);
+            oci_bind_by_name($compiled, ':clubCaptain', $_POST['club-captain'], 200);
+            oci_bind_by_name($compiled, ':selectionCaptain', $_POST['selection-captain'], 200);
+            oci_bind_by_name($compiled, ':countryID', $_POST['countryID'], 200);
+            oci_execute($compiled, OCI_NO_AUTO_COMMIT);
+            oci_commit($connection);
+            echo "The player with ID " . $_POST['DNI'] . " was created. ";
+            //store the pictures
+            if (!empty($_FILES["playerPicture"]["name"])) {
+                $target_dir = "../pictures/playerPictures/";
+                $target_file = $target_dir . basename($_FILES["playerPicture"]["name"]);
+                $uploadOk = 1;
+                $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
+                $target_file = $target_dir . $_POST['DNI'] . "." . $imageFileType;
+                //check if image file is an actual image or a fake image
+                $check = getimagesize($_FILES["playerPicture"]["tmp_name"]);
+                if ($check !== false) {
+                    //echo "File is an image - " . $check["mime"] . ".";
+                    $uploadOk = 1;
+                } else {
+                    echo "File is not an image.";
+                    $uploadOk = 0;
+                }
+                if ($_FILES["playerPicture"]["size"] > 5242880) {
+                    echo "Sorry, your file is too large.";
+                    $uploadOk = 0;
+                }
+                if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+                && $imageFileType != "gif" ) {
+                    echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+                    $uploadOk = 0;
+                }
+                if ($uploadOk == 0) {
+                echo "Sorry, your file was not uploaded.";
+                // if everything is ok, try to upload file
+                } else {
+                    if (move_uploaded_file($_FILES["playerPicture"]["tmp_name"], $target_file)) {
+                        echo "The file ". basename( $_FILES["playerPicture"]["name"]). " has been uploaded.";
+                    } else {
+                        echo "Sorry, there was an error uploading your file.";
+                    }
+                }
+                $query = 'BEGIN updates.playerPicture(:DNI, :fileLocation); END;';
+                $compiled = oci_parse($connection, $query);
+                oci_bind_by_name($compiled, ':DNI', $_POST['DNI'], 30);
+                oci_bind_by_name($compiled, ':fileLocation', $target_file, 200);
+                oci_execute($compiled, OCI_NO_AUTO_COMMIT);
+                oci_commit($connection);
+                echo "The player was assigned to club.";
+            }  
+        }
+        //assign player to a club
+        if (isset($_POST['club'])) {
+            $query = 'BEGIN inserts.playerbyteam(:teamID, :playerDNI); END;';
+            $compiled = oci_parse($connection, $query);
+            oci_bind_by_name($compiled, ':playerDNI', $_POST['DNI'], 30);
+            oci_bind_by_name($compiled, ':teamID', $_POST['club'], 200);
+            oci_execute($compiled, OCI_NO_AUTO_COMMIT);
+            oci_commit($connection);
+        }
+    }
+    //assign player to a selection
+    if (isset($_POST['playerToSelection'])) {
+
     }
 ?>
 <!DOCTYPE html>
@@ -140,17 +275,17 @@
                 teamPictures.appendChild(title);
                 var inputPicture = document.createElement("input");
                 inputPicture.type = "file";
-                inputPicture.name = "team-logo";
-                inputPicture.id = "team-logo";
+                inputPicture.name = "teamLogo";
+                inputPicture.id = "teamLogo";
                 inputPicture.accept = "image/*";
                 teamPictures.appendChild(inputPicture);
-                document.getElementById("team-logo").className = "form-control";
+                document.getElementById("teamLogo").className = "form-control";
             }
             else if (value == "1") {
-                if (!!document.getElementById("team-logo")) {
+                if (!!document.getElementById("teamLogo")) {
                     var logoTitle = document.getElementById("logoTitle");
                     logoTitle.parentNode.removeChild(logoTitle);
-                    var inputPicture = document.getElementById("team-logo");
+                    var inputPicture = document.getElementById("teamLogo");
                     inputPicture.parentNode.removeChild(inputPicture);
                 }
                     
@@ -595,6 +730,20 @@
                                 </li>
                                 <li>
                                     <a href="#">View registered teams</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-user fa-fw"></i> Players<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="#" data-toggle="modal" data-target="#registerNewPlayerModal">Register new player</a>
+                                </li>
+                                <li>
+                                    <a href="#" data-toggle="modal" data-target="#assignPlayerToSelectionModal">Assign player to Selection</a>
+                                </li>
+                                <li>
+                                    <a href="#">View registered players</a>
                                 </li>
                             </ul>
                         </li>
@@ -1218,6 +1367,142 @@
                                 </div>
                                 <div class = "col-md-2">
                                     <input name = "newTeam" class="btn btn-dark btn-lg" type = "submit" value = "Register team">
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--CREATE NEW PLAYER MODAL-->
+    <div class="modal fade" id="registerNewPlayerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a type="close" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="fa fa-times fa-2x"></i></span></a>
+                    <h1>Register New Player</h1>
+                </div>
+                <div class="modal-body">
+                    <form role="form" action="index.php" method="POST" class="registration-form" enctype="multipart/form-data">
+                        <div class="error">
+                            <?php //in case there's an error
+                                if (isset($_SESSION['newPlayerError'])) echo $_SESSION['newPlayerError']  . "<br>";
+                            ?>
+                        </div>
+                        <div class="player-picture" id="player-picture">
+                            <h3>Player's picture</h3>
+                            <input type="file" name="playerPicture" id = "playerPicture" accept="image/*" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <h3>First Name <b> *</b></h3>
+                            <input type="text" name="firstName" placeholder="Player's first name..." class="form-control" autocomplete="off">
+                            <h3>Last Name <b> *</b></h3>
+                            <input type="text" name="lastName" placeholder="Player's last name..." class="form-control" autocomplete="off">
+                            <h3>Second last name</h3>
+                            <input type="text" name="lastName2" placeholder="Player's second last name..." class="form-control" autocomplete="off">
+                            <h3>Player's DNI<b> *</b></h3>
+                            <input type="text" name="DNI" placeholder="Player's DNI..." class="form-control" autocomplete="off">
+                            
+                            <h3>Club</h3>
+                            <select name = "club" class="form-control"><?php
+                            $cursor = oci_new_cursor($connection);
+                            $query = 'BEGIN get.clubs(:cursor); END;';
+                            $compiled = oci_parse($connection, $query);
+                            oci_bind_by_name($compiled, ':cursor', $cursor, -1, OCI_B_CURSOR);
+                            oci_execute($compiled);
+                            oci_execute($cursor, OCI_DEFAULT);       //execute the cursor like a normal statement
+                            while (($row = oci_fetch_array($cursor, OCI_ASSOC+OCI_RETURN_NULLS)) != false) {
+                                echo "<option value=" . $row['TYPENAMEID'] . ">" . $row['TYPENAME'] . "</option>";
+                            }
+                            oci_free_statement($compiled);
+                            oci_free_statement($cursor);
+                            ?></select>
+
+                            <h3>T-shirt number with club</h3>
+                            <input type="number" name="clubNumber" class="form-control" min="1" max="99" step="1" placeholder="Number the player wears with his club...">
+                            <br><p>Is this player the captain of his club?</p>
+                            <input type="radio" name="club-captain" value=0 checked="yes"> No
+                            <input type="radio" name="club-captain" value=1> Yes
+                            
+                            <h3>Country <b> *</b></h3>
+                            <select name = "country" class="form-control"><?php
+                            $cursor = oci_new_cursor($connection);
+                            $query = 'BEGIN getCatalog.country(:cursor); END;';
+                            $compiled = oci_parse($connection, $query);
+                            oci_bind_by_name($compiled, ':cursor', $cursor, -1, OCI_B_CURSOR);
+                            oci_execute($compiled);
+                            oci_execute($cursor, OCI_DEFAULT);
+                            //output the code to $string and save the country name to our own array
+                            while (($row = oci_fetch_array($cursor, OCI_ASSOC+OCI_RETURN_NULLS)) != false) {
+                                echo "<option value=" . $row['TYPENAMEID'] . ">" . $row['TYPENAME'] . "</option>";
+                            }
+                            oci_free_statement($compiled);
+                            oci_free_statement($cursor);
+                            ?></select>
+
+                            <h3>T-shirt number with selection</h3>
+                            <input type="number" name="selectionNumber" class="form-control" min="1" max="99" step="1" placeholder="Number the player wears with its selection...">
+                            <br><p>Is this player the captain of his selection?</p>
+                            <input type="radio" name="selection-captain" value=0 checked="yes"> No
+                            <input type="radio" name="selection-captain" value=1> Yes
+                            <br><br><p><b>Note:</b> The assignation to a team is done on the Assign player to team modals on this same menu, once the player is created.</p>
+                        </div>
+                        <div class="modal-footer">
+                            <div class = "container">
+                            <div class ="row">
+                                <div class = "col-md-2">
+                                    <button type="button" class="btn btn-dark btn-lg" data-dismiss="modal">Close</button>
+                                </div>
+                                <div class = "col-md-2">
+                                    <input name = "newPlayer" class="btn btn-dark btn-lg" type = "submit" value = "Register player">
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--ASSIGN PLAYER TO SELECTION MODAL-->
+    <div class="modal fade" id="assignPlayerToSelectionModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a type="close" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="fa fa-times fa-2x"></i></span></a>
+                    <h1>Assign a Player to a Selection</h1>
+                </div>
+                <div class="modal-body">
+                    <form role="form" action="index.php" method="POST" class="registration-form" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <h3>Selection <b> *</b></h3>
+                            <select name = "club" class="form-control"><?php
+                            $cursor = oci_new_cursor($connection);
+                            $query = 'BEGIN get.selections(:cursor); END;';
+                            $compiled = oci_parse($connection, $query);
+                            oci_bind_by_name($compiled, ':cursor', $cursor, -1, OCI_B_CURSOR);
+                            oci_execute($compiled);
+                            oci_execute($cursor, OCI_DEFAULT);       //execute the cursor like a normal statement
+                            while (($row = oci_fetch_array($cursor, OCI_ASSOC+OCI_RETURN_NULLS)) != false) {
+                                echo "<option value=" . $row['TYPENAMEID'] . ">" . $row['TYPENAME'] . "</option>";
+                            }
+                            oci_free_statement($compiled);
+                            oci_free_statement($cursor);
+                            ?></select>
+                            <h3>Player <b> *</b></h3>
+                        </div>
+                        <div class="modal-footer">
+                            <div class = "container">
+                            <div class ="row">
+                                <div class = "col-md-2">
+                                    <button type="button" class="btn btn-dark btn-lg" data-dismiss="modal">Close</button>
+                                </div>
+                                <div class = "col-md-2">
+                                    <input name = "playerToSelection" class="btn btn-dark btn-lg" type = "submit" value = "Assign player">
                                 </div>
                             </div>
                             </div>
