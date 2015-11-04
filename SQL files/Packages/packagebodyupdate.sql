@@ -50,6 +50,22 @@ as
        END;
 -------------------------------------------------------------------------------
 
+procedure stadiumPicture (pStadiumID number, pPicture varchar2)
+  --update the column picture on the table stadium using the parameter pStadiumID
+as
+       BEGIN        
+           UPDATE stadiumcatalog s
+           SET s.picture = pPicture
+           WHERE pStadiumID = s.stadiumid;
+         
+        Exception
+         WHEN NO_DATA_FOUND THEN
+              DBMS_OUTPUT.PUT_LINE ('Stadium no update:' || pStadiumID);
+         commit;
+
+       END;
+-------------------------------------------------------------------------------
+
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------
