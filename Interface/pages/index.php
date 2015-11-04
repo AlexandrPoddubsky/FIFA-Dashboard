@@ -16,7 +16,7 @@
         if (empty($_POST["teamName"]) ||
             empty($_POST["teamType"]) ||
             empty($_POST["state"])) {
-            echo "Null obbligatory values";
+            echo "One or more obbligatory values were null.";
         }
         else {
             $teamType = intval($_POST["teamType"]);
@@ -135,7 +135,7 @@
         if (empty($_POST["firstName"]) ||
             empty($_POST["lastName"]) ||
             empty($_POST["DNI"])) {
-            echo "Null obbligatory values";
+            echo "One or more obbligatory values were null.";
         }
         else {
             //check if clubNumber was set
@@ -163,7 +163,7 @@
             oci_bind_by_name($compiled, ':selectionTShirt', $selectionNumber, 200);
             oci_bind_by_name($compiled, ':clubCaptain', $_POST['club-captain'], 200);
             oci_bind_by_name($compiled, ':selectionCaptain', $_POST['selection-captain'], 200);
-            oci_bind_by_name($compiled, ':countryID', $_POST['countryID'], 200);
+            oci_bind_by_name($compiled, ':countryID', $_POST['country'], 200);
             oci_execute($compiled, OCI_NO_AUTO_COMMIT);
             oci_commit($connection);
             echo "The player with ID " . $_POST['DNI'] . " was created. ";
@@ -208,7 +208,6 @@
                 oci_bind_by_name($compiled, ':fileLocation', $target_file, 200);
                 oci_execute($compiled, OCI_NO_AUTO_COMMIT);
                 oci_commit($connection);
-                echo "The player was assigned to club.";
             }  
         }
         //assign player to a club
@@ -219,11 +218,93 @@
             oci_bind_by_name($compiled, ':teamID', $_POST['club'], 200);
             oci_execute($compiled, OCI_NO_AUTO_COMMIT);
             oci_commit($connection);
+            echo " The player was assigned to club.";
         }
     }
     //assign player to a selection
     if (isset($_POST['playerToSelection'])) {
-
+        if (empty($_POST["player"]) ||
+            empty($_POST["selection"])) {
+            echo "One or more obbligatory values were null.";
+        }
+        else {
+            $query = 'BEGIN inserts.playerbyteam(:teamID, :playerDNI); END;';
+            $compiled = oci_parse($connection, $query);
+            oci_bind_by_name($compiled, ':playerDNI', $_POST['player'], 30);
+            oci_bind_by_name($compiled, ':teamID', $_POST['selection'], 200);
+            oci_execute($compiled, OCI_NO_AUTO_COMMIT);
+            oci_commit($connection);
+            echo " The player was assigned to selection.";
+        }
+    }
+    //register new stadium
+    if (isset($_POST['newStadium'])) {
+        if (empty($_POST["stadiumName"]) ||
+            empty($_POST["stadiumCapacity"]) ||
+            empty($_POST["state"])) {
+            echo "One or more obbligatory values were null.";
+        }
+        else {
+            $googleMapsID = "";
+            $capacity = intval($_POST['stadiumCapacity']);
+            $query = 'BEGIN inserts.stadium(:stadiumName, :googleMapsID, :capacity, :state); END;';
+            $compiled = oci_parse($connection, $query);
+            oci_bind_by_name($compiled, ':stadiumName', $_POST['stadiumName'], 100);
+            oci_bind_by_name($compiled, ':googleMapsID', $googleMapsID, 300);
+            oci_bind_by_name($compiled, ':capacity', $capacity, 200);
+            oci_bind_by_name($compiled, ':state', $_POST['state'], 200);
+            oci_execute($compiled, OCI_NO_AUTO_COMMIT);
+            oci_commit($connection);
+            echo "The stadium" . $_POST['stadiumName'] . " was created. ";
+            //get the stadium id
+            $query = 'BEGIN get.stadiumID(:stadiumID); END;';
+            $compiled = oci_parse($connection, $query);
+            oci_bind_by_name($compiled, ':stadiumID', $stadiumID, 200);
+            oci_execute($compiled, OCI_NO_AUTO_COMMIT);
+            oci_commit($connection);
+            //store the pictures
+            if (!empty($_FILES["stadiumPicture"]["name"])) {
+                $target_dir = "../pictures/stadiumPictures/";
+                $target_file = $target_dir . basename($_FILES["stadiumPicture"]["name"]);
+                $uploadOk = 1;
+                $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
+                $target_file = $target_dir . $stadiumID . "." . $imageFileType;
+                //check if image file is an actual image or a fake image
+                $check = getimagesize($_FILES["stadiumPicture"]["tmp_name"]);
+                if ($check !== false) {
+                    //echo "File is an image - " . $check["mime"] . ".";
+                    $uploadOk = 1;
+                } else {
+                    echo "File is not an image.";
+                    $uploadOk = 0;
+                }
+                if ($_FILES["stadiumPicture"]["size"] > 5242880) {
+                    echo "Sorry, your file is too large.";
+                    $uploadOk = 0;
+                }
+                if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+                && $imageFileType != "gif" ) {
+                    echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+                    $uploadOk = 0;
+                }
+                if ($uploadOk == 0) {
+                echo "Sorry, your file was not uploaded.";
+                // if everything is ok, try to upload file
+                } else {
+                    if (move_uploaded_file($_FILES["stadiumPicture"]["tmp_name"], $target_file)) {
+                        echo "The file ". basename( $_FILES["stadiumPicture"]["name"]). " has been uploaded.";
+                    } else {
+                        echo "Sorry, there was an error uploading your file.";
+                    }
+                }
+                $query = 'BEGIN updates.stadiumPicture(:DNI, :fileLocation); END;';
+                $compiled = oci_parse($connection, $query);
+                oci_bind_by_name($compiled, ':DNI', $stadiumID, 30);
+                oci_bind_by_name($compiled, ':fileLocation', $target_file, 200);
+                oci_execute($compiled, OCI_NO_AUTO_COMMIT);
+                oci_commit($connection);
+            }  
+        }
     }
 ?>
 <!DOCTYPE html>
@@ -291,7 +372,7 @@
                     
             }
         }
-
+        //City-country logic
         <?php 
             $countryArray = array();
             $countryArrayValues = array();
@@ -383,6 +464,98 @@
                 };
             }
         }
+        //selection-player logic
+        <?php 
+            $selectionArray = array();
+            $selectionArrayValues = array();
+            $string = ""; // string that goes on to be echoed to declare the countries array
+            $values = ""; //string to store the country values
+            $cursor = oci_new_cursor($connection);
+            $query = 'BEGIN get.selections(:cursor); END;';
+            $compiled = oci_parse($connection, $query);
+            oci_bind_by_name($compiled, ':cursor', $cursor, -1, OCI_B_CURSOR);
+            oci_execute($compiled);
+            oci_execute($cursor, OCI_DEFAULT);
+            $count = 1;
+            //output the code to $string and save the selection name to our own array
+            while (($row = oci_fetch_array($cursor, OCI_ASSOC+OCI_RETURN_NULLS)) != false) {
+                $string = $string . "\"" .  $row['TYPENAME'] . "\", ";
+                $selectionArray[$count] = $row['TYPENAME'];
+                $values = $values . "\"" . $row['TYPENAMEID'] . "\", ";
+                $selectionArrayValues[$count] = $row['TYPENAMEID'];
+                $count++;
+            }
+            oci_free_statement($compiled);
+            oci_free_statement($cursor);
+            //remove the last comma
+            $string = substr($string, 0, -2);
+            $values = substr($values, 0, -2);
+            echo "var selectionArray = new Array(" . $string . ");";
+            echo "var selectionArrayValues= new Array(" . $values . ");";
+        ?>
+        var playersArray = new Array();
+        var playersArrayValues = new Array();
+        playersArray[0] = "";
+        <?php
+            //start assigning players to selections
+            for ($i = 1; $i <= count($selectionArrayValues); $i++) {
+                $selectionID = $selectionArrayValues[$i];
+                $string = "";
+                $values = "";
+                $cursor = oci_new_cursor($connection);
+                $query = 'BEGIN get.playerBySelection(:selectionID, :cursor); END;';
+                $compiled = oci_parse($connection, $query);
+                oci_bind_by_name($compiled, ':cursor', $cursor, -1, OCI_B_CURSOR);
+                oci_bind_by_name($compiled, ':selectionID', $selectionID, 50);
+                oci_execute($compiled);
+                oci_execute($cursor, OCI_DEFAULT);       //execute the cursor like a normal statement
+   
+                while (($row = oci_fetch_array($cursor, OCI_ASSOC+OCI_RETURN_NULLS)) != false) {
+                    $string = $string . $row['TYPENAME'] . "|";
+                    $values = $values . $row['TYPENAMEID'] . "|";
+                }
+                oci_free_statement($compiled);
+                oci_free_statement($cursor);
+                $string = substr($string, 0, -1);
+                $values = substr($values, 0, -1);
+                echo "playersArray[" . $i . "] = \"" . $string . "\";\n";
+                echo "playersArrayValues[" . $i . "] = \"" . $values . "\";\n";
+            }
+        ?>
+
+        function populatePlayers( selectionElementId, playerElementId ) {
+            var selectedSelectionIndex = document.getElementById( selectionElementId ).selectedIndex;
+            var playerElement = document.getElementById( playerElementId );
+            playerElement.length=0; 
+            playerElement.options[0] = new Option('Select Player','');
+            playerElement.selectedIndex = 0;
+            
+            var player_arr = playersArray[selectedSelectionIndex].split("|");
+            var player_arr_values = playersArrayValues[selectedSelectionIndex].split("|");
+            
+            for (var i=0; i<player_arr.length; i++) {
+                playerElement.options[playerElement.length] = new Option(player_arr[i],player_arr_values[i]);
+            }
+        }
+
+        function populateSelections(selectionElementId, playerElementId){
+            // given the id of the <select> tag as function argument, it inserts <option> tags
+            var selectionElement = document.getElementById(selectionElementId);
+            selectionElement.length = 0;
+            selectionElement.options[0] = new Option('Select a Country Selection','-1');
+            selectionElement.selectedIndex = 0;
+            for (var i = 0; i < selectionArray.length; i++) {
+                selectionElement.options[selectionElement.length] = new Option(selectionArray[i],selectionArrayValues[i]);
+            }
+
+            // Assigned all selections. Now assign event listener for the players.
+
+            if( playerElementId ){
+                selectionElement.onchange = function(){
+                    populatePlayers(selectionElementId, playerElementId );
+                };
+            }
+        }
     </script>
 
 </head>
@@ -400,14 +573,11 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <div class="row">
-                    <div class="col-md-1">
-                        <img src="../img/logo.png">
-                    </div>
-                    <div class="col-md-11">
-                        <a class="navbar-brand" href="index.php">FIFA - Admin Dashboard</a>
-                    </div>
+                <div class="pull-left">
+                    <img src="../img/logo.png">
+                    <a class="navbar-brand" href="index.php">FIFA - Admin Dashboard</a>
                 </div>
+                
             </div>
             <!-- /.navbar-header -->
 
@@ -729,7 +899,7 @@
                                     <a href="#" data-toggle="modal" data-target="#createNewTeamModal">Create new team</a>
                                 </li>
                                 <li>
-                                    <a href="#">View registered teams</a>
+                                    <a href="#">View and edit registered teams</a>
                                 </li>
                             </ul>
                         </li>
@@ -743,7 +913,18 @@
                                     <a href="#" data-toggle="modal" data-target="#assignPlayerToSelectionModal">Assign player to Selection</a>
                                 </li>
                                 <li>
-                                    <a href="#">View registered players</a>
+                                    <a href="#">View and edit registered players</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-university fa-fw"></i> Stadiums<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="#" data-toggle="modal" data-target="#registerNewStadiumModal">Register New Stadium</a>
+                                </li>
+                                <li>
+                                    <a href="#">View and edit stadiums (not implemented)</a>
                                 </li>
                             </ul>
                         </li>
@@ -1480,20 +1661,12 @@
                     <form role="form" action="index.php" method="POST" class="registration-form" enctype="multipart/form-data">
                         <div class="form-group">
                             <h3>Selection <b> *</b></h3>
-                            <select name = "club" class="form-control"><?php
-                            $cursor = oci_new_cursor($connection);
-                            $query = 'BEGIN get.selections(:cursor); END;';
-                            $compiled = oci_parse($connection, $query);
-                            oci_bind_by_name($compiled, ':cursor', $cursor, -1, OCI_B_CURSOR);
-                            oci_execute($compiled);
-                            oci_execute($cursor, OCI_DEFAULT);       //execute the cursor like a normal statement
-                            while (($row = oci_fetch_array($cursor, OCI_ASSOC+OCI_RETURN_NULLS)) != false) {
-                                echo "<option value=" . $row['TYPENAMEID'] . ">" . $row['TYPENAME'] . "</option>";
-                            }
-                            oci_free_statement($compiled);
-                            oci_free_statement($cursor);
-                            ?></select>
+                            <select id="selection" name = "selection" class="form-control"></select>
                             <h3>Player <b> *</b></h3>
+                            <select name ="player" id ="player" class="form-control"></select>
+                            <script>
+                                populateSelections("selection", "player");
+                            </script>
                         </div>
                         <div class="modal-footer">
                             <div class = "container">
@@ -1503,6 +1676,49 @@
                                 </div>
                                 <div class = "col-md-2">
                                     <input name = "playerToSelection" class="btn btn-dark btn-lg" type = "submit" value = "Assign player">
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--REGISTER NEW STADIUM MODAL-->
+    <div class="modal fade" id="registerNewStadiumModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a type="close" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="fa fa-times fa-2x"></i></span></a>
+                    <h1>Register a New Stadium</h1>
+                </div>
+                <div class="modal-body">
+                    <form role="form" action="index.php" method="POST" class="registration-form" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <h3>Picture</h3>
+                            <input type="file" name="stadiumPicture" id="playerPicture" accept="image/*" class="form-control">
+                            <h3>Stadium name <b> *</b></h3>
+                            <input type="text" name="stadiumName" placeholder="Stadium name..." class="form-control">
+                            <h3>Capacity <b> *</b></h3>
+                            <input type="number" name="stadiumCapacity" class="form-control" min="1" max="1000000" step="1" placeholder="Stadium's maximum capacity...">
+                            <h3>Country <b> *</b></h3>
+                            <select id="country1" name ="country" class="form-control"></select>
+                            <h3>City <b> *</b></h3>
+                            <select id ="state1" name ="state" class="form-control"></select>
+                            <script>
+                                populateCountries("country1", "state1");
+                            </script>
+                        </div>
+                        <div class="modal-footer">
+                            <div class = "container">
+                            <div class ="row">
+                                <div class = "col-md-2">
+                                    <button type="button" class="btn btn-dark btn-lg" data-dismiss="modal">Close</button>
+                                </div>
+                                <div class = "col-md-2">
+                                    <input name = "newStadium" class="btn btn-dark btn-lg" type = "submit" value = "Register stadium">
                                 </div>
                             </div>
                             </div>

@@ -89,11 +89,16 @@ input {
 }
 
 .navbar-header img {
-    width: 100%; /* you can use % */
+    width: 50px; /* you can use % */
     height: auto;
     position: relative;
-    left: 30px;
-    top: 5px;
+    top: 2px;
+    right: 200px;
+}
+
+.navbar-header a {
+    position: relative;
+    left: 80px;
 }
 
 .sidebar .sidebar-nav.navbar-collapse {
