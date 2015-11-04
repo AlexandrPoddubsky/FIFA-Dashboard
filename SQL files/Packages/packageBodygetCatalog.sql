@@ -106,7 +106,8 @@ procedure stadium (pStadiumCatalog  out sys_refcursor) as
                 s.stadiumname as typeName,
                 s.googlemapsid as typegooglemapsid,
                 s.picture as typepicture,
-                s.capacity as typecapacity  
+                s.capacity as typecapacity,
+                s.cityid as typecity
          from stadiumcatalog s
          order by typeName;
          
@@ -123,7 +124,8 @@ procedure TDCatalog (pTDCatalog  out sys_refcursor) as
          select t.tdid as typeNameID,
                 t.tdfirstname as typeName,
                 t.tdlastname1 as typeName1,
-                t.tdnationality as typetdnationality
+                t.tdcounrtyid as typecountry,
+                t.tdpicture as typepicture
          from tdcatalog t
          order by typeName;
          

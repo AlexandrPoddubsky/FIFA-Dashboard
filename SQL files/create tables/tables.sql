@@ -162,9 +162,11 @@ CREATE TABLE StadiumCatalog
     stadiumName  VARCHAR2 (30) NOT NULL ,
     googleMapsID VARCHAR2 (300) ,
     picture      VARCHAR2 (300),
-    capacity     NUMBER (6) NOT NULL
+    capacity     NUMBER (6) NOT NULL,
+    cityID       number (5) NOT NULL
   ) ;
 ALTER TABLE StadiumCatalog ADD CONSTRAINT Stadium_PK PRIMARY KEY ( stadiumID ) ;
+
 
 -------------------------------------------------------------------------------
 
@@ -268,10 +270,12 @@ CREATE TABLE tdCatalog
     tdFirstName   VARCHAR2 (30) NOT NULL ,
     tdLastName1   VARCHAR2 (30) NOT NULL ,
     tdLastName2   VARCHAR2 (30) ,
-    tdNacionality VARCHAR2 (30)
+    tdCountryID   VARCHAR2 (3),
+    tdPicture     VARCHAR2 (300)
   ) ;
   
 ALTER TABLE tdCatalog ADD CONSTRAINT tdCatalog_PK PRIMARY KEY ( tdID ) ;
+
 -------------------------------------------------------------------------------
 CREATE TABLE teamTypeCatalog
   (

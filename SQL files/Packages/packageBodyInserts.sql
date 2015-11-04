@@ -95,7 +95,42 @@ as
        END;
   
 -------------------------------------------------------------------------------
+
+procedure stadium ( pstadiumname varchar2, pgooglemapsid varchar2, pcapacity number, pcityid number)
+as
+       BEGIN
+        
+         insert into stadiumcatalog (stadiumid,stadiumname,googlemapsid,capacity,cityid)
+         values(stadiumid_seq.nextval, pstadiumname , pgooglemapsid , pcapacity , pcityid ); 
+
+        Exception
+         WHEN VALUE_ERROR THEN
+              DBMS_OUTPUT.PUT_LINE ('Insert stadium error ');
+         WHEN OTHERS THEN
+              DBMS_OUTPUT.PUT_LINE ('Unexpected error');
+              RAISE;
+         commit;
+         
+                 
+       END; 
 -------------------------------------------------------------------------------
+procedure Td ( pTdfirstname varchar2, pTdlastname1 varchar2, pTdlastname2 varchar2, 
+               pTdcounrtyid varchar2, pTdpicture varchar2)
+as
+       BEGIN
+         insert into Tdcatalog(Tdid, Tdfirstname, Tdlastname1, Tdlastname2, Tdcounrtyid, Tdpicture )
+         values(TDID_seq.NextVal,pTdfirstname , pTdlastname1 , pTdlastname2 , 
+               pTdcounrtyid , pTdpicture );
+
+        Exception
+         WHEN VALUE_ERROR THEN
+              DBMS_OUTPUT.PUT_LINE ('Insert error ');
+         WHEN OTHERS THEN
+              DBMS_OUTPUT.PUT_LINE ('Unexpected error');
+              RAISE;
+         commit;
+
+       END;
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------

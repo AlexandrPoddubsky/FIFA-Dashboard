@@ -119,9 +119,11 @@ CREATE TABLE Player
     selectionTshirt    NUMBER (2) ,
     Picture            VARCHAR2 (300) ,
     clubcaptain        NUMBER (1) ,
-    selectioncaptain   NUMBER (1) 
+    selectioncaptain   NUMBER (1) ,
+    CountryID          VARCHAR2 (3)
   ) ;
 ALTER TABLE Player ADD CONSTRAINT Player_PK PRIMARY KEY ( DNI ) ;
+
 
 --ALTER TABLE Player add constraint DNI_uk unique(DNI);
 
@@ -160,9 +162,11 @@ CREATE TABLE StadiumCatalog
     stadiumName  VARCHAR2 (30) NOT NULL ,
     googleMapsID VARCHAR2 (300) ,
     picture      VARCHAR2 (300),
-    capacity     NUMBER (6) NOT NULL
+    capacity     NUMBER (6) NOT NULL,
+    cityID       number (5) NOT NULL
   ) ;
 ALTER TABLE StadiumCatalog ADD CONSTRAINT Stadium_PK PRIMARY KEY ( stadiumID ) ;
+
 
 -------------------------------------------------------------------------------
 
@@ -317,6 +321,8 @@ ALTER TABLE Team ADD CONSTRAINT Team_teamTypeCatalog_FK FOREIGN KEY ( teamTypeID
 ALTER TABLE actionByPlayerByGame ADD CONSTRAINT actionByPlayerByGame_FK FOREIGN KEY ( playerByGameID ) REFERENCES PlayerByGame ( playerByGameID ) ;
 
 ALTER TABLE actionByPlayerByGame ADD CONSTRAINT actionIDByPlayerByGame_FK FOREIGN KEY ( ActionID ) REFERENCES actionCatalog ( ActionID ) ;
+
+ALTER TABLE Player ADD CONSTRAINT country_FK FOREIGN KEY ( countryID ) REFERENCES countrycatalog ( countryID ) ;
 
 -------------------------------------------------------------------------------
 

@@ -34,7 +34,7 @@ as
        END;
        
 -------------------------------------------------------------------------------
-procedure picture (pPlayerID number, pPicture varchar2)
+procedure playerPicture (pPlayerID number, pPicture varchar2)
   --update the column logopath on the table team using the parameter plogopath
 as
        BEGIN        
@@ -45,6 +45,22 @@ as
         Exception
          WHEN NO_DATA_FOUND THEN
               DBMS_OUTPUT.PUT_LINE ('Team no found:' || pPlayerID);
+         commit;
+
+       END;
+-------------------------------------------------------------------------------
+
+procedure playerStadium (pStadiumID number, pPicture varchar2)
+  --update the column picture on the table stadium using the parameter pStadiumID
+as
+       BEGIN        
+           UPDATE stadiumcatalog s
+           SET s.picture = pPicture
+           WHERE pStadiumID = s.stadiumid;
+         
+        Exception
+         WHEN NO_DATA_FOUND THEN
+              DBMS_OUTPUT.PUT_LINE ('Stadium no update:' || pStadiumID);
          commit;
 
        END;

@@ -12,5 +12,11 @@ procedure player ( pDNI varchar2, pFirstName varchar2, pLastName1 varchar2, pLas
                pSelectionTshirt number, pclubCaptain number,pselectionCaptain number,pcountryID varchar2);
              
 procedure PlayerbyTeam ( pteamID number, pplayerDNI varchar2);
+
+procedure stadium ( pstadiumname varchar2, pgooglemapsid varchar2,
+                    ppicture varchar2, pcapacity number, pcityid number);
+
+procedure Td ( pTdfirstname varchar2, pTdlastname1 varchar2, pTdlastname2 varchar2, 
+               pTdcounrtyid varchar2, pTdpicture varchar2);
 -------------------------------------------------------------------------------
 END inserts;

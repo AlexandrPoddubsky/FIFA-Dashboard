@@ -34,6 +34,29 @@ begin
      VALUES (LogbookID_seq.Nextval,'ADMINF',user,sysdate,'playerbyteam','Insert','Inserting Player by Team');
 end;
 ------------------------------------------------------------------------------
+create or replace trigger beforeInsert_stadium
+       before insert
+       on stadiumcatalog for each row
+begin
+     INSERT INTO Logbook(LogbookID,Userconected,Schedule,Date_Time,Tablename,Action,Descrip)
+     VALUES (LogbookID_seq.Nextval,'ADMINF',user,sysdate,'stadiumcatalog','Insert','Inserting  a new stadium');
+end;
+------------------------------------------------------------------------------
+
+create or replace trigger beforeInsert_td
+       before insert
+       on tdcatalog for each row
+begin
+     INSERT INTO Logbook(LogbookID,Userconected,Schedule,Date_Time,Tablename,Action,Descrip)
+     VALUES (LogbookID_seq.Nextval,'ADMINF',user,sysdate,'tdcatalog','Insert','Inserting  a new TD');
+end;
+------------------------------------------------------------------------------
+
+
+
+
+
+
 
 create or replace trigger beforeInsert_team
        before insert of teamName on Team for each row
