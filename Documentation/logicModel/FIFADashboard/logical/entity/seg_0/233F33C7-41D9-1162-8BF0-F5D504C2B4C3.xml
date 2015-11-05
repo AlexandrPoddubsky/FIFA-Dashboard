@@ -1,0 +1,117 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="233F33C7-41D9-1162-8BF0-F5D504C2B4C3" name="Bitacora">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-27 03:17:06 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<engineerTo>
+<item key="4868DA42-719B-57C1-1720-90253DE167AF" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="bitacoraID" id="57015E8B-0113-1D15-7EEA-35A86D233A7E">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-27 03:19:15 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<engineerTo>
+<item key="4868DA42-719B-57C1-1720-90253DE167AF" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>8</dataTypePrecision>
+</Attribute>
+<Attribute name="userid" id="A1066A0B-1675-3BEA-7555-4DDF5628548C">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-27 03:18:06 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<engineerTo>
+<item key="4868DA42-719B-57C1-1720-90253DE167AF" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+</Attribute>
+<Attribute name="userName" id="07C674AF-B258-CDD6-A5EE-B17433BDE522">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-27 03:20:16 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<engineerTo>
+<item key="4868DA42-719B-57C1-1720-90253DE167AF" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+</Attribute>
+<Attribute name="date_Time" id="9BD85298-28F2-49B0-97DC-9365BA21EE79">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-27 03:27:06 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<engineerTo>
+<item key="4868DA42-719B-57C1-1720-90253DE167AF" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+</Attribute>
+<Attribute name="action" id="3EF377EA-9362-BF50-D4DB-2A4DB9FDCDD4">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-27 03:27:22 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<engineerTo>
+<item key="4868DA42-719B-57C1-1720-90253DE167AF" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+</Attribute>
+<Attribute name="description" id="F413271C-034D-BFBC-4FFA-D1C8A8A56DA7">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-27 03:30:32 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<engineerTo>
+<item key="4868DA42-719B-57C1-1720-90253DE167AF" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="B771AA0C-A2FE-CACB-4DB9-C2B4C9009823" name="Bitacora PK">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-27 03:20:12 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<engineerTo>
+<item key="4868DA42-719B-57C1-1720-90253DE167AF" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>57015E8B-0113-1D15-7EEA-35A86D233A7E</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

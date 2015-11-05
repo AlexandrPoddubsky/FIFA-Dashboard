@@ -1,0 +1,47 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="6C3C48C2-9FF1-91FF-11FC-B7FE8862B0D0" name="teamTypeCatalog">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-29 01:38:24 UTC</createdTime>
+<generatorID>DFD07BD0-236A-E938-1E9F-0C0B1DF4528A</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="teamTypeID" id="52FA3531-1A42-B60E-218C-369096640CF1">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-29 01:38:24 UTC</createdTime>
+<generatorID>2B20F8AC-0BD2-ACD7-E8FB-AD8332F88ABA</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="teamTypeName" id="D173785A-7FB1-DA54-A5CF-B83A9A490894">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-29 01:38:24 UTC</createdTime>
+<generatorID>0D765947-C798-668E-31F1-6C7EB2230B78</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="BBF9174A-9C06-B496-8D9B-D7ED15F3892D" name="teamTypeCatalog_PK">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-29 01:38:24 UTC</createdTime>
+<generatorID>49327822-AD0F-477C-61A3-2A1D62478A07</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="52FA3531-1A42-B60E-218C-369096640CF1"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

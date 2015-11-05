@@ -1,0 +1,78 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="910466A2-22F9-5F9E-80C7-D47349C46783" name="actionByPlayerByGame">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-29 03:25:42 UTC</createdTime>
+<generatorID>51D296CE-FA96-4CF9-E3FE-3406F7EB54AA</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="actionCatalog_ActionID" id="1BC63E4B-1134-8037-DE41-9E542B49E12E">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-29 03:25:42 UTC</createdTime>
+<generatorID>3B9BAECA-BEED-265A-59D4-622C9EA9DE91</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<delegate>9C593193-7669-B8B6-7E2A-5225F3281711</delegate>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="921DA583-4EEA-0C00-7BA7-5F407B4E1B2D" referredColumn="9C593193-7669-B8B6-7E2A-5225F3281711"/>
+</associations>
+</Column>
+<Column name="actionTime" id="F85E9A0B-C0BD-6FE0-6D6D-87296E3D4DE2">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-29 03:25:42 UTC</createdTime>
+<generatorID>ADD52F81-5F92-03EA-B344-02582ADE3CE8</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="PlayerByGamev1_playerByGameID" id="F4FF7D3C-0880-C361-B953-6BFC24DB83F7">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-29 03:25:42 UTC</createdTime>
+<generatorID>6D5FD3AD-E3A4-0ACF-0053-41474DDCB91C</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<delegate>CE310C34-1202-6260-0935-1E9E37895445</delegate>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="513A5544-F449-6E08-56C8-39E254E18E6B" referredColumn="CE310C34-1202-6260-0935-1E9E37895445"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="A32A8D03-64B1-563B-910A-0040D8C7EF31" name="actionByPlayerByGame_actionCatalog_FK">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-29 03:25:42 UTC</createdTime>
+<generatorID>55CB5051-477C-5D09-5A00-E7F448A1D116</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="1BC63E4B-1134-8037-DE41-9E542B49E12E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="FC5A153A-15D1-82E0-01C2-56A8B7903A82" name="actionByPlayerByGame_PlayerByGamev1_FK">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-29 03:25:42 UTC</createdTime>
+<generatorID>A5E14CBC-E521-AE88-F918-8B11D6F9E3E9</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F4FF7D3C-0880-C361-B953-6BFC24DB83F7"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -45,4 +45,6 @@
   
   GRANT CREATE sequence TO ADMINF;
   
+  grant create trigger to ADMINF;
+  
 

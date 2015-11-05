@@ -1,0 +1,61 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="1F943759-5FC1-1597-E097-D1E44A4B8502" name="TypePlayer">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-27 00:15:55 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<engineerTo>
+<item key="4868DA42-719B-57C1-1720-90253DE167AF" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="typeID" id="315807F6-E703-2F93-70FE-A91B97B72C18">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-27 00:16:50 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<engineerTo>
+<item key="4868DA42-719B-57C1-1720-90253DE167AF" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+</Attribute>
+<Attribute name="typeName" id="8B91F90E-2161-2ADC-F3B9-BE1907CFABAE">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-27 00:17:21 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<engineerTo>
+<item key="4868DA42-719B-57C1-1720-90253DE167AF" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="C6B89F68-343B-84FA-2834-842EF4BCE8D2" name="TypePlayer PK">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-27 00:17:17 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<engineerTo>
+<item key="4868DA42-719B-57C1-1720-90253DE167AF" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>315807F6-E703-2F93-70FE-A91B97B72C18</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

@@ -1,0 +1,14 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="AAC69D64-8ADD-E260-261F-209541DF7864" name="Game_StadiumCatalog_FK">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-27 02:40:09 UTC</createdTime>
+<generatorID>7965DAC5-2A95-4579-FE2A-DC93814AB5A9</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<containerWithKeyObject>3F5AE91C-6062-EC6E-873A-AED81E12E9CB</containerWithKeyObject>
+<deleteRule>NO ACTION</deleteRule>
+<localFKIndex>6B45D905-9EF4-4AB0-A846-EA6957475FFA</localFKIndex>
+<keyObject>B5A30664-747C-2565-D2D5-17A914FCC169</keyObject>
+<mandatory>true</mandatory>
+<transferable>true</transferable>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

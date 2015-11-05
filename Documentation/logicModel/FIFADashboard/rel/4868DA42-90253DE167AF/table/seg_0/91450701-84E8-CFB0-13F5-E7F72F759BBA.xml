@@ -1,0 +1,94 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="91450701-84E8-CFB0-13F5-E7F72F759BBA" name="Event">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-25 21:22:35 UTC</createdTime>
+<generatorID>1DCA7998-8A43-E0AE-2DD9-4A25EDF1BF1F</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="EventCatalog_eventID" id="9B471AA0-8DE7-87FE-227F-4DC29BB5E77E">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-25 21:22:35 UTC</createdTime>
+<generatorID>A7CFA25B-47E3-D2EA-A87C-039E134835C3</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<delegate>8F710A30-ADAC-1BE2-4DF1-4BE8390BE47C</delegate>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="4D289EFE-A221-3EA0-5326-17383358DBCA" referredColumn="8F710A30-ADAC-1BE2-4DF1-4BE8390BE47C"/>
+</associations>
+</Column>
+<Column name="eventDescription" id="E4D92206-A1BE-E588-9C4A-6ECFD6DE4020">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-25 21:22:35 UTC</createdTime>
+<generatorID>BAB5805D-F615-5E75-73BC-D3DA9965B277</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>300</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="startDate" id="F830D252-3079-CDCE-1561-BE6B8F54B7EF">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-25 21:22:35 UTC</createdTime>
+<generatorID>72C22CCE-E597-4C13-0D3A-E60A5C8492C3</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="endDate" id="DEDEA49D-B600-90CE-062B-2B1059556A6B">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-25 21:22:35 UTC</createdTime>
+<generatorID>FA2DF008-40B6-6251-2DE2-8F546132465E</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="maxTeams" id="1000A29A-3559-D574-3241-923E2E1A946B">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-25 21:22:35 UTC</createdTime>
+<generatorID>FBE23604-151F-4EF6-C13C-E23DA43BB589</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="0DBECC42-B639-A790-C70F-55072D553CF6" name="Event_PK">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-25 21:22:35 UTC</createdTime>
+<generatorID>5EB14C58-528B-00CA-4A60-0D15D4936A47</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="9B471AA0-8DE7-87FE-227F-4DC29BB5E77E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="C4508DA8-BD77-DD53-699C-B9EBE96458BB" name="Event_EventCatalog_FK">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-25 21:22:35 UTC</createdTime>
+<generatorID>D5C638EB-D76A-E044-29CC-D9C3C5777EC8</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="9B471AA0-8DE7-87FE-227F-4DC29BB5E77E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

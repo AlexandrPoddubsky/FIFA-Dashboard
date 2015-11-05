@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Relation_27" directorySegmentName="seg_0" id="7965DAC5-2A95-4579-FE2A-DC93814AB5A9">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-27 02:10:39 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<engineerTo>
+<item key="4868DA42-719B-57C1-1720-90253DE167AF" value="true"/>
+</engineerTo>
+<sourcePk>9DB0E788-3E6A-56C3-C6E0-82A54AE08616</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>EFDCF81B-19E7-15AE-0CF1-2D789A8C8052</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>266646F5-624C-5D93-BF30-11ABA1281983</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

@@ -1,0 +1,54 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="6D217419-7B1C-6387-42F7-B7EBD86A6FAA" name="actionCatalog">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-27 02:40:09 UTC</createdTime>
+<generatorID>DACA301E-E34D-3568-B7DE-D17319EA4721</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ActionID" id="9C593193-7669-B8B6-7E2A-5225F3281711">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-29 03:25:42 UTC</createdTime>
+<generatorID>759EF864-14CB-A755-4936-A3619CB4373F</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="actionName" id="0877DC72-29EE-A0A1-B475-154EB30836AA">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-29 03:25:42 UTC</createdTime>
+<generatorID>8169354D-BE68-1B8F-00C9-C7B3B0E0A3A3</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="5135EF1D-7CB6-01DF-2DF6-0A8AC708B97A" name="actionCatalog_PK">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-27 03:48:14 UTC</createdTime>
+<generatorID>71B8C076-5E5C-6F0F-0CE3-25F5D134E3F3</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="9C593193-7669-B8B6-7E2A-5225F3281711"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="8D0EAED1-5DDE-0276-2EF8-24EF7D9DB1E9" name="PlayerByGame_PK">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-27 02:40:09 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<indexState>Unique Constraint</indexState>
+</ind_PK_UK>
+</indexes>
+</Table>

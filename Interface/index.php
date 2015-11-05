@@ -7,6 +7,64 @@
    * Acts as the website's homepage, from where you can access if you are an administrator or access the 
    * game's statistics and view events.
    */
+
+    session_start(); //Start session
+    //--------------------Sign in---------------------
+    if (isset($_POST['submit'])) {//check if the form was sent
+
+        if (empty($_POST['email']) || empty($_POST['password'])) {
+            $_SESSION['loginerror'] = "Username or password is invalid";
+            header("Location: index.php#invalidData");
+        }
+        else { //establish a connection to the db
+            $connection = oci_connect("ADMINF", "FIFA123", "(DESCRIPTION = (ADDRESS_LIST =
+                                (ADDRESS = (PROTOCOL = TCP)(HOST = 172.26.50.118)(PORT = 1521)))
+                                (CONNECT_DATA =(SERVICE_NAME = FIFADB)))");
+            if (!$connection) {
+                echo "Invalid connection " . var_dump(ocierror());
+                die();
+            }
+
+            // gets values from index.php
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+            $usernameID = 0;    //variable to store the usernameID
+            $passCheck = 0;     //variable to check if username+password match
+            echo $_POST['email'];
+            echo $_POST['password'];
+
+            //ask the db to check for if the password matches this email
+            $query = 'BEGIN checkpassword(:email, :pass, :passCheck); END;';
+            $compiled = oci_parse($connection, $query);
+            oci_bind_by_name($compiled, ':email', $email);
+            oci_bind_by_name($compiled, ':pass', $password);
+            oci_bind_by_name($compiled, ':passCheck', $passCheck);
+            oci_execute($compiled, OCI_NO_AUTO_COMMIT);
+            oci_commit($connection);
+            $_SESSION['email'] = $_POST['email']; //store the user's email
+
+            if ($passCheck == 1) { //if the password+email combination was correct
+                //get the ID related to this email
+                $query = 'BEGIN getID(:email, :usernameID); END;';
+                $compiled = oci_parse($connection, $query);
+                oci_bind_by_name($compiled, ':email', $email, 50);
+                oci_bind_by_name($compiled, ':usernameID', $usernameID, 5);
+                oci_execute($compiled, OCI_NO_AUTO_COMMIT);
+                oci_commit($connection);
+
+                //Store the user ID
+                $_SESSION['usernameID'] = $usernameID;
+
+                header("Location: pages/index.php");
+            }
+            else {  //if the combination username+password were denied by the db
+                $_SESSION['loginerror'] = "Username and password combination were invalid.";
+                header("Location: index.php#username+passworddonotmatch");
+            }
+            oci_close($connection);
+        }
+    }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,6 +89,8 @@
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Oswald" />
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -38,7 +98,6 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
 </head>
 
 <body>
@@ -49,7 +108,7 @@
         <ul class="sidebar-nav">
             <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
             <li class="sidebar-brand">
-                <a href="#top"  onclick = $("#menu-close").click(); >Start Bootstrap</a>
+                <a href="#top"  onclick = $("#menu-close").click(); ><h1>FIFA Dashboard</h1></a>
             </li>
             <li>
                 <a href="#top" onclick = $("#menu-close").click(); >Home</a>
@@ -61,7 +120,7 @@
                 <a href="#services" onclick = $("#menu-close").click(); >Services</a>
             </li>
             <li>
-                <a href="#portfolio" onclick = $("#menu-close").click(); >Portfolio</a>
+                <a href="#" class="btn-link" data-toggle="modal" data-target="#signInModal">Sign In</a>
             </li>
             <li>
                 <a href="#contact" onclick = $("#menu-close").click(); >Contact</a>
@@ -72,12 +131,19 @@
     <!-- Header -->
     <header id="top" class="header">
         <div class="text-vertical-center">
-            <h1>FIFA Dashboard</h1>
-            <h3>A real-time statistics center for your favorite football cups</h3>
-            <br>
+            <div class="orange-box">
+                <br><h1><span>FIFA Dashboard</span></h1>
+                <h3><span>A real-time statistics center for your favorite football cups</span></h3><br>
+            </div><br>
             <a href="#about" class="btn btn-dark btn-lg">Find Out More</a>
+            
+        </div>
+        <div class="pull-down-center">
+            <img src="img/logo white.png" alt="FIFA Dashboard">
         </div>
     </header>
+        
+    
 
     <!-- About -->
     <section id="about" class="about">
@@ -91,7 +157,7 @@
                             </div>
                         </div>
                         <div class="col-md-8">
-                            <h2>Text here</h2>
+                            <h2>About</h2>
                         </div>
                     </div>
                 </div>
@@ -114,52 +180,48 @@
                             <div class="service-item">
                                 <span class="fa-stack fa-4x">
                                 <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-cloud fa-stack-1x text-primary"></i>
+                                <i class="fa fa-futbol-o fa-stack-1x text-primary"></i>
                             </span>
                                 <h4>
-                                    <strong>Service Name</strong>
+                                    <strong>Teams</strong>
                                 </h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                                <a href="#" class="btn btn-light">Learn More</a>
+                                <p>Things you can see about teams.</p>
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-6">
                             <div class="service-item">
                                 <span class="fa-stack fa-4x">
                                 <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-compass fa-stack-1x text-primary"></i>
+                                <i class="fa fa-user fa-stack-1x text-primary"></i>
                             </span>
                                 <h4>
-                                    <strong>Service Name</strong>
+                                    <strong>Players</strong>
                                 </h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                                <a href="#" class="btn btn-light">Learn More</a>
+                                <p>Things you can see about players.</p>
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-6">
                             <div class="service-item">
                                 <span class="fa-stack fa-4x">
                                 <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-flask fa-stack-1x text-primary"></i>
+                                <i class="fa fa-trophy fa-stack-1x text-primary"></i>
                             </span>
                                 <h4>
-                                    <strong>Service Name</strong>
+                                    <strong>World cups and club tournaments around the world</strong>
                                 </h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                                <a href="#" class="btn btn-light">Learn More</a>
+                                <p>Information about every soccer world cup and club tournament.</p>
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-6">
                             <div class="service-item">
                                 <span class="fa-stack fa-4x">
                                 <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-shield fa-stack-1x text-primary"></i>
+                                <i class="fa fa-line-chart fa-stack-1x text-primary"></i>
                             </span>
                                 <h4>
-                                    <strong>Service Name</strong>
+                                    <strong>Game statistics</strong>
                                 </h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                                <a href="#" class="btn btn-light">Learn More</a>
+                                <p>Statistics features here.</p>
                             </div>
                         </div>
                     </div>
@@ -171,73 +233,6 @@
         </div>
         <!-- /.container -->
     </section>
-
-    <!-- Callout -->
-    <aside class="callout">
-        <div class="text-vertical-center">
-            <h1>Vertically Centered Text</h1>
-        </div>
-    </aside>
-
-    <!-- Portfolio -->
-    <section id="portfolio" class="portfolio">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-10 col-lg-offset-1 text-center">
-                    <h2>Our Work</h2>
-                    <hr class="small">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="portfolio-item">
-                                <a href="#">
-                                    <img class="img-portfolio img-responsive" src="img/portfolio-1.jpg">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="portfolio-item">
-                                <a href="#">
-                                    <img class="img-portfolio img-responsive" src="img/portfolio-2.jpg">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="portfolio-item">
-                                <a href="#">
-                                    <img class="img-portfolio img-responsive" src="img/portfolio-3.jpg">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="portfolio-item">
-                                <a href="#">
-                                    <img class="img-portfolio img-responsive" src="img/portfolio-4.jpg">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /.row (nested) -->
-                    <a href="#" class="btn btn-dark">View More Items</a>
-                </div>
-                <!-- /.col-lg-10 -->
-            </div>
-            <!-- /.row -->
-        </div>
-        <!-- /.container -->
-    </section>
-
-    <!-- Call to Action -->
-    <aside class="call-to-action bg-primary">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h3>The buttons below are impossible to resist.</h3>
-                    <a href="#" class="btn btn-lg btn-light">Click Me!</a>
-                    <a href="#" class="btn btn-lg btn-dark">Look at Me!</a>
-                </div>
-            </div>
-        </div>
-    </aside>
 
     <!-- Map -->
     <!--<section id="contact" class="map">
@@ -250,35 +245,35 @@
     </section>-->
 
     <!-- Footer -->
-    <footer>
+    <footer><div id="contact">
         <div class="container">
             <div class="row">
                 <div class="col-lg-10 col-lg-offset-1 text-center">
-                    <h4><strong>Start Bootstrap</strong>
+                    <h4><strong>FIFA Dashboard</strong>
                     </h4>
-                    <p>3481 Melrose Place<br>Beverly Hills, CA 90210</p>
+                    <p>Bases de Datos I - Tecnológico de Costa Rica</p>
                     <ul class="list-unstyled">
-                        <li><i class="fa fa-phone fa-fw"></i> (123) 456-7890</li>
-                        <li><i class="fa fa-envelope-o fa-fw"></i>  <a href="mailto:name@example.com">name@example.com</a>
-                        </li>
+                        <li>Gabriela Garro Abdykerimov <i class="fa fa-envelope-o fa-fw"></i>  
+                        <a href="mailto:name@example.com">ggarroab@gmail.com</a></li>
+                        <li>Alexis Arguedas Cruz <i class="fa fa-envelope-o fa-fw"></i>  
+                        <a href="mailto:name@example.com">aarguedas@gmail.com</a></li>
+                        <li>Yanil Gómez Navarro <i class="fa fa-envelope-o fa-fw"></i>  
+                        <a href="mailto:name@example.com">yanil.gomeznav@gmail.com</a></li>
                     </ul>
                     <br>
                     <ul class="list-inline">
                         <li>
-                            <a href="#"><i class="fa fa-facebook fa-fw fa-3x"></i></a>
+                            <a href="https://github.com/gabygarro/fifa-dashboard/"><i class="fa fa-github fa-fw fa-3x"></i></a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-twitter fa-fw fa-3x"></i></a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-dribbble fa-fw fa-3x"></i></a>
+                            <a href="#"><i class="fa fa-file-text fa-fw fa-3x"></i></a>
                         </li>
                     </ul>
                     <hr class="small">
-                    <p class="text-muted">Copyright &copy; Your Website 2014</p>
+                    <p class="text-muted">Copyright &copy; FIFA Dashboard 2015</p>
                 </div>
             </div>
-        </div>
+        </div></div>
     </footer>
 
     <!-- jQuery -->
@@ -318,6 +313,57 @@
         });
     });
     </script>
+
+    <!--SIGN IN MODAL-->
+   <div class="modal fade" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+      <div class="modal-dialog" role="document">
+         <div class="modal-content">
+            <div class="modal-header">
+               <a type="close" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="fa fa-times fa-2x"></i></span></a>
+               <h1 class="modal-title" id="myModalLabel">Sign in</h1>
+            </div>
+            <div class="modal-body">
+               <form role="form" action="index.php" method="POST" class="registration-form">
+                  <div class="form-group">
+                  <div class="error">
+                     <?php //in case there's an error
+                        if (isset($_SESSION['loginerror'])) echo $_SESSION['loginerror']  . "<br>";
+                     ?>
+                  </div>
+                    <label for="form-email">Email</label>
+                    <input type="text" name="email" placeholder="Email..." class="form-email form-control" id="form-email">
+                  </div>
+                  <div class = "form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" name ="password" class="form-control" id="exampleInputPassword1" placeholder="Password...">
+                  </div>
+                <div class="modal-footer">
+                        <div class = "container">
+                        <div class ="row">
+                           <div class = "col-md-2">
+                              <button type="button" class="btn btn-dark btn-lg" data-dismiss="modal">Close</button>
+                           </div>
+                           <div class = "col-md-2">
+                              <input name = "submit" class="btn btn-dark btn-lg" type = "submit" value = "Sign in">
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </form>
+            </div>
+         </div>
+      </div>
+   </div>
+
+   <?php //auto pop-up the sign in modal in case there was an error
+        if (!empty($_SESSION['loginerror'])) {
+            echo "<script type=\"text/javascript\">
+                $(window).load(function(){
+                    $('#signInModal').modal('show');
+                });</script>";
+            //unset($_SESSION['loginerror']);
+        }
+    ?>
 
 </body>
 

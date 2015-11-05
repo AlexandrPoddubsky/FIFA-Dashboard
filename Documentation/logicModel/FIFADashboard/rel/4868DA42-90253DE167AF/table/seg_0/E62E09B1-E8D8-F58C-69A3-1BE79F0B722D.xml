@@ -1,0 +1,82 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="E62E09B1-E8D8-F58C-69A3-1BE79F0B722D" name="StadiumCatalog">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-25 21:22:35 UTC</createdTime>
+<generatorID>EFDCF81B-19E7-15AE-0CF1-2D789A8C8052</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="stadiumID" id="10909C0A-4856-5AC2-0D02-A844DC53566E">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-25 21:22:35 UTC</createdTime>
+<generatorID>08B2169B-6BA2-CC64-E0D3-A908941A3047</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="stadiumName" id="55808AEB-B0ED-0A6F-466E-CAD027CEC12E">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-25 21:22:35 UTC</createdTime>
+<generatorID>4B5D1C00-29C7-9E2F-FE16-455AC47BDCF1</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="googleMapsID" id="3E7F5210-9672-E5B9-DEB2-C15B6B432B71">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-25 21:22:35 UTC</createdTime>
+<generatorID>AA9BA64F-3163-7267-51E1-3F5AEC77C3CE</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>300</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="picture" id="AF95D56B-955E-2EB6-5205-23C4CCD038D1">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-25 21:22:35 UTC</createdTime>
+<generatorID>AB3C8CD0-18DD-F1AE-B047-92B98629CC1E</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>300</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Capacity" id="22C9E65A-5897-2642-D177-8D8676AC82ED">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-29 01:38:24 UTC</createdTime>
+<generatorID>947117B2-EA66-B4C4-97A9-98EBE2190CEE</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>6</dataTypePrecision>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="B5A30664-747C-2565-D2D5-17A914FCC169" name="StadiumCatalog_PK">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-25 21:22:35 UTC</createdTime>
+<generatorID>9DB0E788-3E6A-56C3-C6E0-82A54AE08616</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="10909C0A-4856-5AC2-0D02-A844DC53566E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

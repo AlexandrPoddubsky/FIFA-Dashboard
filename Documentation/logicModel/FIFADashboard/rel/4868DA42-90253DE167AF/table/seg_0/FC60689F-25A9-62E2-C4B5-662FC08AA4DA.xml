@@ -1,0 +1,23 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="FC60689F-25A9-62E2-C4B5-662FC08AA4DA" name="Parameter">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-27 03:48:14 UTC</createdTime>
+<generatorID>FF9F6CFF-27B2-390E-A0BD-EB3F17E101AF</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ParameterID" id="7BA51F65-2AA5-ABE4-FFD9-ACBF4E7D1892">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-27 03:48:14 UTC</createdTime>
+<generatorID>04BD2163-9A16-6640-6FB2-9610821A3497</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+</Table>

@@ -1,0 +1,47 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="F53F0F38-6FEF-EF3D-2303-3AF17A4B74AA" name="Continent">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-25 21:22:35 UTC</createdTime>
+<generatorID>73D4ADD8-898B-5B63-9114-FCCAD8F56B26</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="continentID" id="EA87B9E8-D982-3EA6-4BC7-EC27627A930D">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-25 21:22:35 UTC</createdTime>
+<generatorID>7D8D76D0-E7CB-7E21-75E5-1B6F0C66AE60</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="nameContinent" id="00764763-6001-47FA-BAE4-1824F7B655E5">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-25 21:22:35 UTC</createdTime>
+<generatorID>A4125913-F656-00CE-24C9-B50817647B61</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="351037CF-B564-89D8-E997-7450D09B1F5B" name="Continent_PK">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-25 21:22:35 UTC</createdTime>
+<generatorID>B23B8B42-161C-2847-BB24-6542766EBA70</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="EA87B9E8-D982-3EA6-4BC7-EC27627A930D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

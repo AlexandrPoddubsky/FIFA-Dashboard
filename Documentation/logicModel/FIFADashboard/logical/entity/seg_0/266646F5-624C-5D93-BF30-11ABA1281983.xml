@@ -55,6 +55,32 @@
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>5</dataTypePrecision>
 </Attribute>
+<Attribute name="stadiumID" id="26813370-42DA-70C7-BE50-3E32430E6E8B">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-27 02:10:39 UTC</createdTime>
+<generatorID>7965DAC5-2A95-4579-FE2A-DC93814AB5A9</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<engineerTo>
+<item key="4868DA42-719B-57C1-1720-90253DE167AF" value="true"/>
+</engineerTo>
+<referedAttribute>08B2169B-6BA2-CC64-E0D3-A908941A3047</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+</Attribute>
+<Attribute name="date_Time" id="65994220-BC01-EED8-2010-56E4EBFC14F1">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-27 04:09:23 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<engineerTo>
+<item key="4868DA42-719B-57C1-1720-90253DE167AF" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+</Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
 <identifier id="6EF24A37-96B7-8E54-8E96-E665BA9CC45C" name="Game PK">

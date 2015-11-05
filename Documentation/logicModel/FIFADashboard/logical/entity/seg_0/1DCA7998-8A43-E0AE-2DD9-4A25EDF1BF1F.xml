@@ -16,31 +16,19 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="eventID" id="C23F9A8B-E8A2-7CA9-7153-E959E442C2D1">
+<Attribute name="eventID" id="A7CFA25B-47E3-D2EA-A87C-039E134835C3">
 <createdBy>aarguedas</createdBy>
-<createdTime>2015-10-24 06:10:08 UTC</createdTime>
-<generatorID>Generado por el Usuario</generatorID>
+<createdTime>2015-10-25 21:11:14 UTC</createdTime>
+<generatorID>D5C638EB-D76A-E044-29CC-D9C3C5777EC8</generatorID>
 <ownerDesignName>FIFADashboard</ownerDesignName>
 <engineerTo>
 <item key="4868DA42-719B-57C1-1720-90253DE167AF" value="true"/>
 </engineerTo>
+<referedAttribute>2C91F90F-A2F3-C6E3-A41A-D452FD828E8B</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>5</dataTypePrecision>
-</Attribute>
-<Attribute name="eventName" id="06E38E94-B156-70D2-A5F3-66EDB3365FD4">
-<createdBy>aarguedas</createdBy>
-<createdTime>2015-10-24 06:10:38 UTC</createdTime>
-<generatorID>Generado por el Usuario</generatorID>
-<ownerDesignName>FIFADashboard</ownerDesignName>
-<engineerTo>
-<item key="4868DA42-719B-57C1-1720-90253DE167AF" value="true"/>
-</engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>30</dataTypeSize>
 </Attribute>
 <Attribute name="eventDescription" id="BAB5805D-F615-5E75-73BC-D3DA9965B277">
 <createdBy>aarguedas</createdBy>
@@ -79,6 +67,19 @@
 <use>1</use>
 <logicalDatatype>LOGDT007</logicalDatatype>
 </Attribute>
+<Attribute name="maxTeams" id="FBE23604-151F-4EF6-C13C-E23DA43BB589">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-25 21:14:45 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<engineerTo>
+<item key="4868DA42-719B-57C1-1720-90253DE167AF" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+</Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
 <identifier id="5EB14C58-528B-00CA-4A60-0D15D4936A47" name="Event PK">
@@ -91,7 +92,7 @@
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>
-<attributeRef>C23F9A8B-E8A2-7CA9-7153-E959E442C2D1</attributeRef>
+<attributeRef>A7CFA25B-47E3-D2EA-A87C-039E134835C3</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>

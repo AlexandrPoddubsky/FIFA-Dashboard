@@ -1,0 +1,123 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="C81DD0BC-7A64-A4DB-1145-543DA047A5C8" name="Statistic">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-25 23:17:47 UTC</createdTime>
+<generatorID>FCFAF058-A693-8EEE-9A97-D744478E9BE5</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="statID" id="8B4064BA-CDDB-59F0-D058-28A10021077B">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-25 23:17:47 UTC</createdTime>
+<generatorID>35E2B8D7-F527-3AC4-C41F-9FA6900985D1</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="played" id="018121C2-5307-F304-03D8-720860B19365">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-25 23:17:47 UTC</createdTime>
+<generatorID>25E125EE-3110-678F-EDBA-FD2856941291</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="won" id="66130153-A3D4-B6BF-16F1-768407295391">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-25 23:17:47 UTC</createdTime>
+<generatorID>E8DF6B9F-A054-5FD8-001D-A45AEE54D8CE</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="draw" id="2FB51293-6EE3-CD06-B1D2-14CF0A734DFF">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-25 23:17:47 UTC</createdTime>
+<generatorID>1102DF24-FFD6-4E0B-37E1-076F63CB544D</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="lost" id="62204FC1-34CF-531F-B4B7-218302CD36F2">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-25 23:17:47 UTC</createdTime>
+<generatorID>E1331D50-DA32-DD59-E3F9-5576FB50FAB3</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="goalsFor" id="FFBB25A3-D2A2-6752-F5F4-4244CFA2802C">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-25 23:17:47 UTC</createdTime>
+<generatorID>F0B21926-B32A-A6A8-0421-C9D9109CF371</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="goalsAgainst" id="94B81A9C-9538-5BA3-51BA-3B49EC8029B7">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-25 23:17:47 UTC</createdTime>
+<generatorID>3C37F0F3-A2F0-5D3D-A31B-0834B55DFB21</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="goalsDifference" id="F7969D42-BCF8-ACEA-FF51-9139D503A6E7">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-25 23:17:47 UTC</createdTime>
+<generatorID>F62921FE-2FFF-0E78-6F68-CAE455FC0662</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="fairPlayPoints" id="2E14B0F0-C0F3-410C-4716-006C79589950">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-25 23:17:47 UTC</createdTime>
+<generatorID>B6482BFC-8916-622F-631F-FB064E33D40D</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="2E3863C3-0020-247C-4B8B-30012D181F31" name="Statistic_PK">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-25 23:17:47 UTC</createdTime>
+<generatorID>B5CA91F2-A171-9704-05D6-433B10A587DF</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8B4064BA-CDDB-59F0-D058-28A10021077B"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,5 +1,5 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="7D75B8F6-2DEE-1A6E-A706-831A17CD04F7" name="lineupCatalog">
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="7D75B8F6-2DEE-1A6E-A706-831A17CD04F7" name="LineupCatalog">
 <createdBy>aarguedas</createdBy>
 <createdTime>2015-10-24 06:27:15 UTC</createdTime>
 <generatorID>Generado por el Usuario</generatorID>

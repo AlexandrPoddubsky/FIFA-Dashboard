@@ -1,0 +1,74 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="9F8DC88E-2970-E2E6-CC10-84E5FB90F938" name="CountryCatalog">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-25 21:22:35 UTC</createdTime>
+<generatorID>9D5EA180-8431-9B80-3615-8EEF7914BFD7</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="countryID" id="60E81568-244A-BE7B-F1EE-1C0BC33E95FC">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-25 21:22:35 UTC</createdTime>
+<generatorID>9298E4FC-C8FD-68D5-9146-28ED3D53B2C8</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="countryName" id="7499548C-3F6F-E090-4DD4-E41C19C3A45D">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-25 21:22:35 UTC</createdTime>
+<generatorID>C27A2440-6E8C-13C0-28E3-F848B6E14F72</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Continent_continentID" id="A4979D9D-C082-7187-29B5-852435BE4732">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-25 21:58:09 UTC</createdTime>
+<generatorID>4F15AD8F-ACF6-A567-BA16-65124B5A708F</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<delegate>EA87B9E8-D982-3EA6-4BC7-EC27627A930D</delegate>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="2B5CB9D6-18FB-B627-C2D5-840311208A6E" referredColumn="EA87B9E8-D982-3EA6-4BC7-EC27627A930D"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="C5D0329C-D9CA-7A71-9312-1CE6948BAA07" name="CountryCatalog_PK">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-25 21:22:35 UTC</createdTime>
+<generatorID>77236CA8-2D5A-1150-23E0-FE5CCB74BF6C</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="60E81568-244A-BE7B-F1EE-1C0BC33E95FC"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="6142DFCF-E9C4-BC71-1E41-F56E26521137" name="CountryCatalog_Continent_FK">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-25 21:58:09 UTC</createdTime>
+<generatorID>EB97E570-4C3A-433C-1963-DCDFC13DD05E</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A4979D9D-C082-7187-29B5-852435BE4732"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

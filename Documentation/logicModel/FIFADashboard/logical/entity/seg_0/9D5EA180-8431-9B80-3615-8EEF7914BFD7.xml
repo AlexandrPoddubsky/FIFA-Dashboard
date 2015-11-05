@@ -1,5 +1,5 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="9D5EA180-8431-9B80-3615-8EEF7914BFD7" name="countryCatalog">
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="9D5EA180-8431-9B80-3615-8EEF7914BFD7" name="CountryCatalog">
 <createdBy>aarguedas</createdBy>
 <createdTime>2015-10-24 05:25:17 UTC</createdTime>
 <generatorID>Generado por el Usuario</generatorID>
@@ -41,6 +41,20 @@
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
 <dataTypeSize>30</dataTypeSize>
+</Attribute>
+<Attribute name="continentID" id="4F15AD8F-ACF6-A567-BA16-65124B5A708F">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-10-25 21:37:06 UTC</createdTime>
+<generatorID>EB97E570-4C3A-433C-1963-DCDFC13DD05E</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<engineerTo>
+<item key="4868DA42-719B-57C1-1720-90253DE167AF" value="true"/>
+</engineerTo>
+<referedAttribute>7D8D76D0-E7CB-7E21-75E5-1B6F0C66AE60</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
