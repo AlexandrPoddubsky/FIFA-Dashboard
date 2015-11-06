@@ -77,6 +77,40 @@ procedure stadiumID (pStadiumID  out number) as
               DBMS_OUTPUT.PUT_LINE ('StadiumID no found:');
        END;
 -------------------------------------------------------------------------------
-   
+ procedure TDID (pTdID  out number) as
+ -- Gets all team  that ptype and return the names in the sys_refcursor.
+       BEGIN
+         
+         select max(t.tdid) into pTdID
+         from tdcatalog t;
+         --where t.teamtypeid = ptype
+         
+         
+         Exception
+         WHEN NO_DATA_FOUND THEN
+              DBMS_OUTPUT.PUT_LINE ('StadiumID no found:');
+       END;
+-------------------------------------------------------------------------------
+procedure teams ( pTeams  out sys_refcursor) as
+ -- Gets all team  that pSelection and return the ids and names in the sys_refcursor.
+       BEGIN
+         
+        open pTeams for
+         select t.teamid as teamID, t.teamname as teamname,
+                c.cityname as city, cc.countryname as country,
+                t.logopath as logo, t.flagpath as flag,
+                tt.teamtypename as teamtype          
+         from team t, citycatalog c, countrycatalog cc, teamtypecatalog tt
+         where t.cityid = c.cityid and c.countryid = cc.countryid and tt.teamtypeid = t.teamtypeid 
+         order by teamtype,teamname;
+         Exception
+         WHEN NO_DATA_FOUND THEN
+              DBMS_OUTPUT.PUT_LINE ('Catalog no found:');
+       END;     
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
    
 END get;

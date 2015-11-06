@@ -8,4 +8,7 @@ procedure playerPicture (pPlayerID number, pPicture varchar2);
 
 procedure stadiumPicture (pStadiumID number, pPicture varchar2);
 
+procedure tdPicture (pTdID number, pPicture varchar2);
+
+
 END updates;

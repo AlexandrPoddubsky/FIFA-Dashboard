@@ -15,7 +15,6 @@ procedure PlayerbyTeam ( pteamID number, pplayerDNI varchar2);
 
 procedure stadium ( pstadiumname varchar2, pgooglemapsid varchar2, pcapacity number, pcityid number);
 
-procedure Td ( pTdfirstname varchar2, pTdlastname1 varchar2, pTdlastname2 varchar2, 
-               pTdcounrtyid varchar2, pTdpicture varchar2);
+procedure Td ( pTdfirstname varchar2, pTdlastname1 varchar2, pTdlastname2 varchar2,pTdcounrtyid varchar2);
 -------------------------------------------------------------------------------
 END inserts;

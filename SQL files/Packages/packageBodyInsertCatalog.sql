@@ -106,21 +106,6 @@ begin
        END;
        
 -------------------------------------------------------------------------------
-
-procedure TD (pTDFirstName varchar2, pTDLastName1 varchar2, pTDLastName2 varchar2, pTDNationality varchar2) as
-begin
-      insert into TDCatalog (TDID, TDFirstName, TDLastName1, TDLastName2, TDNationality )
-      values (TDID_seq.Nextval, pTDFirstName,pTDLastName1,pTDLastName2, pTDNationality);
-            
-       Exception
-         WHEN VALUE_ERROR THEN
-              DBMS_OUTPUT.PUT_LINE ('TD catalog error ');
-         WHEN OTHERS THEN
-              DBMS_OUTPUT.PUT_LINE ('Unexpected error');
-              RAISE;
-         commit;
-
-       END;
        
 -------------------------------------------------------------------------------
 

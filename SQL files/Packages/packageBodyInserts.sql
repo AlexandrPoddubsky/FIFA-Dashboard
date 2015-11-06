@@ -114,13 +114,11 @@ as
                  
        END; 
 -------------------------------------------------------------------------------
-procedure Td ( pTdfirstname varchar2, pTdlastname1 varchar2, pTdlastname2 varchar2, 
-               pTdcounrtyid varchar2, pTdpicture varchar2)
+procedure Td ( pTdfirstname varchar2, pTdlastname1 varchar2, pTdlastname2 varchar2, pTdcounrtyid varchar2)
 as
        BEGIN
-         insert into Tdcatalog(Tdid, Tdfirstname, Tdlastname1, Tdlastname2, Tdcounrtyid, Tdpicture )
-         values(TDID_seq.NextVal,pTdfirstname , pTdlastname1 , pTdlastname2 , 
-               pTdcounrtyid , pTdpicture );
+         insert into Tdcatalog(Tdid, Tdfirstname, Tdlastname1, Tdlastname2, Tdcounrtyid )
+         values(TDID_seq.NextVal, pTdfirstname, pTdlastname1, pTdlastname2, pTdcounrtyid );
 
         Exception
          WHEN VALUE_ERROR THEN
