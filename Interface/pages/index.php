@@ -117,16 +117,17 @@
                 } else {
                     if (move_uploaded_file($_FILES["teamLogo"]["tmp_name"], $target_file)) {
                         echo "The file ". basename( $_FILES["teamLogo"]["name"]). " has been uploaded.";
+                        $query = 'BEGIN updates.logo(:teamID, :fileLocation); END;';
+                        $compiled = oci_parse($connection, $query);
+                        oci_bind_by_name($compiled, ':teamID', $teamID, 10);
+                        oci_bind_by_name($compiled, ':fileLocation', $target_file, 200);
+                        oci_execute($compiled, OCI_NO_AUTO_COMMIT);
+                        oci_commit($connection);
                     } else {
                         echo "Sorry, there was an error uploading your file.";
                     }
                 }
-                $query = 'BEGIN updates.flag(:teamID, :fileLocation); END;';
-                $compiled = oci_parse($connection, $query);
-                oci_bind_by_name($compiled, ':teamID', $teamID, 10);
-                oci_bind_by_name($compiled, ':fileLocation', $target_file, 200);
-                oci_execute($compiled, OCI_NO_AUTO_COMMIT);
-                oci_commit($connection);
+                
             }
         }        
     }
@@ -304,6 +305,83 @@
                 oci_execute($compiled, OCI_NO_AUTO_COMMIT);
                 oci_commit($connection);
             }  
+        }
+    }
+    //register new technical director
+    if (isset($_POST['newTD'])) {
+        if (empty($_POST["name"]) ||
+            empty($_POST["lastName"]) ||
+            empty($_POST["country"])) {
+            echo "One or more obbligatory values were null.";
+        }
+        else {
+            $query = 'BEGIN inserts.td(:firstName, :lastName, :lastName2, :country); END;';
+            $compiled = oci_parse($connection, $query);
+            oci_bind_by_name($compiled, ':firstName', $_POST['name'], 100);
+            oci_bind_by_name($compiled, ':lastName', $_POST['lastName'], 200);
+            oci_bind_by_name($compiled, ':lastName2', $_POST['lastName2'], 200);
+            oci_bind_by_name($compiled, ':country', $_POST['country'], 200);
+            oci_execute($compiled, OCI_NO_AUTO_COMMIT);
+            oci_commit($connection);
+            echo "The new technical director was created. ";
+            //get the technical director's id
+            $query = 'BEGIN get.tdID(:tdID); END;';
+            $compiled = oci_parse($connection, $query);
+            oci_bind_by_name($compiled, ':tdID', $tdID, 200);
+            oci_execute($compiled, OCI_NO_AUTO_COMMIT);
+            oci_commit($connection);
+            //store the pictures
+            if (!empty($_FILES["tdPicture"]["name"])) {
+                $target_dir = "../pictures/tdPictures/";
+                $target_file = $target_dir . basename($_FILES["tdPicture"]["name"]);
+                $uploadOk = 1;
+                $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
+                $target_file = $target_dir . $tdID . "." . $imageFileType;
+                //check if image file is an actual image or a fake image
+                $check = getimagesize($_FILES["tdPicture"]["tmp_name"]);
+                if ($check !== false) {
+                    
+                } else {
+                    echo "File is not an image.";
+                    $uploadOk = 0;
+                }
+                if ($_FILES["tdPicture"]["size"] > 5242880) {
+                    echo "Sorry, your file is too large.";
+                    $uploadOk = 0;
+                }
+                if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+                && $imageFileType != "gif" ) {
+                    echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+                    $uploadOk = 0;
+                }
+                if ($uploadOk == 0) {
+                echo "Sorry, your file was not uploaded.";
+                // if everything is ok, try to upload file
+                } else {
+                    if (move_uploaded_file($_FILES["tdPicture"]["tmp_name"], $target_file)) {
+                        echo "The file ". basename( $_FILES["tdPicture"]["name"]). " has been uploaded.";
+                        $query = 'BEGIN updates.tdPicture(:DNI, :fileLocation); END;';
+                        $compiled = oci_parse($connection, $query);
+                        oci_bind_by_name($compiled, ':DNI', $tdID, 30);
+                        oci_bind_by_name($compiled, ':fileLocation', $target_file, 200);
+                        oci_execute($compiled, OCI_NO_AUTO_COMMIT);
+                        oci_commit($connection);
+                    } else {    
+                        echo "Sorry, there was an error uploading your file.";
+                    }
+                }
+                    
+            }  
+        }
+        //assign player to a club
+        if (isset($_POST['club'])) {
+            $query = 'BEGIN inserts.playerbyteam(:teamID, :playerDNI); END;';
+            $compiled = oci_parse($connection, $query);
+            oci_bind_by_name($compiled, ':playerDNI', $_POST['DNI'], 30);
+            oci_bind_by_name($compiled, ':teamID', $_POST['club'], 200);
+            oci_execute($compiled, OCI_NO_AUTO_COMMIT);
+            oci_commit($connection);
+            echo " The player was assigned to club.";
         }
     }
 ?>
@@ -579,7 +657,6 @@
                 </div>
                 
             </div>
-            <!-- /.navbar-header -->
 
             <ul class="nav navbar-top-links navbar-right">
                 <li class="dropdown">
@@ -789,7 +866,6 @@
                 </li>
                 <!-- /.dropdown -->
             </ul>
-            <!-- /.navbar-top-links -->
 
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
@@ -803,9 +879,8 @@
                                 </button>
                             </span>
                             </div>
-                            <!-- /input-group -->
                         </li>
-                        <li>
+                        <!-- <li>
                             <a href="index.php"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
                         <li>
@@ -818,7 +893,6 @@
                                     <a href="morris.html">Morris.js Charts</a>
                                 </li>
                             </ul>
-                            <!-- /.nav-second-level -->
                         </li>
                         <li>
                             <a href="tables.html"><i class="fa fa-table fa-fw"></i> Tables</a>
@@ -848,7 +922,6 @@
                                     <a href="grid.html">Grid</a>
                                 </li>
                             </ul>
-                            <!-- /.nav-second-level -->
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-sitemap fa-fw"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
@@ -875,11 +948,9 @@
                                             <a href="#">Third Level Item</a>
                                         </li>
                                     </ul>
-                                    <!-- /.nav-third-level -->
                                 </li>
                             </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
+                        </li> 
                         <li>
                             <a href="#"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
@@ -890,17 +961,19 @@
                                     <a href="login.html">Login Page</a>
                                 </li>
                             </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
+                        </li>-->
                         <li>
                             <a href="#"><i class="fa fa-users fa-fw"></i> Teams<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="#" data-toggle="modal" data-target="#createNewTeamModal">Create new team</a>
                                 </li>
+                                <form id="teams" action="view.php" method="POST" class="nav nav-second-level">
                                 <li>
-                                    <a href="#">View and edit registered teams</a>
+                                    <input type="hidden" name="name" value="Teams">
+                                    <a href="#" onclick="document.getElementById('teams').submit();">View and edit registered teams</a>
                                 </li>
+                                </form>
                             </ul>
                         </li>
                         <li>
@@ -925,6 +998,17 @@
                                 </li>
                                 <li>
                                     <a href="#">View and edit stadiums (not implemented)</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-bullhorn fa-fw"></i> Technical directors<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="#" data-toggle="modal" data-target="#registerNewTechnicalDirectorModal">Register New Technical Director</a>
+                                </li>
+                                <li>
+                                    <a href="#">View and edit tds (not implemented)</a>
                                 </li>
                             </ul>
                         </li>
@@ -1685,7 +1769,6 @@
             </div>
         </div>
     </div>
-
     <!--REGISTER NEW STADIUM MODAL-->
     <div class="modal fade" id="registerNewStadiumModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
         <div class="modal-dialog" role="document">
@@ -1719,6 +1802,59 @@
                                 </div>
                                 <div class = "col-md-2">
                                     <input name = "newStadium" class="btn btn-dark btn-lg" type = "submit" value = "Register stadium">
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--REGISTER NEW Techdirector MODAL-->
+    <div class="modal fade" id="registerNewTechnicalDirectorModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a type="close" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="fa fa-times fa-2x"></i></span></a>
+                    <h1>Register a New Technical Director</h1>
+                </div>
+                <div class="modal-body">
+                    <form role="form" action="index.php" method="POST" class="registration-form" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <h3>Picture</h3>
+                            <input type="file" name="tdPicture" accept="image/*" class="form-control">
+                            <h3>Name <b> *</b></h3>
+                            <input type="text" name="name" placeholder="Technical director's name..." class="form-control">
+                            <h3>Last name <b> *</b></h3>
+                            <input type="text" name="lastName" class="form-control" placeholder="Technical director's last name...">
+                            <h3>Second last name <b> *</b></h3>
+                            <input type="text" name="lastName2" placeholder="Technical director's second last name..." class="form-control">
+
+                            <h3>Country <b> *</b></h3>
+                            <select name = "country" class="form-control"><?php
+                            $cursor = oci_new_cursor($connection);
+                            $query = 'BEGIN getCatalog.country(:cursor); END;';
+                            $compiled = oci_parse($connection, $query);
+                            oci_bind_by_name($compiled, ':cursor', $cursor, -1, OCI_B_CURSOR);
+                            oci_execute($compiled);
+                            oci_execute($cursor, OCI_DEFAULT);
+                            //output the code to $string and save the country name to our own array
+                            while (($row = oci_fetch_array($cursor, OCI_ASSOC+OCI_RETURN_NULLS)) != false) {
+                                echo "<option value=" . $row['TYPENAMEID'] . ">" . $row['TYPENAME'] . "</option>";
+                            }
+                            oci_free_statement($compiled);
+                            oci_free_statement($cursor);
+                            ?></select>
+                        </div>
+                        <div class="modal-footer">
+                            <div class = "container">
+                            <div class ="row">
+                                <div class = "col-md-2">
+                                    <button type="button" class="btn btn-dark btn-lg" data-dismiss="modal">Close</button>
+                                </div>
+                                <div class = "col-md-2">
+                                    <input name = "newTD" class="btn btn-dark btn-lg" type = "submit" value = "Register technical director">
                                 </div>
                             </div>
                             </div>

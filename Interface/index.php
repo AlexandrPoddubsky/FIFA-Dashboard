@@ -14,7 +14,6 @@
 
         if (empty($_POST['email']) || empty($_POST['password'])) {
             $_SESSION['loginerror'] = "Username or password is invalid";
-            header("Location: index.php#invalidData");
         }
         else { //establish a connection to the db
             $connection = oci_connect("ADMINF", "FIFA123", "(DESCRIPTION = (ADDRESS_LIST =
@@ -27,23 +26,19 @@
 
             // gets values from index.php
             $email = $_POST['email'];
-            $password = $_POST['password'];
             $usernameID = 0;    //variable to store the usernameID
-            $passCheck = 0;     //variable to check if username+password match
-            echo $_POST['email'];
-            echo $_POST['password'];
+            $password = "";
 
             //ask the db to check for if the password matches this email
-            $query = 'BEGIN checkpassword(:email, :pass, :passCheck); END;';
+            $query = 'BEGIN getpassword(:email, :pass); END;';
             $compiled = oci_parse($connection, $query);
-            oci_bind_by_name($compiled, ':email', $email);
-            oci_bind_by_name($compiled, ':pass', $password);
-            oci_bind_by_name($compiled, ':passCheck', $passCheck);
+            oci_bind_by_name($compiled, ':email', $email, 50);
+            oci_bind_by_name($compiled, ':pass', $password, 200);
             oci_execute($compiled, OCI_NO_AUTO_COMMIT);
             oci_commit($connection);
             $_SESSION['email'] = $_POST['email']; //store the user's email
 
-            if ($passCheck == 1) { //if the password+email combination was correct
+            if ($password == md5($_POST['password'])) { //if the password+email combination was correct
                 //get the ID related to this email
                 $query = 'BEGIN getID(:email, :usernameID); END;';
                 $compiled = oci_parse($connection, $query);
@@ -59,7 +54,6 @@
             }
             else {  //if the combination username+password were denied by the db
                 $_SESSION['loginerror'] = "Username and password combination were invalid.";
-                header("Location: index.php#username+passworddonotmatch");
             }
             oci_close($connection);
         }
@@ -361,7 +355,7 @@
                 $(window).load(function(){
                     $('#signInModal').modal('show');
                 });</script>";
-            //unset($_SESSION['loginerror']);
+            $_SESSION['loginerror'] = "";
         }
     ?>
 
