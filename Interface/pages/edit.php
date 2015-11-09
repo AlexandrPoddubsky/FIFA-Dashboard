@@ -421,6 +421,32 @@
             echo " The technical director was assigned to the team.";
         }
     }
+
+    //-----------------------EDITS-----------------------
+    if (isset($_POST['editTeam'])) {
+        if (empty($_POST["teamName"]) ||
+            empty($_POST["teamType"])) {
+            echo "One or more obbligatory values were null.";
+        }
+        else {
+            $teamType = intval($_POST["teamType"]);  
+            if (isset($_POST['technicalDirector'])) {
+                $tdirector = $_POST['technicalDirector'];
+            }
+            else {
+                $tdirector = "";
+            }
+            $query = 'BEGIN updates.team(:teamID, :teamName, :teamType, :tdirector); END;';
+            $compiled = oci_parse($connection, $query);
+            oci_bind_by_name($compiled, ':teamID', $_POST['teamID'], 100);
+            oci_bind_by_name($compiled, ':teamName', $_POST['teamName'], 100);
+            oci_bind_by_name($compiled, ':teamType', $_POST["teamType"], 200);
+            oci_bind_by_name($compiled, ':tdirector', $tdirector, 200);
+            oci_execute($compiled, OCI_NO_AUTO_COMMIT);
+            oci_commit($connection);
+            echo "The team was updated.";
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -436,10 +462,10 @@
     <title>
         <?php 
             if (isset($_POST['name'])) {
-                echo "View " . $_POST['name'];
+                echo "Edit " . $_POST['name'];
             }
             else {
-                echo "View";
+                echo "Edit";
             }
         ?>
     </title>
@@ -1119,10 +1145,9 @@
                                 <li>
                                     <a href="#" data-toggle="modal" data-target="#assignCaptainModal">Assign a Captain to Team</a>
                                 </li>
-                                <form id="players" action="view.php" method="POST" class="nav nav-second-level"><li>
-                                    <input type="hidden" name="name" value="Players">
-                                    <a href="#" onclick="document.getElementById('players').submit();">View and edit registered players</a>
-                                </li></form>
+                                <li>
+                                    <a href="#">View and edit registered players</a>
+                                </li>
                             </ul>
                         </li>
                         <li>
@@ -1162,7 +1187,7 @@
                 <div class="col-lg-12">
                     <?php 
                     if (isset($_POST['name'])) {
-                        echo "<h1 class=\"page-header\">" . $_POST['name'] . "</h1>";
+                        echo "<h1 class=\"page-header\">Edit ". $_POST['name'] . "</h1>";
                     }
                     else {
                         echo "<p>Please select a category to view on the right.</p>";
@@ -1173,73 +1198,86 @@
             </div>
             <div class="container"><?php
             if (isset($_POST['name'])) {
-                if ($_POST['name'] == "Teams") {
+                if ($_POST['name'] == "team") {
                     $cursor = oci_new_cursor($connection);
-                    $query = 'BEGIN get.teams(:cursor); END;';
+                    $query = 'BEGIN get.team(:teamID, :cursor); END;';
                     $compiled = oci_parse($connection, $query);
                     oci_bind_by_name($compiled, ':cursor', $cursor, -1, OCI_B_CURSOR);
+                    oci_bind_by_name($compiled, ':teamID', $_POST['teamID'], 50);
                     oci_execute($compiled);
                     oci_execute($cursor, OCI_DEFAULT);       //execute the cursor like a normal statement
+                    $teamdID = "";
+                    $teamName = "";
+                    $captainID = "";
+                    $cityID = "";
+                    $td = "";
+                    $teamType = "";
                     while (($row = oci_fetch_array($cursor, OCI_ASSOC+OCI_RETURN_NULLS)) != false) {
-                        echo "<div class = \"row\">";
-                        echo "<div class = \"col-md-2\">";
-                        if ($row['TEAMTYPE'] == "Club") {
-                            echo "<div class = \"team-thumbnail\"><div class = \"thumbnail\"><img src =" . $row['LOGO'] . "></div></div>";
-                        }
-                        else {
-                            echo "<div class = \"team-thumbnail\"><div class = \"thumbnail\"><img src =" . $row['FLAG'] . "></div></div>";
-                        }
-                        echo "</div>";
-                        echo "<div class = \"col-md-6\">";
-                        echo "<h3>" . $row['TEAMNAME'] . "</h3>";
-                        if ($row['TEAMTYPE'] == "Club") {
-                            echo "<p>" . $row['CITY'] . ", " . $row['COUNTRY'] . "</p>";
-                        }
-                        else {
-                            echo "<p>" . $row['COUNTRY'] . "</p>";
-                        }
-                        echo "<p>" . $row['TEAMTYPE'] . "</p>";
-                        echo "</div>";
-                        echo "<div class = \"col-md-4\">";
-                        echo "<form id=\"team" . $row['TEAMID'] . "\" action=\"edit.php\" method=\"POST\" target=\"_blank\">";
-                        echo "<input type=\"hidden\" name=\"teamID\" value=\"" . $row['TEAMID'] . "\" />";
-                        echo "<input type=\"hidden\" name=\"name\" value=\"team\" />";
-                        echo "<input type=\"submit\" class=\"btn btn-default\" value=\"Modify\">";
-                        echo "</form>";
-                        echo "</div>";
-                        echo "</div>";
-                        echo "<hr>"; 
+                        $teamdID = $row['TEAMID'];
+                        $teamName = $row['TEAMNAME'];
+                        $captain = $row['CAPTAIN'];
+                        $td = $row['TD'];
+                        $city = $row['CITY'];
+                        $teamType = $row['TEAMTYPE'];
                     }
                     oci_free_statement($compiled);
                     oci_free_statement($cursor);
-                }
-                else if ($_POST['name'] == "Players") {
-                    $cursor = oci_new_cursor($connection);
-                    $query = 'BEGIN get.players(:cursor); END;';
-                    $compiled = oci_parse($connection, $query);
-                    oci_bind_by_name($compiled, ':cursor', $cursor, -1, OCI_B_CURSOR);
-                    oci_execute($compiled);
-                    oci_execute($cursor, OCI_DEFAULT);       //execute the cursor like a normal statement
-                    while (($row = oci_fetch_array($cursor, OCI_ASSOC+OCI_RETURN_NULLS)) != false) {
-                        echo "<div class = \"row\">";
-                        echo "<div class = \"col-md-2\">";
-                        echo "<div class = \"team-thumbnail\"><div class = \"thumbnail\"><img src =" . $row['PICTURE'] . "></div></div></div>";
-                        echo "<div class = \"col-md-6\">";
-                        echo "<h3>" . $row['PLAYERNAME'] . "</h3>";
-                        echo "<p>" . $row['COUNTRY'] . "</p>";
-                        echo "</div>";
-                        echo "<div class = \"col-md-4\">";
-                        echo "<form id=\"team" . $row['PLAYERID'] . "\" action=\"edit.php\" method=\"POST\" target=\"_blank\">";
-                        echo "<input type=\"hidden\" name=\"playerID\" value=\"" . $row['PLAYERID'] . "\" />";
-                        echo "<input type=\"hidden\" name=\"name\" value=\"player\" />";
-                        echo "<input type=\"submit\" class=\"btn btn-default\" value=\"Modify\">";
-                        echo "</form>";
-                        echo "</div>";
-                        echo "</div>";
-                        echo "<hr>"; 
-                    }
-                    oci_free_statement($compiled);
-                    oci_free_statement($cursor);
+                    echo "<form role=\"form\" action=\"edit.php\" method=\"POST\" class=\"registration-form\" enctype=\"multipart/form-data\">
+                    <h3>Choose team type <b> *</b></h3>
+                    <select name=\"teamType\" id=\"teamType\" onchange=\"changePictures(this.value)\" class=\"form-email form-control\">
+                        <option>Select team type</option>
+                        <option value=\"1\"";
+                        if ($teamType == "1") echo "selected=\"selected\"";
+                        echo ">Country selection</option>
+                        <option value=\"2\" ";
+                        if ($teamType == "2") echo "selected=\"selected\"";
+                        echo ">Club</option>
+                    </select>
+                    <div class=\"team-pictures\" id=\"team-pictures\">
+                        <h3>Team flag <b> *</b></h3>
+                        <input type=\"file\" name=\"teamFlag\" id=\"teamFlag\" accept=\"image/*\" class=\"form-control\">
+                    </div>
+                    <div class=\"form-group\">
+                        <h3>Team name <b> *</b></h3>
+                        <input type=\"text\" name=\"teamName\" placeholder=\"Team name...\" class=\"form-control\" autocomplete=\"off\"";
+                        echo "value=\"" . $teamName . "\"";
+                        echo ">
+                        <div class=\"row\">
+                            <div class = \"col-md-6\">
+                                <h3>Country <b> *</b></h3>
+                                <select id=\"country\" name =\"country\" class=\"form-control\"></select>
+                            </div>
+                            <div class = \"col-md-6\">
+                                <h3>City <b> *</b></h3>
+                                <select name =\"state\" id =\"state\" class=\"form-control\"></select>
+                                <script>
+                                    populateCountries(\"country\", \"state\");
+                                </script>
+                            </div>
+                        </div>
+                        
+                        <h3>Technical director <b> *</b></h3>
+                        <select name = \"technicalDirector\" class=\"form-control\">";
+                        $cursor = oci_new_cursor($connection);
+                        $query = 'BEGIN getCatalog.tdCatalog(:cursor); END;';
+                        $compiled = oci_parse($connection, $query);
+                        oci_bind_by_name($compiled, ':cursor', $cursor, -1, OCI_B_CURSOR);
+                        oci_execute($compiled);
+                        oci_execute($cursor, OCI_DEFAULT);       //execute the cursor like a normal statement
+                        while (($row = oci_fetch_array($cursor, OCI_ASSOC+OCI_RETURN_NULLS)) != false) {
+                            if ($row['TYPENAMEID'] == $td) {
+                                echo "<option value=" . $row['TYPENAMEID'] . " selected=\"selected\">" . $row['TYPENAME'] . "</option>";
+                            }
+                            else {
+                                echo "<option value=" . $row['TYPENAMEID'] . ">" . $row['TYPENAME'] . "</option>";
+                            }
+                            
+                        }
+                        oci_free_statement($compiled);
+                        oci_free_statement($cursor);
+                        echo "</select><br>
+                        <input type=\"hidden\" name=\"teamID\" value=\"" . $_POST['teamID'] . "\" />
+                        <input name=\"editTeam\" class=\"btn btn-dark btn-lg\" type = \"submit\" value = \"Edit team\"></form>";
                 }
             }
             ?></div>

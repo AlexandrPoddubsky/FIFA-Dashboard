@@ -23,7 +23,12 @@
             $city = intval($_POST["state"]);
             $teamLogo = "";
             $teamFlag = "";
-            $tdirector = "";
+            if (isset($_POST['technicalDirector'])) {
+                $tdirector = $_POST['technicalDirector'];
+            }
+            else {
+                $tdirector = "";
+            }
             $captain = "";
             $query = 'BEGIN inserts.team(:teamName, :captainID, :flagpath, :logopath, 
                 :cityID, :tdirector, :teamType); END;';
@@ -384,6 +389,39 @@
             echo " The player was assigned to club.";
         }
     }
+    //assign technical director to a team
+    if (isset($_POST['tdToTeam'])) {
+        if (empty($_POST["team"]) ||
+            empty($_POST["td"])) {
+            echo "One or more obbligatory values were null.";
+        }
+        else {
+            $td = intval($_POST['td']);
+            $query = 'BEGIN updates.teamtd(:team, :tdirector); END;';
+            $compiled = oci_parse($connection, $query);
+            oci_bind_by_name($compiled, ':team', $_POST['team'], 30);
+            oci_bind_by_name($compiled, ':tdirector', $td, 200);
+            oci_execute($compiled, OCI_NO_AUTO_COMMIT);
+            oci_commit($connection);
+            echo " The technical director was assigned to the team.";
+        }
+    }
+    //assign captain to team
+    if (isset($_POST['captainToTeam'])) {
+        if (empty($_POST["team"]) ||
+            empty($_POST["captain"])) {
+            echo "One or more obbligatory values were null.";
+        }
+        else {
+            $query = 'BEGIN updates.teamcaptain(:team, :captain); END;';
+            $compiled = oci_parse($connection, $query);
+            oci_bind_by_name($compiled, ':team', $_POST['team'], 30);
+            oci_bind_by_name($compiled, ':captain', $_POST['captain'], 200);
+            oci_execute($compiled, OCI_NO_AUTO_COMMIT);
+            oci_commit($connection);
+            echo " The technical director was assigned to the team.";
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -424,6 +462,97 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
     <script>
+        //team-captain logic
+        <?php 
+            $teamArray = array();
+            $teamArrayValues = array();
+            $string = ""; 
+            $values = ""; 
+            $cursor = oci_new_cursor($connection);
+            $query = 'BEGIN get.teams(:cursor); END;';
+            $compiled = oci_parse($connection, $query);
+            oci_bind_by_name($compiled, ':cursor', $cursor, -1, OCI_B_CURSOR);
+            oci_execute($compiled);
+            oci_execute($cursor, OCI_DEFAULT);
+            $count = 1;
+            //output the code to $string and save the team name to our own array
+            while (($row = oci_fetch_array($cursor, OCI_ASSOC+OCI_RETURN_NULLS)) != false) {
+                $string = $string . "\"" .  $row['TEAMNAME'] . "\", ";
+                $teamArray[$count] = $row['TEAMNAME'];
+                $values = $values . "\"" . $row['TEAMID'] . "\", ";
+                $teamArrayValues[$count] = $row['TEAMID'];
+                $count++;
+            }
+            oci_free_statement($compiled);
+            oci_free_statement($cursor);
+            //remove the last comma
+            $string = substr($string, 0, -2);
+            $values = substr($values, 0, -2);
+            echo "var teamArray = new Array(" . $string . ");";
+            echo "var teamArrayValues= new Array(" . $values . ");";
+        ?>
+        var captainsArray = new Array();
+        var captainsArrayValues = new Array();
+        captainsArray[0] = "";
+        <?php
+            //start assigning captains to teams
+            for ($i = 1; $i <= count($teamArrayValues); $i++) {
+                $teamID = $teamArrayValues[$i];
+                $string = "";
+                $values = "";
+                $cursor = oci_new_cursor($connection);
+                $query = 'BEGIN get.playersByTeam(:teamID, :cursor); END;';
+                $compiled = oci_parse($connection, $query);
+                oci_bind_by_name($compiled, ':cursor', $cursor, -1, OCI_B_CURSOR);
+                oci_bind_by_name($compiled, ':teamID', $teamID, 50);
+                oci_execute($compiled);
+                oci_execute($cursor, OCI_DEFAULT);       //execute the cursor like a normal statement
+                while (($row = oci_fetch_array($cursor, OCI_ASSOC+OCI_RETURN_NULLS)) != false) {
+                    $string = $string . $row['TYPENAME'] . "|";
+                    $values = $values . $row['TYPENAMEID'] . "|";
+                }
+                oci_free_statement($compiled);
+                oci_free_statement($cursor);
+                $string = substr($string, 0, -1);
+                $values = substr($values, 0, -1);
+                echo "captainsArray[" . $i . "] = \"" . $string . "\";\n";
+                echo "captainsArrayValues[" . $i . "] = \"" . $values . "\";\n";
+            }
+        ?>
+
+        function populateCaptains( teamElementId, captainElementId ) {
+            var selectedTeamIndex = document.getElementById( teamElementId ).selectedIndex;
+            var captainElement = document.getElementById( captainElementId );
+            captainElement.length=0; 
+            captainElement.options[0] = new Option('Select Captain','-1');
+            captainElement.selectedIndex = 0;
+            
+            var captain_arr = captainsArray[selectedTeamIndex].split("|");
+            var captain_arr_values = captainsArrayValues[selectedTeamIndex].split("|");
+            
+            for (var i=0; i<captain_arr.length; i++) {
+                captainElement.options[captainElement.length] = new Option(captain_arr[i],captain_arr_values[i]);
+            }
+        }
+
+        function populateTeams(teamElementId, captainElementId){
+            // given the id of the <select> tag as function argument, it inserts <option> tags
+            var teamElement = document.getElementById(teamElementId);
+            teamElement.length = 0;
+            teamElement.options[0] = new Option('Select a Team','-1');
+            teamElement.selectedIndex = 0;
+            for (var i = 0; i < teamArray.length; i++) {
+                teamElement.options[teamElement.length] = new Option(teamArray[i],teamArrayValues[i]);
+            }
+
+            // Assigned all teamss. Now assign event listener for the captains.
+
+            if( captainElementId ){
+                teamElement.onchange = function(){
+                    populateCaptains(teamElementId, captainElementId );
+                };
+            }
+        }
         //add or delete a picture depending on the type of team the user is trying to input
         function changePictures(value) {
             if (value == "2") {
@@ -986,8 +1115,12 @@
                                     <a href="#" data-toggle="modal" data-target="#assignPlayerToSelectionModal">Assign player to Selection</a>
                                 </li>
                                 <li>
-                                    <a href="#">View and edit registered players</a>
+                                    <a href="#" data-toggle="modal" data-target="#assignCaptainModal">Assign a Captain to Team</a>
                                 </li>
+                                <form id="players" action="view.php" method="POST" class="nav nav-second-level"><li>
+                                    <input type="hidden" name="name" value="Players">
+                                    <a href="#" onclick="document.getElementById('players').submit();">View and edit registered players</a>
+                                </li></form>
                             </ul>
                         </li>
                         <li>
@@ -1006,6 +1139,9 @@
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="#" data-toggle="modal" data-target="#registerNewTechnicalDirectorModal">Register New Technical Director</a>
+                                </li>
+                                <li>
+                                    <a href="#" data-toggle="modal" data-target="#assignTechnicalDirectorModal">Assign Technical Director to Team</a>
                                 </li>
                                 <li>
                                     <a href="#">View and edit tds (not implemented)</a>
@@ -1623,6 +1759,21 @@
                                     </script>
                                 </div>
                             </div>
+                            
+                            <h3>Technical director <b> *</b></h3>
+                            <select name = "technicalDirector" class="form-control"><?php
+                            $cursor = oci_new_cursor($connection);
+                            $query = 'BEGIN getCatalog.tdCatalog(:cursor); END;';
+                            $compiled = oci_parse($connection, $query);
+                            oci_bind_by_name($compiled, ':cursor', $cursor, -1, OCI_B_CURSOR);
+                            oci_execute($compiled);
+                            oci_execute($cursor, OCI_DEFAULT);       //execute the cursor like a normal statement
+                            while (($row = oci_fetch_array($cursor, OCI_ASSOC+OCI_RETURN_NULLS)) != false) {
+                                echo "<option value=" . $row['TYPENAMEID'] . ">" . $row['TYPENAME'] . "</option>";
+                            }
+                            oci_free_statement($compiled);
+                            oci_free_statement($cursor);
+                            ?></select>
                         </div>
                         <div class="modal-footer">
                             <div class = "container">
@@ -1855,6 +2006,99 @@
                                 </div>
                                 <div class = "col-md-2">
                                     <input name = "newTD" class="btn btn-dark btn-lg" type = "submit" value = "Register technical director">
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--ASSIGN TD TO TEAM MODAL-->
+    <div class="modal fade" id="assignTechnicalDirectorModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a type="close" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="fa fa-times fa-2x"></i></span></a>
+                    <h1>Assign Techinical Director to Team</h1>
+                </div>
+                <div class="modal-body">
+                    <form role="form" action="index.php" method="POST" class="registration-form" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <h3>Team <b> *</b></h3>
+                            <select name = "team" class="form-control"><?php
+                            $cursor = oci_new_cursor($connection);
+                            $query = 'BEGIN get.teams(:cursor); END;';
+                            $compiled = oci_parse($connection, $query);
+                            oci_bind_by_name($compiled, ':cursor', $cursor, -1, OCI_B_CURSOR);
+                            oci_execute($compiled);
+                            oci_execute($cursor, OCI_DEFAULT);
+                            while (($row = oci_fetch_array($cursor, OCI_ASSOC+OCI_RETURN_NULLS)) != false) {
+                                echo "<option value=" . $row['TEAMID'] . ">" . $row['TEAMNAME'] . "</option>";
+                            }
+                            oci_free_statement($compiled);
+                            oci_free_statement($cursor);
+                            ?></select>
+                            <h3>Technical director <b> *</b></h3>
+                            <select name = "td" class="form-control"><?php
+                            $cursor = oci_new_cursor($connection);
+                            $query = 'BEGIN getCatalog.tdCatalog(:cursor); END;';
+                            $compiled = oci_parse($connection, $query);
+                            oci_bind_by_name($compiled, ':cursor', $cursor, -1, OCI_B_CURSOR);
+                            oci_execute($compiled);
+                            oci_execute($cursor, OCI_DEFAULT);
+                            while (($row = oci_fetch_array($cursor, OCI_ASSOC+OCI_RETURN_NULLS)) != false) {
+                                echo "<option value=" . $row['TYPENAMEID'] . ">" . $row['TYPENAME'] . "</option>";
+                            }
+                            oci_free_statement($compiled);
+                            oci_free_statement($cursor);
+                            ?></select>
+                        </div>
+                        <div class="modal-footer">
+                            <div class = "container">
+                            <div class ="row">
+                                <div class = "col-md-2">
+                                    <button type="button" class="btn btn-dark btn-lg" data-dismiss="modal">Close</button>
+                                </div>
+                                <div class = "col-md-2">
+                                    <input name = "tdToTeam" class="btn btn-dark btn-lg" type = "submit" value = "Assign technical director">
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--ASSIGN CAPTAIN TO TEAM MODAL-->
+    <div class="modal fade" id="assignCaptainModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a type="close" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="fa fa-times fa-2x"></i></span></a>
+                    <h1>Assign Captain to Team</h1>
+                </div>
+                <div class="modal-body">
+                    <form role="form" action="index.php" method="POST" class="registration-form" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <h3>Team <b> *</b></h3>
+                            <select id="team" name = "team" class="form-control"></select>
+                            <h3>Captain <b> *</b></h3>
+                            <select name ="captain" id ="captain" class="form-control"></select>
+                            <script>
+                                populateTeams("team", "captain");
+                            </script>
+                        </div>
+                        <div class="modal-footer">
+                            <div class = "container">
+                            <div class ="row">
+                                <div class = "col-md-2">
+                                    <button type="button" class="btn btn-dark btn-lg" data-dismiss="modal">Close</button>
+                                </div>
+                                <div class = "col-md-2">
+                                    <input name = "captainToTeam" class="btn btn-dark btn-lg" type = "submit" value = "Assign captain">
                                 </div>
                             </div>
                             </div>
