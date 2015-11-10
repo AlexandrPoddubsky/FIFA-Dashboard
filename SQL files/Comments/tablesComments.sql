@@ -63,31 +63,29 @@ Comment on column event.maxteams
 is 'Event maxt teams';
 Comment on column event.countryid
 is 'Event identify country';
-
----------------------------------------------------------
-
-Comment on table eventcatalog
-is 'This is a table for event catalog.';
-Comment on column eventcatalog.eventid
-is 'Identify type event and primary key';
-Comment on column eventcatalog.eventname
-is 'Event name';
+Comment on column event.eventname
+is 'Event name'
 
 ---------------------------------------------------------
 
 Comment on table game
 is 'This is a table for game.';
-Comment on column game.gameid
-is 'Identify game and primary key';
 Comment on column game.team1id
 is 'Team 1';
 Comment on column game.team2id
 is 'Team 2';
 Comment on column game.stadiumid
 is 'Identify stadium and foreign key';
-Comment on column game.date_time
-is 'Game date time';
-
+--Comment on column game.gamedate
+--is 'Game date time';
+--omment on column game.eventid
+--is 'Identify event id, is primary key and foreign key';
+--Comment on column game.bracketpos
+--is 'Identify position in the backet, is primary and foreign key';
+--Comment on column game.hours
+--is 'Game hourin the event';
+--Comment on column game.minutes
+--is 'Game minute in the event';
 ---------------------------------------------------------
 
 Comment on table groupcatalog
@@ -121,6 +119,24 @@ is 'Midfield';
 Comment on column lineupcatalog.lineforward
 is 'Line forward';
 ---------------------------------------------------------
+Comment on table logbook
+is 'This is a table that register the triggers.';
+Comment on column logbook.logbookid
+is 'Identify logbook and is primary key';
+Comment on column logbook.userconected
+is 'Identify user connected';
+Comment on column logbook.schedule
+is 'Identify the schedule';
+Comment on column logbook.date_time
+is 'Identify date time';
+Comment on column logbook.tablename
+is 'Identify table';
+Comment on column logbook.action
+is 'Identify action';
+Comment on column logbook.descrip
+is 'Description of action';
+
+---------------------------------------------------------
 
 Comment on table player
 is 'This is a table for player.';
@@ -138,8 +154,12 @@ Comment on column player.selectiontshirt
 is 'Selection tshirt number';
 Comment on column player.picture
 is 'Player picture';
-Comment on column player.captain
-is 'Validate captain';
+Comment on column player.clubcaptain
+is 'Identify if is captain in tha club';
+Comment on column player.selectioncaptain
+is 'Identify if is captain in tha selection';
+Comment on column player.countryid
+is 'Identify the country';
 ---------------------------------------------------------
 
 Comment on table playerbygame
@@ -183,6 +203,8 @@ Comment on column stadiumcatalog.picture
 is 'Stadium picture';
 Comment on column stadiumcatalog.capacity
 is 'Stadium capaciy';
+Comment on column stadiumcatalog.cityid
+is 'Stadium city';
 
 ---------------------------------------------------------
 
@@ -205,8 +227,10 @@ Comment on column tdcatalog.tdlastname1
 is 'Tecnical director last name1';
 Comment on column tdcatalog.tdlastname2
 is 'Tecnical director last name2';
-Comment on column tdcatalog.tdnationality
-is 'Tecnical director nationality';
+Comment on column tdcatalog.tdcounrtyid
+is 'Tecnical director country';
+Comment on column tdcatalog.tdpicture
+is 'Tecnical director picture';
 
 ---------------------------------------------------------
 
