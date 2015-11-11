@@ -340,3 +340,56 @@ input[type=password] {
     padding-bottom: 5px;
     font-size: 15px;
 }
+.eventPicture {
+    width: 50%;
+}
+.align-left {
+    text-align: left;
+}
+.gray {
+    color: gray;
+}
+.uppercase {
+    text-transform: uppercase;
+    font-weight: bold;
+    color: gray;
+}
+.nav img {
+    width: 50px; /* you can use %*/
+    height: auto;
+    position: relative;
+    top: 2px;
+}
+.nav {
+    position: relative;
+    left: 50px;
+}
+.navbar-header a {
+    position: relative;
+    font-family: Oswald;
+    font-size: 25px;
+    color:white !important; 
+    padding-right: 5px;
+
+}
+.navbar-header a:hover {
+    color: rgba(255,255,255,0.8) !important;
+}
+.navbar {
+    background-color: rgba(51,122,183,1);
+}
+.pull-right {
+    text-align: right;
+}
+.event-overview img {
+    width: 200px;
+}
+.teams h3 {
+    text-align: center;
+}
+.teams img {
+    height: 100px;
+}
+.teams h2 {
+    font-size: 20px;
+}

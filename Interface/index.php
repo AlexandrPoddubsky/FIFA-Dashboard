@@ -9,6 +9,13 @@
    */
 
     session_start(); //Start session
+    $connection = oci_connect("ADMINF", "FIFA123", "(DESCRIPTION = (ADDRESS_LIST =
+                            (ADDRESS = (PROTOCOL = TCP)(HOST = 172.26.50.118)(PORT = 1521)))
+                            (CONNECT_DATA =(SERVICE_NAME = FIFADB)))");
+        if (!$connection) {
+            echo "Invalid connection " . var_dump(ocierror());
+            die();
+        }
     //--------------------Sign in---------------------
     if (isset($_POST['submit'])) {//check if the form was sent
 
@@ -16,13 +23,6 @@
             $_SESSION['loginerror'] = "Username or password is invalid";
         }
         else { //establish a connection to the db
-            $connection = oci_connect("ADMINF", "FIFA123", "(DESCRIPTION = (ADDRESS_LIST =
-                                (ADDRESS = (PROTOCOL = TCP)(HOST = 172.26.50.118)(PORT = 1521)))
-                                (CONNECT_DATA =(SERVICE_NAME = FIFADB)))");
-            if (!$connection) {
-                echo "Invalid connection " . var_dump(ocierror());
-                die();
-            }
 
             // gets values from index.php
             $email = $_POST['email'];
@@ -228,18 +228,49 @@
         <!-- /.container -->
     </section>
 
-    <!-- Map -->
-    <!--<section id="contact" class="map">
-        <iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;aq=0&amp;oq=twitter&amp;sll=28.659344,-81.187888&amp;sspn=0.128789,0.264187&amp;ie=UTF8&amp;hq=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;t=m&amp;z=15&amp;iwloc=A&amp;output=embed"></iframe>
-        <br />
-        <small>
-            <a href="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;aq=0&amp;oq=twitter&amp;sll=28.659344,-81.187888&amp;sspn=0.128789,0.264187&amp;ie=UTF8&amp;hq=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;t=m&amp;z=15&amp;iwloc=A"></a>
-        </small>
-        </iframe>
-    </section>-->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1 text-center">
+                    <h2>Current Events</h2>
+                    <hr class="small">
+                    <?php 
+                        $cursor = oci_new_cursor($connection);
+                        $query = 'BEGIN get.getevents(:cursor); END;';
+                        $compiled = oci_parse($connection, $query);
+                        oci_bind_by_name($compiled, ':cursor', $cursor, -1, OCI_B_CURSOR);
+                        oci_execute($compiled);
+                        oci_execute($cursor, OCI_DEFAULT);       //execute the cursor like a normal statement
+                        while (($row = oci_fetch_array($cursor, OCI_ASSOC+OCI_RETURN_NULLS)) != false) {
+                            echo "<div class = \"row\">";
+                            echo "<div class = \"col-md-4\">";
+                            echo "<img class=\"eventPicture pull-right\"src=\"" . substr($row['PICTURE'], 3) . "\"></div>";
+                            echo "<div class = \"col-md-8\">";
+                            echo "<form id=\"event" . $row['TYPENAMEID'] . "\" action=\"event.php\" method=\"GET\">";
+                            echo "<input type=\"hidden\" name=\"eventID\" value=\"" . $row['TYPENAMEID'] . "\" />";
+                            echo "<h3 class=\"align-left\"><a href=\"#\" onclick=\"document.getElementById('event" . $row['TYPENAMEID'] . "').submit();\">"
+                             . $row['TYPENAME'] . "</a></h3>";
+                            echo "<p class=\"uppercase align-left\">" . $row['COUNTRY'] . "</p>";
+                            echo "<p class=\"align-left gray\">" . $row['STARTDATE'] . " - " . $row['ENDDATE'] . "</p>";
+                            echo "<p class=\"align-left gray\">" . $row['EVENTDESCRIPTION'] . "</p>";
+                            echo "</form>";
+                            echo "</div>";
+                            echo "</div>";
+                            echo "<hr>"; 
+                        }
+                        oci_free_statement($compiled);
+                        oci_free_statement($cursor);
+                     ?>
+                </div>
+                <!-- /.col-lg-10 -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container -->
+    </section>
 
     <!-- Footer -->
-    <footer><div id="contact">
+    <hr><footer><div id="contact">
         <div class="container">
             <div class="row">
                 <div class="col-lg-10 col-lg-offset-1 text-center">

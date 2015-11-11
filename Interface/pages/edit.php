@@ -3,14 +3,14 @@
    * FIFAdashboard.com - Oracle
    * Alexis Arguedas, Gabriela Garro, Yanil Gómez
    * -------------------------------------------------
-   * index.php - Created: 04/11/2015
-   * View and edit teams, players, everything. Receives a submitted form from index.php
+   * edit.php - Created: 08/11/2015
+   * Edit many things.
    */
     include('../session.php');
     if(!isset($_SESSION['usernameID'])) {
         header("Location: ../index.php#notloggedin");
     }
-        //check if the user inputted anything new
+    //check if the user inputted anything new
     //create new team
     if (isset($_POST['newTeam'])) {
         if (empty($_POST["teamName"]) ||
@@ -396,10 +396,11 @@
             echo "One or more obbligatory values were null.";
         }
         else {
-            $query = 'BEGIN updates.teamtd(:team, :td); END;';
+            $td = intval($_POST['td']);
+            $query = 'BEGIN updates.teamtd(:team, :tdirector); END;';
             $compiled = oci_parse($connection, $query);
             oci_bind_by_name($compiled, ':team', $_POST['team'], 30);
-            oci_bind_by_name($compiled, ':td', $_POST['td'], 200);
+            oci_bind_by_name($compiled, ':tdirector', $td, 200);
             oci_execute($compiled, OCI_NO_AUTO_COMMIT);
             oci_commit($connection);
             echo " The technical director was assigned to the team.";
@@ -423,6 +424,7 @@
     }
 
     //-----------------------EDITS-----------------------
+    // Submit a change to a team
     if (isset($_POST['editTeam'])) {
         if (empty($_POST["teamName"]) ||
             empty($_POST["teamType"])) {
@@ -445,8 +447,39 @@
             oci_execute($compiled, OCI_NO_AUTO_COMMIT);
             oci_commit($connection);
             echo "The team was updated.";
+        }
     }
-}
+    //Submit a change to a player
+    if (isset($_POST['editPlayer'])) {
+        if (empty($_POST["firstName"]) || empty($_POST["lastName"]) ||
+            empty($_POST['clubNumber']) || //empty($_POST['club-captain']) || 
+            empty($_POST['country']) || empty($_POST['selectionNumber']) //|| empty($_POST['selection-captain'])
+            ) {
+            echo "One or more obbligatory values were null.";
+        }
+        else {
+            $_POST["clubNumber"] = intval($_POST["clubNumber"]);
+            $_POST["club-captain"] = intval($_POST["club-captain"]);
+            $_POST["selectionNumber"] = intval($_POST["selectionNumber"]);
+            $_POST["selection-captain"] = intval($_POST["selection-captain"]);
+
+            $query = 'BEGIN updates.player(:DNI, :firstName, :lastName, :lastName2, :clubNumber, :clubCaptain,
+                :country, :selectionNumber, :selectionCaptain); END;';
+            $compiled = oci_parse($connection, $query);
+            oci_bind_by_name($compiled, ':DNI', $_POST['playerID'], 100);
+            oci_bind_by_name($compiled, ':firstName', $_POST['firstName'], 100);
+            oci_bind_by_name($compiled, ':lastName', $_POST['lastName'], 100);
+            oci_bind_by_name($compiled, ':lastName2', $_POST["lastName2"], 200);
+            oci_bind_by_name($compiled, ':clubNumber', $_POST["clubNumber"], 200);
+            oci_bind_by_name($compiled, ':clubCaptain', $_POST["club-captain"], 200);
+            oci_bind_by_name($compiled, ':country', $_POST["country"], 200);
+            oci_bind_by_name($compiled, ':selectionNumber', $_POST["selectionNumber"], 200);
+            oci_bind_by_name($compiled, ':selectionCaptain', $_POST["selection-captain"], 200);
+            oci_execute($compiled, OCI_NO_AUTO_COMMIT);
+            oci_commit($connection);
+            echo "The player was updated.";
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -1145,9 +1178,10 @@
                                 <li>
                                     <a href="#" data-toggle="modal" data-target="#assignCaptainModal">Assign a Captain to Team</a>
                                 </li>
-                                <li>
-                                    <a href="#">View and edit registered players</a>
-                                </li>
+                                <form id="players" action="view.php" method="POST" class="nav nav-second-level"><li>
+                                    <input type="hidden" name="name" value="Players">
+                                    <a href="#" onclick="document.getElementById('players').submit();">View and edit registered players</a>
+                                </li></form>
                             </ul>
                         </li>
                         <li>
@@ -1157,7 +1191,7 @@
                                     <a href="#" data-toggle="modal" data-target="#registerNewStadiumModal">Register New Stadium</a>
                                 </li>
                                 <li>
-                                    <a href="#">View and edit stadiums (not implemented)</a>
+                                    <a href="#">View and edit stadiums</a>
                                 </li>
                             </ul>
                         </li>
@@ -1171,7 +1205,21 @@
                                     <a href="#" data-toggle="modal" data-target="#assignTechnicalDirectorModal">Assign Technical Director to Team</a>
                                 </li>
                                 <li>
-                                    <a href="#">View and edit tds (not implemented)</a>
+                                    <a href="#">View and edit tds</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-flag fa-fw"></i> Events<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="#" data-toggle="modal" data-target="#registerNewEventModal">Register New Event</a>
+                                </li>
+                                <li>
+                                    <a href="#" data-toggle="modal" data-target="#registerGameModal">Register Game to Event</a>
+                                </li>
+                                <li>
+                                    <a href="#">View and edit events</a>
                                 </li>
                             </ul>
                         </li>
@@ -1198,6 +1246,7 @@
             </div>
             <div class="container"><?php
             if (isset($_POST['name'])) {
+                // Edit team
                 if ($_POST['name'] == "team") {
                     $cursor = oci_new_cursor($connection);
                     $query = 'BEGIN get.team(:teamID, :cursor); END;';
@@ -1256,31 +1305,137 @@
                             </div>
                         </div>
                         
-                        <h3>Technical director <b> *</b></h3>
-                        <select name = \"technicalDirector\" class=\"form-control\">";
-                        $cursor = oci_new_cursor($connection);
-                        $query = 'BEGIN getCatalog.tdCatalog(:cursor); END;';
-                        $compiled = oci_parse($connection, $query);
-                        oci_bind_by_name($compiled, ':cursor', $cursor, -1, OCI_B_CURSOR);
-                        oci_execute($compiled);
-                        oci_execute($cursor, OCI_DEFAULT);       //execute the cursor like a normal statement
-                        while (($row = oci_fetch_array($cursor, OCI_ASSOC+OCI_RETURN_NULLS)) != false) {
-                            if ($row['TYPENAMEID'] == $td) {
-                                echo "<option value=" . $row['TYPENAMEID'] . " selected=\"selected\">" . $row['TYPENAME'] . "</option>";
-                            }
-                            else {
-                                echo "<option value=" . $row['TYPENAMEID'] . ">" . $row['TYPENAME'] . "</option>";
-                            }
-                            
+                    <h3>Technical director <b> *</b></h3>
+                    <select name = \"technicalDirector\" class=\"form-control\">";
+                    $cursor = oci_new_cursor($connection);
+                    $query = 'BEGIN getCatalog.tdCatalog(:cursor); END;';
+                    $compiled = oci_parse($connection, $query);
+                    oci_bind_by_name($compiled, ':cursor', $cursor, -1, OCI_B_CURSOR);
+                    oci_execute($compiled);
+                    oci_execute($cursor, OCI_DEFAULT);       //execute the cursor like a normal statement
+                    while (($row = oci_fetch_array($cursor, OCI_ASSOC+OCI_RETURN_NULLS)) != false) {
+                        if ($row['TYPENAMEID'] == $td) {
+                            echo "<option value=" . $row['TYPENAMEID'] . " selected=\"selected\">" . $row['TYPENAME'] . "</option>";
                         }
-                        oci_free_statement($compiled);
-                        oci_free_statement($cursor);
-                        echo "</select><br>
-                        <input type=\"hidden\" name=\"teamID\" value=\"" . $_POST['teamID'] . "\" />
-                        <input name=\"editTeam\" class=\"btn btn-dark btn-lg\" type = \"submit\" value = \"Edit team\"></form>";
+                        else {
+                            echo "<option value=" . $row['TYPENAMEID'] . ">" . $row['TYPENAME'] . "</option>";
+                        }
+                        
+                    }
+                    oci_free_statement($compiled);
+                    oci_free_statement($cursor);
+                    echo "</select><br>
+                    <input type=\"hidden\" name=\"teamID\" value=\"" . $_POST['teamID'] . "\" />
+                    <input type=\"hidden\" name=\"name\" value=\"team\" />
+                    <input name=\"editTeam\" class=\"btn btn-dark btn-lg\" type = \"submit\" value = \"Edit team\"></form>";
                 }
-            }
-            ?></div>
+                // Edit player
+                else if ($_POST['name'] == "player") {
+                    $cursor = oci_new_cursor($connection);
+                    $query = 'BEGIN get.player(:playerID, :cursor); END;';
+                    $compiled = oci_parse($connection, $query);
+                    oci_bind_by_name($compiled, ':cursor', $cursor, -1, OCI_B_CURSOR);
+                    oci_bind_by_name($compiled, ':playerID', $_POST['playerID'], 50);
+                    oci_execute($compiled);
+                    oci_execute($cursor, OCI_DEFAULT);       //execute the cursor like a normal statement
+                    $playerID = "";
+                    $fname = "";
+                    $lname1 = "";
+                    $lname2 = "";
+                    $clubshirt = "";
+                    $selectionshirt = "";
+                    $clubcaptain = "";
+                    $selectioncaptain = "";
+                    $country = "";
+                    while (($row = oci_fetch_array($cursor, OCI_ASSOC+OCI_RETURN_NULLS)) != false) {
+                        $playerID = $row['PLAYERID'];
+                        $fname = $row['FNAME'];
+                        $lname1 = $row['LNAME1'];
+                        $lname2 = $row['LNAME2'];
+                        $clubshirt = $row['CLUBSHIRT'];
+                        $selectionshirt = $row['SELECTIONSHIRT'];
+                        $clubcaptain = $row['CLUBCAPTAIN'];
+                        $selectioncaptain = $row['SELECTIONCAPTAIN'];
+                        $country = $row['COUNTRY'];
+                    }
+                    oci_free_statement($compiled);
+                    oci_free_statement($cursor);
+                    echo "<form role=\"form\" action=\"edit.php\" method=\"POST\" class=\"registration-form\" enctype=\"multipart/form-data\">";
+                    echo "<h3>First Name <b> *</b></h3>";
+                    echo "<input type=\"text\" name=\"firstName\" placeholder=\"Player's first name...\" class=\"form-control\" autocomplete=\"off\" value=\"" . $fname . "\">";
+                    echo "<h3>Last Name <b> *</b></h3>";
+                    echo "<input type=\"text\" name=\"lastName\" placeholder=\"Player's last name...\" class=\"form-control\" autocomplete=\"off\" value=\"" . $lname1 . "\">";
+                    echo "<h3>Second last name</h3>";
+                    echo "<input type=\"text\" name=\"lastName2\" placeholder=\"Player's second last name...\" class=\"form-control\" autocomplete=\"off\" value=\"" . $lname2 . "\">";
+                    /*echo "<h3>Club</h3>";
+                    echo "<select name = \"club\" class=\"form-control\">";
+                    $cursor = oci_new_cursor($connection);
+                    $query = 'BEGIN get.clubs(:cursor); END;';
+                    $compiled = oci_parse($connection, $query);
+                    oci_bind_by_name($compiled, ':cursor', $cursor, -1, OCI_B_CURSOR);
+                    oci_execute($compiled);
+                    oci_execute($cursor, OCI_DEFAULT);       //execute the cursor like a normal statement
+                    while (($row = oci_fetch_array($cursor, OCI_ASSOC+OCI_RETURN_NULLS)) != false) {
+                        if ($row['TYPENAMEID'] == $club) {
+                            echo "<option value=" . $row['TYPENAMEID'] . " selected=\"selected\">" . $row['TYPENAME'] . "</option>";
+                        }
+                        else {
+                            echo "<option value=" . $row['TYPENAMEID'] . ">" . $row['TYPENAME'] . "</option>";
+                        }
+                    }
+                    oci_free_statement($compiled);
+                    oci_free_statement($cursor);
+                    echo "</select>";*/
+                    echo "<h3>T-shirt number with club</h3>";
+                    echo "<input type=\"number\" name=\"clubNumber\" class=\"form-control\" min=\"1\" max=\"99\" step=\"1\"
+                        placeholder=\"Number the player wears with his club...\" value=\"" . $clubshirt . "\">";
+                    echo "<br><p>Is this player the captain of his club?</p>";
+                    if ($clubcaptain == 1) {
+                        echo "<input type=\"radio\" name=\"club-captain\" value=0 > No
+                        <input type=\"radio\" name=\"club-captain\" checked=\"yes\" value=1> Yes";
+                    }
+                    else {
+                        echo "<input type=\"radio\" name=\"club-captain\" value=0 checked=\"yes\"> No
+                        <input type=\"radio\" name=\"club-captain\" value=1> Yes";
+                    }
+                        
+                    echo "<h3>Country <b> *</b></h3>";
+                    echo "<select name = \"country\" class=\"form-control\">";
+                    $cursor = oci_new_cursor($connection);
+                    $query = 'BEGIN getCatalog.country(:cursor); END;';
+                    $compiled = oci_parse($connection, $query);
+                    oci_bind_by_name($compiled, ':cursor', $cursor, -1, OCI_B_CURSOR);
+                    oci_execute($compiled);
+                    oci_execute($cursor, OCI_DEFAULT);
+                    //output the code to $string and save the country name to our own array
+                    while (($row = oci_fetch_array($cursor, OCI_ASSOC+OCI_RETURN_NULLS)) != false) {
+                        if ($row['TYPENAMEID'] == $country) {
+                            echo "<option value=" . $row['TYPENAMEID'] . " selected=\"selected\">" . $row['TYPENAME'] . "</option>";
+                        }
+                        else {
+                            echo "<option value=" . $row['TYPENAMEID'] . ">" . $row['TYPENAME'] . "</option>";
+                        }
+                    }
+                    oci_free_statement($compiled);
+                    oci_free_statement($cursor);
+                    echo "</select>";
+                    echo "<h3>T-shirt number with selection</h3>";
+                    echo "<input type=\"number\" name=\"selectionNumber\" class=\"form-control\" min=\"0\" max=\"99\" step=\"1\" 
+                        placeholder=\"Number the player wears with its selection...\" value=\"" . $selectionshirt . "\">";
+                    echo "<br><p>Is this player the captain of his selection?</p>";
+                    if ($selectioncaptain == 1) {
+                        echo "<input type=\"radio\" name=\"selection-captain\" value=0 > No
+                        <input type=\"radio\" name=\"selection-captain\" value=1 checked=\"yes\"> Yes<br>";
+                    }
+                    else {
+                        echo "<input type=\"radio\" name=\"selection-captain\" value=0 checked=\"yes\"> No
+                        <input type=\"radio\" name=\"selection-captain\" value=1> Yes<br><br>";
+                    }  
+                    echo "<input type=\"hidden\" name=\"playerID\" value=\"" . $_POST['playerID'] . "\" />
+                    <input type=\"hidden\" name=\"name\" value=\"player\" />
+                    <input name=\"editPlayer\" class=\"btn btn-dark btn-lg\" type = \"submit\" value = \"Edit player\"></form><br><br>";
+                }
+            }?></div>
         </div>
         <!-- /#page-wrapper -->
 
@@ -1374,7 +1529,6 @@
             </div>
         </div>
     </div>
-
     <!--CREATE NEW PLAYER MODAL-->
     <div class="modal fade" id="registerNewPlayerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
         <div class="modal-dialog" role="document">
@@ -1465,7 +1619,6 @@
             </div>
         </div>
     </div>
-
     <!--ASSIGN PLAYER TO SELECTION MODAL-->
     <div class="modal fade" id="assignPlayerToSelectionModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
         <div class="modal-dialog" role="document">

@@ -3,8 +3,8 @@
    * FIFAdashboard.com - Oracle
    * Alexis Arguedas, Gabriela Garro, Yanil Gómez
    * -------------------------------------------------
-   * index.php - Created: 04/11/2015
-   * View and edit teams, players, everything. Receives a submitted form from index.php
+   * view.php - Created: 05/11/2015
+   * View many things.
    */
     include('../session.php');
     if(!isset($_SESSION['usernameID'])) {
@@ -1132,7 +1132,7 @@
                                     <a href="#" data-toggle="modal" data-target="#registerNewStadiumModal">Register New Stadium</a>
                                 </li>
                                 <li>
-                                    <a href="#">View and edit stadiums (not implemented)</a>
+                                    <a href="#">View and edit stadiums</a>
                                 </li>
                             </ul>
                         </li>
@@ -1146,7 +1146,21 @@
                                     <a href="#" data-toggle="modal" data-target="#assignTechnicalDirectorModal">Assign Technical Director to Team</a>
                                 </li>
                                 <li>
-                                    <a href="#">View and edit tds (not implemented)</a>
+                                    <a href="#">View and edit tds</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-flag fa-fw"></i> Events<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="#" data-toggle="modal" data-target="#registerNewEventModal">Register New Event</a>
+                                </li>
+                                <li>
+                                    <a href="#" data-toggle="modal" data-target="#registerGameModal">Register Game to Event</a>
+                                </li>
+                                <li>
+                                    <a href="#">View and edit events</a>
                                 </li>
                             </ul>
                         </li>
@@ -1173,6 +1187,7 @@
             </div>
             <div class="container"><?php
             if (isset($_POST['name'])) {
+                // If the person asked to see teams
                 if ($_POST['name'] == "Teams") {
                     $cursor = oci_new_cursor($connection);
                     $query = 'BEGIN get.teams(:cursor); END;';
@@ -1213,6 +1228,7 @@
                     oci_free_statement($compiled);
                     oci_free_statement($cursor);
                 }
+                // If the person asked to see players
                 else if ($_POST['name'] == "Players") {
                     $cursor = oci_new_cursor($connection);
                     $query = 'BEGIN get.players(:cursor); END;';
