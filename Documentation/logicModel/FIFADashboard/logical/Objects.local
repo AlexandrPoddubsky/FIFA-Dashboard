@@ -1,41 +1,41 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
 <oracle.dbtools.crest.model.design.logical.LogicalDesign>
-   <object objectType="Entity" objectID="233F33C7-41D9-1162-8BF0-F5D504C2B4C3" name="Bitacora" seqName="seg_0"/>
-   <object objectType="Entity" objectID="4DAB6AA1-6FA4-BAE0-655B-63080188702F" name="CityCatalog" seqName="seg_0"/>
-   <object objectType="Entity" objectID="73D4ADD8-898B-5B63-9114-FCCAD8F56B26" name="Continent" seqName="seg_0"/>
-   <object objectType="Entity" objectID="9D5EA180-8431-9B80-3615-8EEF7914BFD7" name="CountryCatalog" seqName="seg_0"/>
-   <object objectType="Entity" objectID="1DCA7998-8A43-E0AE-2DD9-4A25EDF1BF1F" name="Event" seqName="seg_0"/>
-   <object objectType="Entity" objectID="ABDE951D-BBB7-B9C0-3C18-F520EAB1BCC2" name="EventCatalog" seqName="seg_0"/>
-   <object objectType="Entity" objectID="266646F5-624C-5D93-BF30-11ABA1281983" name="Game" seqName="seg_0"/>
-   <object objectType="Entity" objectID="4D848F1A-D2CB-514D-AAEE-5982460EF66E" name="GrupCatalog" seqName="seg_0"/>
-   <object objectType="Entity" objectID="7D75B8F6-2DEE-1A6E-A706-831A17CD04F7" name="LineupCatalog" seqName="seg_0"/>
-   <object objectType="Entity" objectID="FF9F6CFF-27B2-390E-A0BD-EB3F17E101AF" name="Parameter" seqName="seg_0"/>
    <object objectType="Entity" objectID="11D8C4DD-5731-FB10-576B-A36B0FF388EE" name="Player" seqName="seg_0"/>
    <object objectType="Entity" objectID="1852D6FC-551D-8B77-898E-5D0907B06DB3" name="PlayerByGame" seqName="seg_0"/>
+   <object objectType="Entity" objectID="1DCA7998-8A43-E0AE-2DD9-4A25EDF1BF1F" name="Event" seqName="seg_0"/>
+   <object objectType="Entity" objectID="1F943759-5FC1-1597-E097-D1E44A4B8502" name="TypePlayer" seqName="seg_0"/>
+   <object objectType="Entity" objectID="233F33C7-41D9-1162-8BF0-F5D504C2B4C3" name="Bitacora" seqName="seg_0"/>
+   <object objectType="Entity" objectID="266646F5-624C-5D93-BF30-11ABA1281983" name="Game" seqName="seg_0"/>
+   <object objectType="Entity" objectID="4304A590-189B-9C18-23A3-8E478D5443CA" name="Team" seqName="seg_0"/>
+   <object objectType="Entity" objectID="4D848F1A-D2CB-514D-AAEE-5982460EF66E" name="GrupCatalog" seqName="seg_0"/>
+   <object objectType="Entity" objectID="4DAB6AA1-6FA4-BAE0-655B-63080188702F" name="CityCatalog" seqName="seg_0"/>
+   <object objectType="Entity" objectID="51D296CE-FA96-4CF9-E3FE-3406F7EB54AA" name="actionByPlayerByGame" seqName="seg_0"/>
+   <object objectType="Entity" objectID="73D4ADD8-898B-5B63-9114-FCCAD8F56B26" name="Continent" seqName="seg_0"/>
+   <object objectType="Entity" objectID="7D75B8F6-2DEE-1A6E-A706-831A17CD04F7" name="LineupCatalog" seqName="seg_0"/>
+   <object objectType="Entity" objectID="9D5EA180-8431-9B80-3615-8EEF7914BFD7" name="CountryCatalog" seqName="seg_0"/>
+   <object objectType="Entity" objectID="ABDE951D-BBB7-B9C0-3C18-F520EAB1BCC2" name="EventCatalog" seqName="seg_0"/>
+   <object objectType="Entity" objectID="AF69FA40-95C3-3561-6DD9-DF3204D9E321" name="UserAdmin" seqName="seg_0"/>
+   <object objectType="Entity" objectID="B0BBE4F3-3919-F683-D796-8CEAF8CAAFDD" name="tdCatalog" seqName="seg_0"/>
+   <object objectType="Entity" objectID="DACA301E-E34D-3568-B7DE-D17319EA4721" name="actionCatalog" seqName="seg_0"/>
+   <object objectType="Entity" objectID="DFD07BD0-236A-E938-1E9F-0C0B1DF4528A" name="teamTypeCatalog" seqName="seg_0"/>
    <object objectType="Entity" objectID="EFDCF81B-19E7-15AE-0CF1-2D789A8C8052" name="StadiumCatalog" seqName="seg_0"/>
    <object objectType="Entity" objectID="FCFAF058-A693-8EEE-9A97-D744478E9BE5" name="Statistic" seqName="seg_0"/>
-   <object objectType="Entity" objectID="4304A590-189B-9C18-23A3-8E478D5443CA" name="Team" seqName="seg_0"/>
-   <object objectType="Entity" objectID="1F943759-5FC1-1597-E097-D1E44A4B8502" name="TypePlayer" seqName="seg_0"/>
-   <object objectType="Entity" objectID="AF69FA40-95C3-3561-6DD9-DF3204D9E321" name="UserAdmin" seqName="seg_0"/>
-   <object objectType="Entity" objectID="51D296CE-FA96-4CF9-E3FE-3406F7EB54AA" name="actionByPlayerByGame" seqName="seg_0"/>
-   <object objectType="Entity" objectID="DACA301E-E34D-3568-B7DE-D17319EA4721" name="actionCatalog" seqName="seg_0"/>
-   <object objectType="Entity" objectID="B0BBE4F3-3919-F683-D796-8CEAF8CAAFDD" name="tdCatalog" seqName="seg_0"/>
-   <object objectType="Entity" objectID="DFD07BD0-236A-E938-1E9F-0C0B1DF4528A" name="teamTypeCatalog" seqName="seg_0"/>
-   <object objectType="Relation" objectID="3C8DD5AC-E998-3D03-54F2-3EE37345DDF9" name="LineupByTeam" seqName="seg_0"/>
-   <object objectType="Relation" objectID="27650B07-521D-039D-DB05-B671A227A9ED" name="PlayerByTeam" seqName="seg_0"/>
+   <object objectType="Entity" objectID="FF9F6CFF-27B2-390E-A0BD-EB3F17E101AF" name="Parameter" seqName="seg_0"/>
    <object objectType="Relation" objectID="1BEC4D80-ACBF-23D5-157D-4AB1084D2968" name="PlayerByType" seqName="seg_0"/>
-   <object objectType="Relation" objectID="904D2F7E-D577-366A-6623-09DE463E9F6C" name="Relation_15" seqName="seg_0"/>
-   <object objectType="Relation" objectID="EB97E570-4C3A-433C-1963-DCDFC13DD05E" name="Relation_16" seqName="seg_0"/>
-   <object objectType="Relation" objectID="A36FDC5C-754F-EC57-76DB-DDF2FFF8DF81" name="Relation_17" seqName="seg_0"/>
-   <object objectType="Relation" objectID="CBF40A09-793C-8C4A-D8AF-EC3620142C19" name="Relation_19" seqName="seg_0"/>
-   <object objectType="Relation" objectID="6C37AA86-F8D8-35E2-48EA-3715E9B21D63" name="Relation_20" seqName="seg_0"/>
-   <object objectType="Relation" objectID="5E24FC98-F3F9-DBFA-5226-20B6F3516CE2" name="Relation_21" seqName="seg_0"/>
-   <object objectType="Relation" objectID="8AB2A389-1C0B-0693-A3FD-B3C4EDEB65C8" name="Relation_22" seqName="seg_0"/>
-   <object objectType="Relation" objectID="CAD359AF-0141-D457-0BA5-A347ED5AF4B8" name="Relation_23" seqName="seg_0"/>
-   <object objectType="Relation" objectID="55CB5051-477C-5D09-5A00-E7F448A1D116" name="Relation_24" seqName="seg_0"/>
-   <object objectType="Relation" objectID="A5E14CBC-E521-AE88-F918-8B11D6F9E3E9" name="Relation_25" seqName="seg_0"/>
-   <object objectType="Relation" objectID="7965DAC5-2A95-4579-FE2A-DC93814AB5A9" name="Relation_27" seqName="seg_0"/>
-   <object objectType="Relation" objectID="D5C638EB-D76A-E044-29CC-D9C3C5777EC8" name="Relation_7" seqName="seg_0"/>
-   <object objectType="Relation" objectID="665E77B1-B754-8E4D-16A0-835F3C0968B5" name="TeamByEvent" seqName="seg_0"/>
+   <object objectType="Relation" objectID="27650B07-521D-039D-DB05-B671A227A9ED" name="PlayerByTeam" seqName="seg_0"/>
    <object objectType="Relation" objectID="30FDC230-6718-ED6A-86D5-8FE5E55012CC" name="statisticByGroup" seqName="seg_0"/>
+   <object objectType="Relation" objectID="3C8DD5AC-E998-3D03-54F2-3EE37345DDF9" name="LineupByTeam" seqName="seg_0"/>
+   <object objectType="Relation" objectID="55CB5051-477C-5D09-5A00-E7F448A1D116" name="Relation_24" seqName="seg_0"/>
+   <object objectType="Relation" objectID="5E24FC98-F3F9-DBFA-5226-20B6F3516CE2" name="Relation_21" seqName="seg_0"/>
+   <object objectType="Relation" objectID="665E77B1-B754-8E4D-16A0-835F3C0968B5" name="TeamByEvent" seqName="seg_0"/>
+   <object objectType="Relation" objectID="6C37AA86-F8D8-35E2-48EA-3715E9B21D63" name="Relation_20" seqName="seg_0"/>
+   <object objectType="Relation" objectID="7965DAC5-2A95-4579-FE2A-DC93814AB5A9" name="Relation_27" seqName="seg_0"/>
+   <object objectType="Relation" objectID="8AB2A389-1C0B-0693-A3FD-B3C4EDEB65C8" name="Relation_22" seqName="seg_0"/>
+   <object objectType="Relation" objectID="904D2F7E-D577-366A-6623-09DE463E9F6C" name="Relation_15" seqName="seg_0"/>
+   <object objectType="Relation" objectID="A36FDC5C-754F-EC57-76DB-DDF2FFF8DF81" name="Relation_17" seqName="seg_0"/>
+   <object objectType="Relation" objectID="A5E14CBC-E521-AE88-F918-8B11D6F9E3E9" name="Relation_25" seqName="seg_0"/>
+   <object objectType="Relation" objectID="CAD359AF-0141-D457-0BA5-A347ED5AF4B8" name="Relation_23" seqName="seg_0"/>
+   <object objectType="Relation" objectID="CBF40A09-793C-8C4A-D8AF-EC3620142C19" name="Relation_19" seqName="seg_0"/>
+   <object objectType="Relation" objectID="D5C638EB-D76A-E044-29CC-D9C3C5777EC8" name="Relation_7" seqName="seg_0"/>
+   <object objectType="Relation" objectID="EB97E570-4C3A-433C-1963-DCDFC13DD05E" name="Relation_16" seqName="seg_0"/>
 </oracle.dbtools.crest.model.design.logical.LogicalDesign>

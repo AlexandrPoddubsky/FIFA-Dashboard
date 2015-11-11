@@ -3,6 +3,51 @@
 --   sitio:      Oracle Database 11g
 --   tipo:      Oracle Database 11g
 
+CREATE TABLE Game
+  (
+    team1ID                  NUMBER (5) NOT NULL ,
+    team2ID                  NUMBER (5) NOT NULL ,
+    stadiumID                NUMBER (5) NOT NULL ,
+    GameDate                 DATE NOT NULL ,
+    eventID                  NUMBER (5) NOT NULL ,
+    bracketpos               NUMBER (2) NOT NULL ,
+    hours                    NUMBER (2) ,
+    minutes                  NUMBER (2)
+  ) ;
+ALTER TABLE Game ADD CONSTRAINT Game_PK PRIMARY KEY ( bracketpos, eventID ) ;
+
+ALTER TABLE Game ADD CONSTRAINT Game_Event_FK FOREIGN KEY ( eventID ) REFERENCES Event ( eventID ) ;
+
+
+
+
+
+
+CREATE TABLE ActionbyGame
+  (
+    gameID            NUMBER (5) NOT NULL ,
+    eventID           NUMBER (5) NOT NULL ,
+    DNI               VARCHAR2 (30) NOT NULL ,
+    teamID            NUMBER (5) NOT NULL ,
+    ActionID          NUMBER (5) NOT NULL ,
+    bracketpos        NUMBER (2) NOT NULL 
+    
+  ) ;
+  
+ ALTER TABLE ActionbyGame ADD CONSTRAINT ActionbyGame_Event_FK FOREIGN KEY (eventID ) REFERENCES Event ( eventID ) ;
+
+ALTER TABLE ActionbyGame ADD CONSTRAINT ActionbyGame_Game_FK FOREIGN KEY ( bracketpos, eventID ) REFERENCES Game ( bracketpos,eventID ) ;
+
+ALTER TABLE ActionbyGame ADD CONSTRAINT ActionbyGame_Player_FK FOREIGN KEY ( DNI ) REFERENCES Player ( DNI ) ;
+
+ALTER TABLE ActionbyGame ADD CONSTRAINT ActionbyGame_Team_FK FOREIGN KEY (teamID ) REFERENCES Team ( teamID ) ;
+
+ALTER TABLE ActionbyGame ADD CONSTRAINT ActionbyGame_actionCatalog_FK FOREIGN KEY ( ActionID ) REFERENCES actionCatalog ( ActionID ) ;
+ 
+  
+  
+  
+
 CREATE TABLE LogBook
   (
     LogBookID      NUMBER (8) NOT NULL ,
@@ -52,30 +97,14 @@ CREATE TABLE Event
     eventDescription     VARCHAR2 (300) NOT NULL ,
     startDate            DATE NOT NULL ,
     endDate              DATE NOT NULL ,
-    maxTeams           NUMBER (2) NOT NULL
+    maxTeams             NUMBER (2) NOT NULL,
+    eventName            varchar2 (50) NOT NULL,
+    countryID            varchar2 (3) NOT NULL
   ) ;
 ALTER TABLE Event ADD CONSTRAINT Event_PK PRIMARY KEY ( eventID ) ;
 
--------------------------------------------------------------------------------
-
-CREATE TABLE EventCatalog
-  (
-    eventID   NUMBER (5) NOT NULL ,
-    eventName VARCHAR2 (30) NOT NULL
-  ) ;
-ALTER TABLE EventCatalog ADD CONSTRAINT EventCatalog_PK PRIMARY KEY ( eventID ) ;
 
 -------------------------------------------------------------------------------
-
-CREATE TABLE Game
-  (
-    gameID            NUMBER (5) NOT NULL ,
-    team1ID           NUMBER (5) NOT NULL ,
-    team2ID           NUMBER (5) NOT NULL ,
-    stadiumID         NUMBER (5) NOT NULL ,
-    date_Time         DATE NOT NULL
-  ) ;
-ALTER TABLE Game ADD CONSTRAINT Game_PK PRIMARY KEY ( gameID ) ;
 
 -------------------------------------------------------------------------------
 
@@ -289,8 +318,6 @@ CREATE TABLE teamTypeCatalog
 ALTER TABLE CityCatalog ADD CONSTRAINT CountryCatalog_FK FOREIGN KEY ( countryID ) REFERENCES CountryCatalog ( countryID ) ;
 
 ALTER TABLE CountryCatalog ADD CONSTRAINT Continent_FK FOREIGN KEY (continentID ) REFERENCES Continent ( continentID ) ;
-
-ALTER TABLE Event ADD CONSTRAINT EventCatalog_FK FOREIGN KEY ( eventID ) REFERENCES EventCatalog ( eventID ) ;
 
 ALTER TABLE PlayerByType ADD CONSTRAINT PlayerByType_Player_FK FOREIGN KEY ( playerDNI ) REFERENCES Player ( DNI ) ;
 

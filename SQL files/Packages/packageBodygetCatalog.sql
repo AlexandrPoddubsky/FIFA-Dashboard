@@ -54,18 +54,6 @@ procedure action (pActionCatalog  out sys_refcursor) as
               DBMS_OUTPUT.PUT_LINE ('Catalog no found:');
        END;
 -------------------------------------------------------------------------------
-procedure event (pEventCatalog  out sys_refcursor) as
- -- Gets all team  that ptype and return the names in the sys_refcursor.
-       BEGIN
-         open pEventCatalog for
-         select e.eventid as typeNameID, e.eventname as typeName  
-         from eventcatalog e
-         order by typeName;
-         
-         Exception
-         WHEN NO_DATA_FOUND THEN
-              DBMS_OUTPUT.PUT_LINE ('Catalog no found:');
-       END;
 -------------------------------------------------------------------------------
 procedure groupCatalog (pGroupCatalog  out sys_refcursor) as
  -- Gets all team  that ptype and return the names in the sys_refcursor.
@@ -122,10 +110,9 @@ procedure TDCatalog (pTDCatalog  out sys_refcursor) as
        BEGIN
          open pTDCatalog for
          select t.tdid as typeNameID,
-                t.tdfirstname as typeName,
-                t.tdlastname1 as typeName1,
+                t.tdfirstname||' ' ||t.tdlastname1||' ' ||t.tdlastname2 as typeName,
                 t.tdcounrtyid as typecountry,
-                t.tdpicture as typepicture
+                t.tdpicture as typepicture 
          from tdcatalog t
          order by typeName;
          

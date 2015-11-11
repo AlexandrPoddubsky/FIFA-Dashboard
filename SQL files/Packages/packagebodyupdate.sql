@@ -80,16 +80,103 @@ as
 
        END;
 -------------------------------------------------------------------------------
+procedure teamtd (pteamid number, pTdID number)
+  --update the column picture on the table stadium using the parameter pStadiumID
+as
+       BEGIN        
+           UPDATE team t
+           SET t.tdid = pTdID
+           WHERE pteamId = t.teamid;
+         
+        Exception
+         WHEN NO_DATA_FOUND THEN
+              DBMS_OUTPUT.PUT_LINE ('Team no update');
+         commit;
+
+       END;
+
 -------------------------------------------------------------------------------
+procedure teamcaptain (pteamID number, pDNI number)
+  --update the column picture on the table stadium using the parameter pStadiumID
+as
+       BEGIN        
+           UPDATE team t
+           SET t.captainid = pDNI
+           WHERE pteamId =t.teamid;
+         
+        Exception
+         WHEN NO_DATA_FOUND THEN
+              DBMS_OUTPUT.PUT_LINE ('Team no update');
+         commit;
+
+       END;
+
 -------------------------------------------------------------------------------
+procedure team (pTeamID number, pTeamName varchar2, pteamtypeid number, ptdid number )
+  --update the column picture on the table stadium using the parameter pStadiumID
+as
+       BEGIN        
+           UPDATE team t
+           
+           SET t.teamname = pTeamName,
+               t.teamtypeid = pteamtypeid,
+               t.tdid = ptdid
+           WHERE pteamId = t.teamid;
+         
+        Exception
+         WHEN NO_DATA_FOUND THEN
+              DBMS_OUTPUT.PUT_LINE ('Team no update');
+         commit;
+
+       END;
+
 -------------------------------------------------------------------------------
+
+procedure player ( pDNI varchar2, pFirstName varchar2, pLastName1 varchar2, pLastName2 varchar2, pClubTShirt number, 
+                   pClubCaptain number, pCountry varchar2, pSelectionTshirt number, pSelectionCaptian number)
+  --update the column picture on the table player using the parameter playerID
+as
+       BEGIN        
+           UPDATE player p
+           
+           SET
+              p.firstname = pFirstName,
+              p.lastname1 = pLastName1,
+              p.lastname2 = pLastName2,
+              p.clubtshirt = pClubTShirt,
+              p.clubcaptain = pClubCaptain,
+              p.countryid = pCountry,
+              p.selectiontshirt = pSelectionTshirt,
+              p.selectioncaptain = pSelectionCaptian
+           
+           WHERE pDNI = p.dni;
+         
+        Exception
+         WHEN NO_DATA_FOUND THEN
+              DBMS_OUTPUT.PUT_LINE ('Player no update');
+         commit;
+
+       END;
+-------------------------------------------------------------------------------
+procedure eventPicture (peventID number, pPicture varchar2)
+  --update the column picture on the table stadium using the parameter pStadiumID
+as
+       BEGIN        
+           UPDATE event t
+           SET t.picture = pPicture
+           WHERE peventID =t.eventid;
+         
+        Exception
+         WHEN NO_DATA_FOUND THEN
+              DBMS_OUTPUT.PUT_LINE ('Event no update:' || peventID);
+         commit;
+
+       END;
+-------------------------------------------------------------------------------
+
 -------------------------------------------------------------------------------
        
 
-
-
-   -- SET Birthday = to_date(pBirthday,'DD/MM/YYYY')
-           
 
 -------------------------------------------------------------------------------
 

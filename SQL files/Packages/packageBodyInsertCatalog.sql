@@ -56,22 +56,6 @@ as
 
 -------------------------------------------------------------------------------
 
-procedure event (pEventName varchar2) as
-begin
-      insert into eventCatalog (eventID, eventName)
-      values (eventCatalogID_seq.Nextval, pEventName);
-            
-       Exception
-         WHEN VALUE_ERROR THEN
-              DBMS_OUTPUT.PUT_LINE ('Event catalog error ');
-         WHEN OTHERS THEN
-              DBMS_OUTPUT.PUT_LINE ('Unexpected error');
-              RAISE;
-         commit;
-
-       END;
-       
--------------------------------------------------------------------------------
 
 procedure lineUp (pGoalKeeper number, pDefender number, pMidfield number, pLineForward number) as
 begin

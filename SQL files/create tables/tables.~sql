@@ -52,18 +52,12 @@ CREATE TABLE Event
     eventDescription     VARCHAR2 (300) NOT NULL ,
     startDate            DATE NOT NULL ,
     endDate              DATE NOT NULL ,
-    maxTeams           NUMBER (2) NOT NULL
+    maxTeams             NUMBER (2) NOT NULL,
+    eventName            varchar2 (50) NOT NULL,
+    countryID            varchar2 (3) NOT NULL
   ) ;
 ALTER TABLE Event ADD CONSTRAINT Event_PK PRIMARY KEY ( eventID ) ;
 
--------------------------------------------------------------------------------
-
-CREATE TABLE EventCatalog
-  (
-    eventID   NUMBER (5) NOT NULL ,
-    eventName VARCHAR2 (30) NOT NULL
-  ) ;
-ALTER TABLE EventCatalog ADD CONSTRAINT EventCatalog_PK PRIMARY KEY ( eventID ) ;
 
 -------------------------------------------------------------------------------
 
@@ -73,7 +67,8 @@ CREATE TABLE Game
     team1ID           NUMBER (5) NOT NULL ,
     team2ID           NUMBER (5) NOT NULL ,
     stadiumID         NUMBER (5) NOT NULL ,
-    date_Time         DATE NOT NULL
+    date_Time         DATE NOT NULL,
+    eventID           number (5)
   ) ;
 ALTER TABLE Game ADD CONSTRAINT Game_PK PRIMARY KEY ( gameID ) ;
 
@@ -270,10 +265,12 @@ CREATE TABLE tdCatalog
     tdFirstName   VARCHAR2 (30) NOT NULL ,
     tdLastName1   VARCHAR2 (30) NOT NULL ,
     tdLastName2   VARCHAR2 (30) ,
-    tdNacionality VARCHAR2 (30)
+    tdCountryID   VARCHAR2 (3),
+    tdPicture     VARCHAR2 (300)
   ) ;
   
 ALTER TABLE tdCatalog ADD CONSTRAINT tdCatalog_PK PRIMARY KEY ( tdID ) ;
+
 -------------------------------------------------------------------------------
 CREATE TABLE teamTypeCatalog
   (
@@ -287,8 +284,6 @@ CREATE TABLE teamTypeCatalog
 ALTER TABLE CityCatalog ADD CONSTRAINT CountryCatalog_FK FOREIGN KEY ( countryID ) REFERENCES CountryCatalog ( countryID ) ;
 
 ALTER TABLE CountryCatalog ADD CONSTRAINT Continent_FK FOREIGN KEY (continentID ) REFERENCES Continent ( continentID ) ;
-
-ALTER TABLE Event ADD CONSTRAINT EventCatalog_FK FOREIGN KEY ( eventID ) REFERENCES EventCatalog ( eventID ) ;
 
 ALTER TABLE PlayerByType ADD CONSTRAINT PlayerByType_Player_FK FOREIGN KEY ( playerDNI ) REFERENCES Player ( DNI ) ;
 

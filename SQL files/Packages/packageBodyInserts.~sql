@@ -18,11 +18,11 @@ as
        END;
        
 -------------------------------------------------------------------------------
-procedure event ( pdescription varchar2, pstartdate date,penddate date, pmaxteams number, pcountry number)
+procedure event ( pEventName varchar2, pdescription varchar2, pstartdate date, penddate date, pmaxteams number, pcountry varchar2)
 as
        BEGIN
-         insert into event (eventID,eventdescription,startdate,enddate,maxteams,countryID)
-         values(eventID_seq.NextVal,pdescription,pstartdate,penddate,pmaxteams,pcountry);
+         insert into event (eventID,eventdescription,startdate,enddate,maxteams,countryID, eventname)
+         values(eventID_seq.NextVal,pdescription,to_date(pstartdate,'DD/MM/YYYY'),to_date(penddate,'DD/MM/YYYY'),pmaxteams,pcountry,pEventName);
 
         Exception
          WHEN VALUE_ERROR THEN
@@ -114,12 +114,11 @@ as
                  
        END; 
 -------------------------------------------------------------------------------
-procedure Td ( pTdfirstname varchar2, pTdlastname1 varchar2, pTdlastname2 varchar2,pTdcounrtyid varchar2)
+procedure Td ( pTdfirstname varchar2, pTdlastname1 varchar2, pTdlastname2 varchar2, pTdcounrtyid varchar2)
 as
        BEGIN
-         insert into Tdcatalog(Tdid, Tdfirstname, Tdlastname1, Tdlastname2, Tdcounrtyid, Tdpicture )
-         values(TDID_seq.NextVal,pTdfirstname , pTdlastname1 , pTdlastname2 , 
-               pTdcounrtyid , pTdpicture );
+         insert into Tdcatalog(Tdid, Tdfirstname, Tdlastname1, Tdlastname2, Tdcounrtyid )
+         values(TDID_seq.NextVal, pTdfirstname, pTdlastname1, pTdlastname2, pTdcounrtyid );
 
         Exception
          WHEN VALUE_ERROR THEN
@@ -131,6 +130,47 @@ as
 
        END;
 -------------------------------------------------------------------------------
+procedure TeambyEvent ( peventID number, pteamID number)
+as
+       BEGIN
+        
+         insert into TeambyEvent (Teamid,Eventid)
+         values(pteamID,peventID); 
+
+        Exception
+         WHEN VALUE_ERROR THEN
+              DBMS_OUTPUT.PUT_LINE ('Insert PlayerbyTeam error ');
+         WHEN OTHERS THEN
+              DBMS_OUTPUT.PUT_LINE ('Unexpected error');
+              RAISE;
+         commit;
+         
+                 
+       END;
+  
+-------------------------------------------------------------------------------
+procedure game (pteam1id number, pteam2id number, pstadiumid number,
+                pgamedate date, peventid number,  pbracketpos number,
+                phours number, pminutes number)
+as
+       BEGIN
+        
+         insert into game (team1id,team2id,stadiumid,gamedate,eventid,bracketpos,hours,minutes)
+         values(pteam1id, pteam2id, pstadiumid, to_date(pgamedate,'DD/MM/YYYY'), peventid,  pbracketpos, phours, pminutes); 
+
+        Exception
+         WHEN VALUE_ERROR THEN
+              DBMS_OUTPUT.PUT_LINE ('Insert PlayerbyTeam error ');
+         WHEN OTHERS THEN
+              DBMS_OUTPUT.PUT_LINE ('Unexpected error');
+              RAISE;
+         commit;
+         
+                 
+       END;
+  
+-------------------------------------------------------------------------------
+
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------
