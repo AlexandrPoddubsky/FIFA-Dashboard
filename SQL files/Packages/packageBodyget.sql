@@ -135,11 +135,18 @@ procedure team ( pteamID number, pTeam  out sys_refcursor) as
           select  t.teamid as teamID,
                   t.teamname as teamname,
                   t.captainid as captain,
+                  p.firstname||' '||p.lastname1||' '||p.lastname2 as captainname,
+                  t.flagpath as flag,
+                  t.logopath as logo,
                   t.cityid as city,
+                  c.cityname as cityname,
+                  cc.countryname as countryname,
                   t.tdid as td,
-                  t.teamtypeid as teamtype               
-         from team t
-         where t.teamid = pteamID;
+                  td.tdfirstname||' '||td.tdlastname1|| ' '||td.tdlastname2 as tdname,
+                  t.teamtypeid as teamtype 
+                             
+         from team t,player p, citycatalog c, tdcatalog td, countrycatalog cc
+         where t.teamid = pteamID and p.dni=t.captainid and c.cityid = t.cityid and td.tdid = t.tdid and cc.countryid = c.countryid;
          --order by teamtype,teamname;
          Exception
          WHEN NO_DATA_FOUND THEN
@@ -238,9 +245,21 @@ procedure gamesByEvent (pEventID in number, pGameID out sys_refcursor) as
   -- Gets all players  that pSelectionID and return the ids and names in the sys_refcursor.
 begin
   open pGameID for
-  select  g.eventid || '-'  ||  g.bracketpos as TypeNameID, 'Game no. ' || g.bracketpos || ' ' || t1.teamname || ' vs ' || t2.teamname as TYPENAME
-  from  team t1, team t2, game g
-  where pEventID = g.eventid and g.team1id=t1.teamid and g.team2id=t2.teamid;
+  select  g.eventid || '-'  ||  g.bracketpos as TypeNameID, 
+  'Game no. ' || g.bracketpos || ' ' || t1.teamname || ' vs ' || t2.teamname as TYPENAME, t1.teamid as team1ID, t2.teamid as team2ID,
+  t1.teamname as team1name,
+  t2.teamname as team2name,
+  g.stadiumid as stadiumid,
+  g.gamedate,
+  s.stadiumname as stadium,
+  c.cityname as city,
+  t1.flagpath as team1flag,
+  t2.flagpath as team2flag,
+  g.hours as hours,
+  g.minutes as minutes
+  from  team t1, team t2, game g, stadiumcatalog s, citycatalog c
+  where pEventID = g.eventid and g.team1id=t1.teamid and g.team2id=t2.teamid and s.stadiumid = g.stadiumid and s.cityid = c.cityid
+  order by TypeNameID;
   Exception
          WHEN NO_DATA_FOUND THEN
               DBMS_OUTPUT.PUT_LINE ('Players no found:');
@@ -300,6 +319,82 @@ procedure EventID ( peventID  out number) as
          WHEN NO_DATA_FOUND THEN
               DBMS_OUTPUT.PUT_LINE ('TeamID no found:');
        END;
+-------------------------------------------------------------------------------
+
+procedure goalsByGame ( pGameID  in varchar2, pTeamID in number, pGoals out number) as
+ -- Gets all team  that ptype and return the names in the sys_refcursor.
+       BEGIN
+         
+         select count (ag.actionid) into pGoals
+         from actionbygame ag
+         where ag.actionid=6 and pGameID=ag.eventid || '-' || ag.bracketpos and ag.teamid = pteamID;
+         
+         
+         --Exception
+         --WHEN NO_DATA_FOUND THEN
+              --DBMS_OUTPUT.PUT_LINE (' no found:');
+       END;
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+------------------------inicia fase de grupos----------------------------------
+
+procedure statisticsbygroupteam ( pteamID  in varchar2, peventid in number,
+                                  pteamName out varchar2, pflag out varchar2,
+                                  pmp out number) as
+ -- Gets all team  that ptype and return the names in the sys_refcursor.
+
+    
+       BEGIN
+--------------------return teamname and flag-------------         
+       select t.teamname into pteamName
+       from team t
+       where t.teamid =pteamID;  
+       --------------------------
+       select t.flagpath into pflag
+       from team t
+       where t.teamid =pteamID; 
+       --------------------------
+       
+       --match player  
+       select count (1) into pmp
+       from game g
+       where g.eventid = peventid and(g.team1id = pteamID or g.team2id = pteamID)  and g.bracketpos  < 49; 
+               
+       --match winner
+         
+       
+                
+         --Exception
+         --WHEN NO_DATA_FOUND THEN
+              --DBMS_OUTPUT.PUT_LINE (' no found:');
+       END;
+-------------------------------------------------------------------------------
+procedure matchesPlayed ( pteamID  in number, pgameid in varchar2,
+                                  pMatches out sys_refcursor) as
+ -- Gets all team  that ptype and return the names in the sys_refcursor.
+       BEGIN
+         open pMatches for
+         select g.eventid||'-'||g.bracketpos as GAMEID,
+         g.team1id,
+         g.team2id
+         from game g
+         where (g.team1id = pteamID or g.team2id=pteamID);
+               
+       --match winner
+         
+       
+                
+         --Exception
+         --WHEN NO_DATA_FOUND THEN
+              --DBMS_OUTPUT.PUT_LINE (' no found:');
+       END;
+
+-------------------------------------------------------------------------------
+------------------------fin fase de grupos-------------------------------------
+
+
+
+
 -------------------------------------------------------------------------------
 
 -------------------------------------------------------------------------------

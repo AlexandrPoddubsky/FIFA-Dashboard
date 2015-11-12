@@ -142,9 +142,9 @@ CREATE SEQUENCE teamTypeId_seq
   CACHE 20;
 ---------------------------------------------------  
 
---secuencia para manejo de id de BITACORA
+--secuencia para manejo de id de LogBookId
 
-CREATE SEQUENCE bitacoraId_seq
+CREATE SEQUENCE LogBookId_seq
   MINVALUE 0
   MAXVALUE 999999999999999999999999999
   START WITH 1

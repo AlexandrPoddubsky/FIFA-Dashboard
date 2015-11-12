@@ -7,17 +7,6 @@
 <allowColumnReorder>false</allowColumnReorder>
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
-<Column name="gameID" id="0F600DB4-6247-067E-62EC-49BC61D0B976">
-<createdBy>aarguedas</createdBy>
-<createdTime>2015-10-25 21:22:35 UTC</createdTime>
-<generatorID>4A218BB2-C42B-4F2C-74A1-D1A1FDE20505</generatorID>
-<ownerDesignName>FIFADashboard</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>5</dataTypePrecision>
-<autoIncrementCycle>false</autoIncrementCycle>
-</Column>
 <Column name="team1ID" id="ACEBCBA2-5F3B-1EE4-3101-BD12BBC552F6">
 <createdBy>aarguedas</createdBy>
 <createdTime>2015-10-25 21:22:35 UTC</createdTime>
@@ -56,7 +45,7 @@
 <colAssociation fkAssociation="AAC69D64-8ADD-E260-261F-209541DF7864" referredColumn="10909C0A-4856-5AC2-0D02-A844DC53566E"/>
 </associations>
 </Column>
-<Column name="date_Time" id="2A6F737F-02B4-C523-287A-854233124E83">
+<Column name="GameDate" id="2A6F737F-02B4-C523-287A-854233124E83">
 <createdBy>aarguedas</createdBy>
 <createdTime>2015-10-27 04:10:46 UTC</createdTime>
 <generatorID>65994220-BC01-EED8-2010-56E4EBFC14F1</generatorID>
@@ -64,6 +53,57 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT007</logicalDatatype>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Event_eventID" id="B89557A8-ABB9-00D9-48FA-1239C2F5A29E">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-11-10 03:56:53 UTC</createdTime>
+<generatorID>B122F7F9-005B-E08B-98B3-A2B4F4B3D768</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<delegate>A0B3F51B-72DD-2E6D-A473-7BA0D9BA007B</delegate>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="07BD54AB-B05D-90B3-ABC7-B8FADF1AC8D4" referredColumn="A0B3F51B-72DD-2E6D-A473-7BA0D9BA007B"/>
+</associations>
+</Column>
+<Column name="bracketpos" id="9666959A-2993-2E45-90FF-D3FF71E006FF">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-11-11 02:58:20 UTC</createdTime>
+<generatorID>FF0C80D6-064A-0BB6-0BF6-35208D84C00D</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="hours" id="E06541B5-CAC3-99BA-D142-2F535160CFD4">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-11-11 03:09:14 UTC</createdTime>
+<generatorID>9333F180-FA8C-15C0-6488-B0F5D0F1C0EB</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="minutes" id="16988CA7-BDCE-4CB4-4647-8D7C522760D6">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-11-11 03:09:14 UTC</createdTime>
+<generatorID>C01D2337-72C9-9DD2-537A-BB590EC22C82</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 </columns>
@@ -77,7 +117,8 @@
 <indexState>Primary Constraint</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="0F600DB4-6247-067E-62EC-49BC61D0B976"/>
+<colUsage columnID="9666959A-2993-2E45-90FF-D3FF71E006FF"/>
+<colUsage columnID="B89557A8-ABB9-00D9-48FA-1239C2F5A29E"/>
 </indexColumnUsage>
 </ind_PK_UK>
 <ind_PK_UK id="6B45D905-9EF4-4AB0-A846-EA6957475FFA" name="Game_StadiumCatalog_FK">
@@ -89,6 +130,17 @@
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="30985A26-C503-4BF1-3811-871E1A8162C0"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="3D5E01E4-A5F4-182C-5250-2CEE781F1C3E" name="Game_Event_FK">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-11-10 03:56:53 UTC</createdTime>
+<generatorID>CF058B88-D569-10EE-6559-59E946ED2164</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B89557A8-ABB9-00D9-48FA-1239C2F5A29E"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

@@ -35,8 +35,21 @@
 <delegate>9B471AA0-8DE7-87FE-227F-4DC29BB5E77E</delegate>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Event_eventID" id="066450B0-B593-9015-E634-7F982254E5DD">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-11-10 03:54:26 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<delegate>A0B3F51B-72DD-2E6D-A473-7BA0D9BA007B</delegate>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
 <associations>
-<colAssociation fkAssociation="AB0EB97C-4FF7-61B2-8687-6C28F7B8ECD0" referredColumn="9B471AA0-8DE7-87FE-227F-4DC29BB5E77E"/>
+<colAssociation fkAssociation="EED89DBA-56E3-183A-8398-C0793201394C" referredColumn="A0B3F51B-72DD-2E6D-A473-7BA0D9BA007B"/>
 </associations>
 </Column>
 </columns>
@@ -52,6 +65,7 @@
 <indexColumnUsage>
 <colUsage columnID="194C3C40-409D-8076-3264-C615426EBB60"/>
 <colUsage columnID="0DB6DCA7-0540-A32A-7668-EADAAEA679C9"/>
+<colUsage columnID="066450B0-B593-9015-E634-7F982254E5DD"/>
 </indexColumnUsage>
 </ind_PK_UK>
 <ind_PK_UK id="5ADF1943-F990-1737-D614-A76CB29C4AEF" name="FK_ASS_5">
@@ -65,15 +79,15 @@
 <colUsage columnID="194C3C40-409D-8076-3264-C615426EBB60"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="9C4C3B28-F015-BD48-0978-F202ABCB2FD2" name="FK_ASS_6">
+<ind_PK_UK id="FBB0B0B9-8459-206A-965E-2F1CFBD2C26F" name="FK_ASS_1">
 <createdBy>aarguedas</createdBy>
-<createdTime>2015-10-25 21:22:35 UTC</createdTime>
+<createdTime>2015-11-10 03:54:26 UTC</createdTime>
 <generatorID>665E77B1-B754-8E4D-16A0-835F3C0968B5</generatorID>
 <ownerDesignName>FIFADashboard</ownerDesignName>
 <indexState>Foreign Key</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="0DB6DCA7-0540-A32A-7668-EADAAEA679C9"/>
+<colUsage columnID="066450B0-B593-9015-E634-7F982254E5DD"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

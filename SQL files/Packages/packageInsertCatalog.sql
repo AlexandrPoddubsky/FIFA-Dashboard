@@ -9,7 +9,7 @@ procedure lineUp (pGoalKeeper number, pDefender number, pMidfield number, pLineF
 procedure stadium (pStadiumName varchar2, pCapacity number, pPicture varchar2 );
 procedure typePlayer (pTypePlayerName varchar2);
 procedure action (pActionName varchar2);
-procedure groupcatalog (pGroupName varchar2);
+
 procedure teamType (pTeamTypeName varchar2); 
 
 

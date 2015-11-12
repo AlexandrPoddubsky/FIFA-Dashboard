@@ -34,5 +34,15 @@ procedure games ( pgames out sys_refcursor);
 
 procedure EventID ( peventID  out number);
 
+procedure goalsByGame ( pGameID  in varchar2, pTeamID in number, pGoals out number);
+
 -------------------------------------------------------------------------------
+procedure statisticsbygroupteam ( pteamID  in varchar2, peventid in number,
+                                  pteamName out varchar2, pflag out varchar2,
+                                  pmp out number);
+procedure matchesPlayed ( pteamID  in number, pgameid in varchar2,
+                                  pMatches out sys_refcursor) ;
+
+
+
 END get;

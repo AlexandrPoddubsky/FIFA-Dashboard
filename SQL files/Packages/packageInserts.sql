@@ -3,7 +3,7 @@ create or replace package inserts is
 
 procedure userAdministrator ( pUserEmail varchar2, pusernamepassword varchar2);
 
-procedure event ( pEventName varchar2, pdescription varchar2, pstartdate date,penddate date, pmaxteams number, pcountry varchar2);
+procedure event ( pEventName varchar2, pdescription varchar2, pstartdate varchar2, penddate varchar2, pmaxteams number, pcountry varchar2);
 
 procedure team ( pteamName varchar2, pCaptainID number, pflagpath varchar2, plogopath varchar2,pcityid number,
                ptdid number, pteamtypeid number);
@@ -20,7 +20,10 @@ procedure Td ( pTdfirstname varchar2, pTdlastname1 varchar2, pTdlastname2 varcha
 procedure TeambyEvent ( peventID number, pteamID number);
 
 procedure game (pteam1id number, pteam2id number, pstadiumid number,
-                pgamedate date, peventid number,  pbracketpos number,
+                pgamedate varchar2, peventid number,  pbracketpos number,
                 phours number, pminutes number);
+                
+procedure Action( peventid number, pgameid number,pteamid number,pplayerid number,pactionid number);
+               
 -------------------------------------------------------------------------------
 END inserts;

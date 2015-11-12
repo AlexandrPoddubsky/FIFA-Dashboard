@@ -99,6 +99,42 @@
 <dataTypeSize>1</dataTypeSize>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
+<Column name="clubCaptain" id="4C86ACB2-C6BD-57FA-5B7A-051CB0E4C533">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-11-10 03:54:26 UTC</createdTime>
+<generatorID>5B8A29B2-F088-D58E-5F24-52EEFFFFF815</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>1</dataTypePrecision>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="selectionCaptain" id="990E0123-AC50-A768-1B93-E34F991FABEA">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-11-10 03:54:26 UTC</createdTime>
+<generatorID>B3BF56A9-5AFD-9622-8A84-19338046B47B</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>1</dataTypePrecision>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="countryID" id="5ACC47E0-5D92-D1FF-34D1-CB128D170640">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-11-10 03:54:26 UTC</createdTime>
+<generatorID>D9A0E498-6ED4-6EED-84DE-19BB2B875992</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>3</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="8DEE9ABA-6231-3CFB-4419-8883575E562B" name="Player_PK">

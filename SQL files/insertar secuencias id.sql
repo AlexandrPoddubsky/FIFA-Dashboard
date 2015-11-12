@@ -151,3 +151,13 @@ CREATE SEQUENCE LogBookId_seq
   INCREMENT BY 1
   CACHE 20;
 ---------------------------------------------------  
+--secuencia para manejo de id de LogBookId
+
+CREATE SEQUENCE abgId_seq
+  MINVALUE 0
+  MAXVALUE 999999999999999999999999999
+  START WITH 1
+  INCREMENT BY 1
+  CACHE 20;
+---------------------------------------------------  
+

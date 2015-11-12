@@ -18,5 +18,12 @@ procedure stadium ( pstadiumname varchar2, pgooglemapsid varchar2, pcapacity num
 procedure Td ( pTdfirstname varchar2, pTdlastname1 varchar2, pTdlastname2 varchar2,pTdcounrtyid varchar2);
 
 procedure TeambyEvent ( peventID number, pteamID number);
+
+procedure game (pteam1id number, pteam2id number, pstadiumid number,
+                pgamedate varchar2, peventid number,  pbracketpos number,
+                phours number, pminutes number);
+                
+procedure Action( peventid number, pgameid number,pteamid number,pplayerid number,pactionid number);
+               
 -------------------------------------------------------------------------------
 END inserts;

@@ -127,20 +127,6 @@ begin
        
 -------------------------------------------------------------------------------
 
-procedure groupcatalog (pGroupName varchar2) as
-begin
-      insert into groupCatalog (groupID, groupName )
-      values (groupID_seq.Nextval, pGroupName);
-            
-       Exception
-         WHEN VALUE_ERROR THEN
-              DBMS_OUTPUT.PUT_LINE ('Group catalog error ');
-         WHEN OTHERS THEN
-              DBMS_OUTPUT.PUT_LINE ('Unexpected error');
-              RAISE;
-         commit;
-
-       END;
        
 -------------------------------------------------------------------------------
 

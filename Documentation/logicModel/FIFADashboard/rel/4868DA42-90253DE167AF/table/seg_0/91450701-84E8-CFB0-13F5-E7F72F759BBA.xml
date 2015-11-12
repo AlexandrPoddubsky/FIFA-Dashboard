@@ -7,22 +7,6 @@
 <allowColumnReorder>false</allowColumnReorder>
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
-<Column name="EventCatalog_eventID" id="9B471AA0-8DE7-87FE-227F-4DC29BB5E77E">
-<createdBy>aarguedas</createdBy>
-<createdTime>2015-10-25 21:22:35 UTC</createdTime>
-<generatorID>A7CFA25B-47E3-D2EA-A87C-039E134835C3</generatorID>
-<ownerDesignName>FIFADashboard</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>5</dataTypePrecision>
-<delegate>8F710A30-ADAC-1BE2-4DF1-4BE8390BE47C</delegate>
-<previousColumn>false</previousColumn>
-<autoIncrementCycle>false</autoIncrementCycle>
-<associations>
-<colAssociation fkAssociation="4D289EFE-A221-3EA0-5326-17383358DBCA" referredColumn="8F710A30-ADAC-1BE2-4DF1-4BE8390BE47C"/>
-</associations>
-</Column>
 <Column name="eventDescription" id="E4D92206-A1BE-E588-9C4A-6ECFD6DE4020">
 <createdBy>aarguedas</createdBy>
 <createdTime>2015-10-25 21:22:35 UTC</createdTime>
@@ -65,29 +49,51 @@
 <dataTypePrecision>2</dataTypePrecision>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
+<Column name="eventID" id="A0B3F51B-72DD-2E6D-A473-7BA0D9BA007B">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-11-10 03:54:26 UTC</createdTime>
+<generatorID>8222998D-09AF-DA38-4865-48B807826D7B</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="eventName" id="F472FE11-DDD0-39FA-8C94-9C64098F0B17">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-11-10 03:54:26 UTC</createdTime>
+<generatorID>F0947A2E-8B66-D32A-FE01-EFBB1F02FA14</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="countryID" id="50DC689F-903E-69A0-CEEB-DF6066EC0B80">
+<createdBy>aarguedas</createdBy>
+<createdTime>2015-11-10 03:54:26 UTC</createdTime>
+<generatorID>8274D52C-8365-282B-5D39-5F682E26BA2F</generatorID>
+<ownerDesignName>FIFADashboard</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>3</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
-<ind_PK_UK id="0DBECC42-B639-A790-C70F-55072D553CF6" name="Event_PK">
+<ind_PK_UK id="88EF0A28-9217-9516-F6F1-0AED8F1F9E3E" name="Event_PK">
 <createdBy>aarguedas</createdBy>
-<createdTime>2015-10-25 21:22:35 UTC</createdTime>
-<generatorID>5EB14C58-528B-00CA-4A60-0D15D4936A47</generatorID>
+<createdTime>2015-11-10 03:54:26 UTC</createdTime>
+<generatorID>CE9F862D-41E1-2330-A1F1-DEAC404E5E55</generatorID>
 <ownerDesignName>FIFADashboard</ownerDesignName>
 <pk>true</pk>
 <indexState>Primary Constraint</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="9B471AA0-8DE7-87FE-227F-4DC29BB5E77E"/>
-</indexColumnUsage>
-</ind_PK_UK>
-<ind_PK_UK id="C4508DA8-BD77-DD53-699C-B9EBE96458BB" name="Event_EventCatalog_FK">
-<createdBy>aarguedas</createdBy>
-<createdTime>2015-10-25 21:22:35 UTC</createdTime>
-<generatorID>D5C638EB-D76A-E044-29CC-D9C3C5777EC8</generatorID>
-<ownerDesignName>FIFADashboard</ownerDesignName>
-<indexState>Foreign Key</indexState>
-<isSurrogateKey>false</isSurrogateKey>
-<indexColumnUsage>
-<colUsage columnID="9B471AA0-8DE7-87FE-227F-4DC29BB5E77E"/>
+<colUsage columnID="A0B3F51B-72DD-2E6D-A473-7BA0D9BA007B"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

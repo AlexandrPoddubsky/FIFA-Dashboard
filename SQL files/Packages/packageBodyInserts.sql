@@ -18,7 +18,7 @@ as
        END;
        
 -------------------------------------------------------------------------------
-procedure event ( pEventName varchar2, pdescription varchar2, pstartdate date, penddate date, pmaxteams number, pcountry varchar2)
+procedure event ( pEventName varchar2, pdescription varchar2, pstartdate varchar2, penddate varchar2, pmaxteams number, pcountry varchar2)
 as
        BEGIN
          insert into event (eventID,eventdescription,startdate,enddate,maxteams,countryID, eventname)
@@ -152,7 +152,7 @@ as
   
 -------------------------------------------------------------------------------
 procedure game (pteam1id number, pteam2id number, pstadiumid number,
-                pgamedate date, peventid number,  pbracketpos number,
+                pgamedate varchar2, peventid number,  pbracketpos number,
                 phours number, pminutes number)
 as
        BEGIN
@@ -172,6 +172,21 @@ as
        END;
   
 -------------------------------------------------------------------------------
+procedure Action( peventid number, pgameid number,pteamid number,pplayerid number,pactionid number)
+as
+       BEGIN
+         insert into actionbygame(abgid,eventid,dni,teamid,actionid,bracketpos )
+         values(abgID_seq.NextVal, peventid, pplayerid, pteamid,pactionid,pgameid);
+
+        Exception
+         WHEN VALUE_ERROR THEN
+              DBMS_OUTPUT.PUT_LINE ('Insert error ');
+         WHEN OTHERS THEN
+              DBMS_OUTPUT.PUT_LINE ('Unexpected error');
+              RAISE;
+         commit;
+
+       END;
 
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------

@@ -55,18 +55,6 @@ procedure action (pActionCatalog  out sys_refcursor) as
        END;
 -------------------------------------------------------------------------------
 -------------------------------------------------------------------------------
-procedure groupCatalog (pGroupCatalog  out sys_refcursor) as
- -- Gets all team  that ptype and return the names in the sys_refcursor.
-       BEGIN
-         open pGroupCatalog for
-         select g.groupid as typeNameID, g.groupname as typeName  
-         from groupcatalog g
-         order by typeName;
-         
-         Exception
-         WHEN NO_DATA_FOUND THEN
-              DBMS_OUTPUT.PUT_LINE ('Catalog no found:');
-       END;
 -------------------------------------------------------------------------------
 procedure lineUp (pLineupCatalog  out sys_refcursor) as
  -- Gets all team  that ptype and return the names in the sys_refcursor.
