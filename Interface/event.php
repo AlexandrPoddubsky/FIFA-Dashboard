@@ -27,7 +27,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>FIFA Dashboard</title>
+    <title><?php echo $_GET['eventName']; ?></title>
     <link rel="shortcut icon" href= "img/icon.png">
 
     <!-- Bootstrap Core CSS -->
@@ -128,6 +128,7 @@
             echo "<div class = \"col-md-4\">";
             echo "<form id=\"team" . $row['TYPENAMEID'] . "\" action=\"team.php\" method=\"GET\">";
             echo "<input type=\"hidden\" name=\"teamID\" value=\"" . $row['TYPENAMEID'] . "\" />";
+            echo "<input type=\"hidden\" name=\"teamName\" value=\"" . $row['TYPENAME'] . "\" />";
             echo "<h2 class=\"align-left\"><a href=\"#\" onclick=\"document.getElementById('team" . $row['TYPENAMEID'] . "').submit();\">"
              . $row['TYPENAME'] . "</a></h2>";
             if ($row['TEAMTYPE'] != 1) {

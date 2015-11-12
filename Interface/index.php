@@ -256,6 +256,7 @@
                             echo "<div class = \"col-md-8\">";
                             echo "<form id=\"event" . $row['TYPENAMEID'] . "\" action=\"event.php\" method=\"GET\">";
                             echo "<input type=\"hidden\" name=\"eventID\" value=\"" . $row['TYPENAMEID'] . "\" />";
+                            echo "<input type=\"hidden\" name=\"eventName\" value=\"" . $row['TYPENAME'] . "\" />";
                             echo "<h3 class=\"align-left\"><a href=\"#\" onclick=\"document.getElementById('event" . $row['TYPENAMEID'] . "').submit();\">"
                              . $row['TYPENAME'] . "</a></h3>";
                             echo "<p class=\"uppercase align-left\">" . $row['COUNTRY'] . "</p>";

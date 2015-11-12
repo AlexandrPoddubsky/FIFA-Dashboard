@@ -27,7 +27,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>FIFA Dashboard</title>
+    <title><?php echo $_GET['teamName']; ?></title>
     <link rel="shortcut icon" href= "img/icon.png">
 
     <!-- Bootstrap Core CSS -->
