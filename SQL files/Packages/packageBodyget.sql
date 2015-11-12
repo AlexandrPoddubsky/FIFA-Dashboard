@@ -233,7 +233,7 @@ procedure eventTeam (peventID number, pEvents  out sys_refcursor) as
                   td.tdfirstname||' '||td.tdlastname1||' '||td.tdlastname2 as td,
                   t.teamtypeid as teamtype
          from team t, teambyevent te, player p, citycatalog c,countrycatalog cc, tdcatalog td
-         where te.teamid = t.teamid and te.eventid = 2 and p.dni = t.captainid and t.cityid = c.cityid and c.countryid = cc.countryid and td.tdid=t.tdid
+         where te.teamid = t.teamid and te.eventid = peventID and p.dni = t.captainid and t.cityid = c.cityid and c.countryid = cc.countryid and td.tdid=t.tdid
          order by typeName;
          Exception
          WHEN NO_DATA_FOUND THEN

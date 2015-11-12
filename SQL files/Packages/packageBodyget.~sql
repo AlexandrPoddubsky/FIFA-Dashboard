@@ -358,8 +358,7 @@ procedure statisticsbygroupteam ( pteamID  in varchar2, peventid in number,
        --match player  
        select count (1) into pmp
        from game g
-       where g.eventid = peventid and(g.team1id = pteamID or g.team2id = pteamID)  and g.bracketpos  < 49
-             and g.gamedate <= sysdate; 
+       where g.eventid = peventid and(g.team1id = pteamID or g.team2id = pteamID)  and g.bracketpos  < 49; 
                
        --match winner
          
@@ -379,7 +378,7 @@ procedure matchesPlayed ( pteamID  in number, pgameid in varchar2,
          g.team1id,
          g.team2id
          from game g
-         where (g.team1id = pteamID or g.team2id=pteamID) and g.gamedate <= sysdate;
+         where (g.team1id = pteamID or g.team2id=pteamID);
                
        --match winner
          
