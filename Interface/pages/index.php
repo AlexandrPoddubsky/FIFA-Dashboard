@@ -646,9 +646,9 @@
             echo "var gameArray = new Array(" . $string . ");";
             echo "var gameArrayValues= new Array(" . $values . ");";
         ?>
-        var teamsArray = new Array();
-        var teamsArrayValues = new Array();
-        teamsArray[0] = "";
+        var teams1Array = new Array();
+        var teams1ArrayValues = new Array();
+        teams1Array[0] = "";
         <?php
             //start assigning players to selections
             for ($i = 1; $i <= count($gameArrayValues); $i++) {
@@ -671,23 +671,33 @@
                 oci_free_statement($cursor);
                 $string = substr($string, 0, -1);
                 $values = substr($values, 0, -1);
-                echo "teamsArray[" . $i . "] = \"" . $string . "\";\n";
-                echo "teamsArrayValues[" . $i . "] = \"" . $values . "\";\n";
+                echo "teams1Array[" . $i . "] = \"" . $string . "\";\n";
+                echo "teams1ArrayValues[" . $i . "] = \"" . $values . "\";\n";
             }
         ?>
 
         function populateTeamsByGame( gameElementId, teamElementId ) {
-            var selectedSelectionIndex = document.getElementById( gameElementId ).selectedIndex;
+            var gameElement = document.getElementById(gameElementId);
+            var gameValue = gameElement.options[gameElement.selectedIndex].value;
+            /*var selectedSelectionIndex = document.getElementById( gameElementId ).selectedIndex;*/
+            
+            var i = 0;
+            while (gameArrayValues[i] != gameValue) {
+                i++;
+            }
+            selectedGameIndex = i + 1;
+
             var teamElement = document.getElementById( teamElementId );
             teamElement.length=0; 
             teamElement.options[0] = new Option('Select Team','');
             teamElement.selectedIndex = 0;
             
-            var teams_arr = teamsArray[selectedSelectionIndex].split("|");
-            var teams_arr_values = teamsArrayValues[selectedSelectionIndex].split("|");
+            var teams1_arr_values = teams1ArrayValues[selectedGameIndex].split("|");
+            var teams1_arr = teams1Array[selectedGameIndex].split("|");
             
-            for (var i=0; i<teams_arr.length; i++) {
-                teamElement.options[teamElement.length] = new Option(teams_arr[i],teams_arr_values[i]);
+            
+            for (var i=0; i<teams1_arr.length; i++) {
+                teamElement.options[teamElement.length] = new Option(teams1_arr[i],teams1_arr_values[i]);
             }
         }
 
@@ -892,7 +902,7 @@
             var teamElement = document.getElementById(teamElementId);
             var teamValue = teamElement.options[teamElement.selectedIndex].value;
             //search which index contains this team value
-            var i = 1;
+            var i = 0;
             while (teamArrayValues[i] != teamValue) {
                 i++;
             }
