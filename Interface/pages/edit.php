@@ -422,6 +422,161 @@
             echo " The technical director was assigned to the team.";
         }
     }
+    //register new event
+    if (isset($_POST['registerEvent'])) {
+        if (empty($_POST["eventName"]) || empty($_POST["eventDescription"]) || empty($_POST["startDate"]) ||
+            empty($_POST["endDate"]) || empty($_POST["maxTeams"]) || empty($_POST["country"])) {
+            echo "One or more obbligatory values were null.";
+        }
+        else {
+            $_POST["maxTeams"] = intval($_POST["maxTeams"]);
+            //convert the dates to their db format. HTML format is yyyy-mm-dd
+            $date = preg_split('/[- :]/',$_POST['startDate']);
+            $_POST['startDate'] = $date[2] . "/" . $date[1] . "/" . $date[0];
+            $date = preg_split('/[- :]/',$_POST['endDate']);
+            $_POST['endDate'] = $date[2] . "/" . $date[1] . "/" . $date[0];
+            $query = 'BEGIN inserts.event(:eventName, :eventDescription, :startDate, :endDate, :maxTeams, :country); END;';
+            $compiled = oci_parse($connection, $query);
+            oci_bind_by_name($compiled, ':eventName', $_POST['eventName'], 200);
+            oci_bind_by_name($compiled, ':eventDescription', $_POST['eventDescription'], 200);
+            oci_bind_by_name($compiled, ':startDate', $_POST['startDate'], 200);
+            oci_bind_by_name($compiled, ':endDate', $_POST['endDate'], 200);
+            oci_bind_by_name($compiled, ':maxTeams', $_POST['maxTeams'], 200);
+            oci_bind_by_name($compiled, ':country', $_POST['country'], 200);
+            oci_execute($compiled, OCI_NO_AUTO_COMMIT);
+            oci_commit($connection);
+            echo " The event was created.";
+            //get the event id
+            $query = 'BEGIN get.eventID(:eventID); END;';
+            $compiled = oci_parse($connection, $query);
+            oci_bind_by_name($compiled, ':eventID', $eventID, 200);
+            oci_execute($compiled, OCI_NO_AUTO_COMMIT);
+            oci_commit($connection);
+            //store the picture
+            if (!empty($_FILES["eventPicture"]["name"])) {
+                $target_dir = "../pictures/eventPictures/";
+                $target_file = $target_dir . basename($_FILES["eventPicture"]["name"]);
+                $uploadOk = 1;
+                $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
+                $target_file = $target_dir . $eventID . "." . $imageFileType;
+                //check if image file is an actual image or a fake image
+                $check = getimagesize($_FILES["eventPicture"]["tmp_name"]);
+                if ($check !== false) {
+                    //echo "File is an image - " . $check["mime"] . ".";
+                    $uploadOk = 1;
+                } else {
+                    echo "File is not an image.";
+                    $uploadOk = 0;
+                }
+                if ($_FILES["eventPicture"]["size"] > 5242880) {
+                    echo "Sorry, your file is too large.";
+                    $uploadOk = 0;
+                }
+                if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+                && $imageFileType != "gif" ) {
+                    echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+                    $uploadOk = 0;
+                }
+                if ($uploadOk == 0) {
+                echo "Sorry, your file was not uploaded.";
+                // if everything is ok, try to upload file
+                } else {
+                    if (move_uploaded_file($_FILES["eventPicture"]["tmp_name"], $target_file)) {
+                        echo "The file ". basename( $_FILES["eventPicture"]["name"]). " has been uploaded.";
+                        $query = 'BEGIN updates.eventPicture(:DNI, :fileLocation); END;';
+                        $compiled = oci_parse($connection, $query);
+                        oci_bind_by_name($compiled, ':DNI', $eventID, 30);
+                        oci_bind_by_name($compiled, ':fileLocation', $target_file, 200);
+                        oci_execute($compiled, OCI_NO_AUTO_COMMIT);
+                        oci_commit($connection);
+                    } else {
+                        echo "Sorry, there was an error uploading your file.";
+                    }
+                }           
+            }  
+        }
+    }
+    //assign team to event
+    if (isset($_POST['assignTeamToEvent'])) {
+        if (empty($_POST["event"]) || empty($_POST["team"]) ) {
+            echo "One or more obbligatory values were null.";
+        }
+        else {
+            $query = 'BEGIN inserts.TeamByEvent(:event, :team); END;';
+            $compiled = oci_parse($connection, $query);
+            oci_bind_by_name($compiled, ':event', $_POST['event'], 200);
+            oci_bind_by_name($compiled, ':team', $_POST['team'], 200);
+            oci_execute($compiled, OCI_NO_AUTO_COMMIT);
+            oci_commit($connection);
+            echo " The team with ID " . $_POST['team'] . " was assigned to event " . $_POST['event'] . ".";
+        }
+    }
+    //create new game in pre existing event
+    if (isset($_POST['registerGameToEvent'])) {
+        if (empty($_POST["team1"]) || empty($_POST["team2"]) || empty($_POST["stadium"]) || empty($_POST["gameID"]) ||
+            empty($_POST["event"]) ) {
+            echo "One or more obbligatory values were null.";
+        }
+        else if ($_POST['team1'] == $_POST['team2']) {
+            echo "A team cannot play with itself.";
+        }
+        else {
+            //make sure every parameter is a number
+            $_POST['team1'] = intval($_POST['team1']);
+            $_POST['team2'] = intval($_POST['team2']);
+            $_POST['stadium'] = intval($_POST['stadium']);
+            $_POST['gameID'] = intval($_POST['gameID']);
+            $_POST['hour'] = intval($_POST['hour']);
+            $_POST['minutes'] = intval($_POST['minutes']);
+            $_POST['event'] = intval($_POST['event']);
+            //convert date to db format
+            $date = preg_split('/[- :]/',$_POST['date']);
+            $_POST['date'] = $date[2] . "/" . $date[1] . "/" . $date[0];
+            echo $date[0];
+            echo $_POST['date'];
+            $query = 'BEGIN inserts.game(:team1, :team2, :stadium, :gameDate, :event, :gameID, :hours, :minutes); END;';
+            $compiled = oci_parse($connection, $query);
+            oci_bind_by_name($compiled, ':team1', $_POST['team1'], 200);
+            oci_bind_by_name($compiled, ':team2', $_POST['team2'], 200);
+            oci_bind_by_name($compiled, ':stadium', $_POST['stadium'], 200);
+            oci_bind_by_name($compiled, ':gameDate', $_POST['date'], 200);
+            oci_bind_by_name($compiled, ':gameID', $_POST['gameID'], 200);
+            oci_bind_by_name($compiled, ':hours', $_POST['hour'], 200);
+            oci_bind_by_name($compiled, ':minutes', $_POST['minutes'], 200);
+            oci_bind_by_name($compiled, ':event', $_POST['event'], 200);
+            oci_execute($compiled, OCI_NO_AUTO_COMMIT);
+            oci_commit($connection);
+            echo " The game with ID " . $_POST['gameID'] . " was assigned to event " . $_POST['event'] . ".";
+        }
+    }
+    //register an action to game
+    if (isset($_POST["registerGameAction"])) {
+        if (empty($_POST["event"]) || empty($_POST["game"]) || empty($_POST["team"]) || empty($_POST["player"]) ||
+            empty($_POST["action"]) ) {
+            echo "One or more obbligatory values were null.";
+        }
+        else {
+            //make sure every parameter is a number
+            $_POST['event'] = intval($_POST['event']);
+            $list = preg_split('/[- :]/',$_POST['game']);
+            $_POST['game'] = intval($list[1]);
+            $_POST['team'] = intval($_POST['team']);
+            $_POST['player'] = intval($_POST['player']);
+            $_POST['action'] = intval($_POST['action']);
+            //convert date to db format
+            
+            $query = 'BEGIN inserts.action(:event, :game, :team, :player, :action); END;';
+            $compiled = oci_parse($connection, $query);
+            oci_bind_by_name($compiled, ':event', $_POST['event'], 200);
+            oci_bind_by_name($compiled, ':game', $_POST['game'], 200);
+            oci_bind_by_name($compiled, ':team', $_POST['team'], 200);
+            oci_bind_by_name($compiled, ':player', $_POST['player'], 200);
+            oci_bind_by_name($compiled, ':action', $_POST['action'], 200);
+            oci_execute($compiled, OCI_NO_AUTO_COMMIT);
+            oci_commit($connection);
+            echo " The action with ID " . $_POST['action'] . " was assigned to player " . $_POST['player'] . ".";
+        }
+    }
 
     //-----------------------EDITS-----------------------
     // Submit a change to a team
@@ -1529,6 +1684,7 @@
             </div>
         </div>
     </div>
+
     <!--CREATE NEW PLAYER MODAL-->
     <div class="modal fade" id="registerNewPlayerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
         <div class="modal-dialog" role="document">
@@ -1619,6 +1775,7 @@
             </div>
         </div>
     </div>
+
     <!--ASSIGN PLAYER TO SELECTION MODAL-->
     <div class="modal fade" id="assignPlayerToSelectionModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
         <div class="modal-dialog" role="document">
@@ -1834,6 +1991,260 @@
                                 </div>
                                 <div class = "col-md-2">
                                     <input name = "captainToTeam" class="btn btn-dark btn-lg" type = "submit" value = "Assign captain">
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--CREATE NEW EVENT MODAL-->
+    <div class="modal fade" id="registerNewEventModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a type="close" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="fa fa-times fa-2x"></i></span></a>
+                    <h1>Register New Event</h1>
+                </div>
+                <div class="modal-body">
+                    <form role="form" action="index.php" method="POST" class="registration-form" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <h3>Picture</h3>
+                            <input type="file" name="eventPicture" id = "eventPicture" accept="image/*" class="form-control">
+                            <h3>Name <b> *</b></h3>
+                            <input type="text" name="eventName" class="form-control">
+                            <h3>Description <b> *</b></h3>
+                            <input type="text" name="eventDescription" class="form-control">
+                            <h3>Start date <b> *</b></h3>
+                            <input type="date" name="startDate" class="form-control">
+                            <h3>End date <b> *</b></h3>
+                            <input type="date" name="endDate" class="form-control">
+                            <h3>Maximum teams <b> *</b></h3>
+                            <input type="number" name="maxTeams" min="2" max="33" step="1" class="form-control">
+
+                            <h3>Country <b> *</b></h3>
+                            <select name = "country" class="form-control"><?php
+                            $cursor = oci_new_cursor($connection);
+                            $query = 'BEGIN getCatalog.country(:cursor); END;';
+                            $compiled = oci_parse($connection, $query);
+                            oci_bind_by_name($compiled, ':cursor', $cursor, -1, OCI_B_CURSOR);
+                            oci_execute($compiled);
+                            oci_execute($cursor, OCI_DEFAULT);
+                            //output the code to $string and save the country name to our own array
+                            while (($row = oci_fetch_array($cursor, OCI_ASSOC+OCI_RETURN_NULLS)) != false) {
+                                echo "<option value=" . $row['TYPENAMEID'] . ">" . $row['TYPENAME'] . "</option>";
+                            }
+                            oci_free_statement($compiled);
+                            oci_free_statement($cursor);
+                            ?></select>
+                        </div>
+                        <div class="modal-footer">
+                            <div class = "container">
+                            <div class ="row">
+                                <div class = "col-md-2">
+                                    <button type="button" class="btn btn-dark btn-lg" data-dismiss="modal">Close</button>
+                                </div>
+                                <div class = "col-md-2">
+                                    <input name = "registerEvent" class="btn btn-dark btn-lg" type = "submit" value = "Register event">
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--ASSIGN TEAM TO EVENT MODAL-->
+    <div class="modal fade" id="assignTeamToEventModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a type="close" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="fa fa-times fa-2x"></i></span></a>
+                    <h1>Assign Team to Event</h1>
+                </div>
+                <div class="modal-body">
+                    <form role="form" action="index.php" method="POST" class="registration-form" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <h3>Event <b> *</b></h3>
+                            <select name = "event" class="form-control"><?php
+                            $cursor = oci_new_cursor($connection);
+                            $query = 'BEGIN get.getevents(:cursor); END;';
+                            $compiled = oci_parse($connection, $query);
+                            oci_bind_by_name($compiled, ':cursor', $cursor, -1, OCI_B_CURSOR);
+                            oci_execute($compiled);
+                            oci_execute($cursor, OCI_DEFAULT);
+                            //output the code to $string and save the country name to our own array
+                            while (($row = oci_fetch_array($cursor, OCI_ASSOC+OCI_RETURN_NULLS)) != false) {
+                                echo "<option value=" . $row['TYPENAMEID'] . ">" . $row['TYPENAME'] . "</option>";
+                            }
+                            oci_free_statement($compiled);
+                            oci_free_statement($cursor);
+                            ?></select>
+                            <h3>Team <b> *</b></h3>
+                            <select name = "team" class="form-control"><?php
+                            $cursor = oci_new_cursor($connection);
+                            $query = 'BEGIN get.teams(:cursor); END;';
+                            $compiled = oci_parse($connection, $query);
+                            oci_bind_by_name($compiled, ':cursor', $cursor, -1, OCI_B_CURSOR);
+                            oci_execute($compiled);
+                            oci_execute($cursor, OCI_DEFAULT);
+                            //output the code to $string and save the country name to our own array
+                            while (($row = oci_fetch_array($cursor, OCI_ASSOC+OCI_RETURN_NULLS)) != false) {
+                                echo "<option value=" . $row['TEAMID'] . ">" . $row['TEAMNAME'] . "</option>";
+                            }
+                            oci_free_statement($compiled);
+                            oci_free_statement($cursor);
+                            ?></select>
+                        </div>
+                        <div class="modal-footer">
+                            <div class = "container">
+                            <div class ="row">
+                                <div class = "col-md-2">
+                                    <button type="button" class="btn btn-dark btn-lg" data-dismiss="modal">Close</button>
+                                </div>
+                                <div class = "col-md-2">
+                                    <input name = "assignTeamToEvent" class="btn btn-dark btn-lg" type = "submit" value = "Register event">
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--CREATE NEW GAME MODAL-->
+    <div class="modal fade" id="registerNewGameModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a type="close" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="fa fa-times fa-2x"></i></span></a>
+                    <h1>Create New Game</h1>
+                </div>
+                <div class="modal-body">
+                    <form role="form" action="index.php" method="POST" class="registration-form" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <h3>Event <b> *</b></h3>
+                            <select id="event" name = "event" class="form-control"></select>
+                            <h3>First Team <b> *</b></h3>
+                            <select name ="team1" id ="team1" class="form-control"></select>
+                            <h3>Second Team <b> *</b></h3>
+                            <select name ="team2" id ="team2" class="form-control"></select>
+                            <script>
+                                populateEvents("event", "team1", "team2");
+                            </script>
+                            <h3>Game Number <b> *</b></h3>
+                            <div class="thumbnail"><a href="../img/bracket.png" target="_blank"><img src="../img/bracket.png"></a></div>
+                            <p>* Click the picture to enlarge.</p>
+                            <p>Locate this game's place on the bracket and type this game's ID as the image indicates.</p>
+                            <input type="number" name="gameID" min="1" max="64" step="1" placeholder="Game's place on the bracket..."
+                                class="form-control">
+                            
+                            <h3>Stadium <b> *</b></h3>
+                            <select name = "stadium" class="form-control"><?php
+                            $cursor = oci_new_cursor($connection);
+                            $query = 'BEGIN getCatalog.stadium(:cursor); END;';
+                            $compiled = oci_parse($connection, $query);
+                            oci_bind_by_name($compiled, ':cursor', $cursor, -1, OCI_B_CURSOR);
+                            oci_execute($compiled);
+                            oci_execute($cursor, OCI_DEFAULT);
+                            //output the code to $string and save the country name to our own array
+                            while (($row = oci_fetch_array($cursor, OCI_ASSOC+OCI_RETURN_NULLS)) != false) {
+                                echo "<option value=" . $row['TYPENAMEID'] . ">" . $row['TYPENAME'] . "</option>";
+                            }
+                            oci_free_statement($compiled);
+                            oci_free_statement($cursor);
+                            ?></select>
+
+                            <h3>Date <b> *</b></h3>
+                            <input type="date" name="date" class="form-control">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h3>Hour <b> *</b></h3>
+                                    <input type="number" name="hour" min="0" max="23" step="1" placeholder="Hour..." class="form-control">
+                                </div>
+                                <div class="col-md-6">
+                                    <h3>Minute <b> *</b></h3>
+                                    <input type="number" name="minutes" min="0" max="59" step="1" placeholder="Minutes..." class="form-control">
+                                </div>
+                            </div>
+                            <p>Input in 24 hour format and in UTC (Coordinated Universal Time).</p>
+                        </div>
+                        <div class="modal-footer">
+                            <div class = "container">
+                            <div class ="row">
+                                <div class = "col-md-2">
+                                    <button type="button" class="btn btn-dark btn-lg" data-dismiss="modal">Close</button>
+                                </div>
+                                <div class = "col-md-2">
+                                    <input name = "registerGameToEvent" class="btn btn-dark btn-lg" type = "submit" value = "Register game">
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+     <!--REGISTER GAME ACTION MODAL-->
+    <div class="modal fade" id="registerGameActionModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a type="close" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="fa fa-times fa-2x"></i></span></a>
+                    <h1>Register Game Action</h1>
+                </div>
+                <div class="modal-body">
+                    <form role="form" action="index.php" method="POST" class="registration-form" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <h3>Event <b> *</b></h3>
+                            <select id="event1" name = "event" class="form-control"></select>
+                            <h3>Game <b> *</b></h3>
+                            <select name ="game" id ="game1" class="form-control"></select>
+                            <script>
+                                populateEventGames("event1", "game1");
+                            </script>
+
+                            <h3>Team <b> *</b></h3>
+                            <select name ="team" id ="teams1" class="form-control"></select>
+                            <script>
+                                populateGameTeams("game1","teams1");
+                            </script>
+
+                            <h3>Player who realized the action <b> *</b></h3>
+                            <select name ="player" id ="player1" class="form-control"></select>
+                            <script>
+                                populateTeamPlayers("teams1", "player1");
+                            </script>
+
+                            <h3>Action <b> *</b></h3>
+                            <select name = "action" class="form-control"><?php
+                            $cursor = oci_new_cursor($connection);
+                            $query = 'BEGIN getCatalog.action(:cursor); END;';
+                            $compiled = oci_parse($connection, $query);
+                            oci_bind_by_name($compiled, ':cursor', $cursor, -1, OCI_B_CURSOR);
+                            oci_execute($compiled);
+                            oci_execute($cursor, OCI_DEFAULT);
+                            //output the code to $string and save the country name to our own array
+                            while (($row = oci_fetch_array($cursor, OCI_ASSOC+OCI_RETURN_NULLS)) != false) {
+                                echo "<option value=" . $row['TYPENAMEID'] . ">" . $row['TYPENAME'] . "</option>";
+                            }
+                            oci_free_statement($compiled);
+                            oci_free_statement($cursor);
+                            ?></select>
+                        </div>
+                        <div class="modal-footer">
+                            <div class = "container">
+                            <div class ="row">
+                                <div class = "col-md-2">
+                                    <button type="button" class="btn btn-dark btn-lg" data-dismiss="modal">Close</button>
+                                </div>
+                                <div class = "col-md-2">
+                                    <input name = "registerGameAction" class="btn btn-dark btn-lg" type = "submit" value = "Register action">
                                 </div>
                             </div>
                             </div>

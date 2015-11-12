@@ -152,6 +152,14 @@
                         </div>
                         <div class="col-md-8">
                             <h2>About</h2>
+                            <p>In this application you can register sport events, the associated teams and players, as well as the
+                            matches and every action performed in them.</p>
+                            <h3>Documentation</h3>
+                            <p><a href="../Documentation/Casos de Prueba - FIFA Dashboard.xlsx">Casos de prueba</a></p>
+                            <p><a href="../Documentation/Diccionario de Datos FIFA-DASHBOARD.xlsx">Data dictionary</a></p>
+                            <p><a href="../Documentation/ManualdeUsuarioFIFA-Dashboard.pdf">User manual</a></p>
+                            <p><a href="../Documentation/RelationalModel.png">Database model</a></p>
+                            
                         </div>
                     </div>
                 </div>
@@ -179,7 +187,7 @@
                                 <h4>
                                     <strong>Teams</strong>
                                 </h4>
-                                <p>Things you can see about teams.</p>
+                                <p>Team's captain, technical director, players and statistics.</p>
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-6">
@@ -191,7 +199,7 @@
                                 <h4>
                                     <strong>Players</strong>
                                 </h4>
-                                <p>Things you can see about players.</p>
+                                <p>Club and selection the player belongs, picture and history of goals scored, cards and other details.</p>
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-6">
@@ -215,7 +223,7 @@
                                 <h4>
                                     <strong>Game statistics</strong>
                                 </h4>
-                                <p>Statistics features here.</p>
+                                <p>Cup group statistics and general cup statistics.</p>
                             </div>
                         </div>
                     </div>
@@ -233,7 +241,6 @@
             <div class="row">
                 <div class="col-lg-10 col-lg-offset-1 text-center">
                     <h2>Current Events</h2>
-                    <hr class="small">
                     <?php 
                         $cursor = oci_new_cursor($connection);
                         $query = 'BEGIN get.getevents(:cursor); END;';
@@ -242,6 +249,7 @@
                         oci_execute($compiled);
                         oci_execute($cursor, OCI_DEFAULT);       //execute the cursor like a normal statement
                         while (($row = oci_fetch_array($cursor, OCI_ASSOC+OCI_RETURN_NULLS)) != false) {
+                            echo "<hr class=\"small\">";
                             echo "<div class = \"row\">";
                             echo "<div class = \"col-md-4\">";
                             echo "<img class=\"eventPicture pull-right\"src=\"" . substr($row['PICTURE'], 3) . "\"></div>";
@@ -255,8 +263,7 @@
                             echo "<p class=\"align-left gray\">" . $row['EVENTDESCRIPTION'] . "</p>";
                             echo "</form>";
                             echo "</div>";
-                            echo "</div>";
-                            echo "<hr>"; 
+                            echo "</div>"; 
                         }
                         oci_free_statement($compiled);
                         oci_free_statement($cursor);

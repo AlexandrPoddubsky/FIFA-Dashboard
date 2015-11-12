@@ -532,6 +532,8 @@
             //convert date to db format
             $date = preg_split('/[- :]/',$_POST['date']);
             $_POST['date'] = $date[2] . "/" . $date[1] . "/" . $date[0];
+            echo $date[0];
+            echo $_POST['date'];
             $query = 'BEGIN inserts.game(:team1, :team2, :stadium, :gameDate, :event, :gameID, :hours, :minutes); END;';
             $compiled = oci_parse($connection, $query);
             oci_bind_by_name($compiled, ':team1', $_POST['team1'], 200);
@@ -557,7 +559,7 @@
             //make sure every parameter is a number
             $_POST['event'] = intval($_POST['event']);
             $list = preg_split('/[- :]/',$_POST['game']);
-            $_POST['game'] = $list[1];
+            $_POST['game'] = intval($list[1]);
             $_POST['team'] = intval($_POST['team']);
             $_POST['player'] = intval($_POST['player']);
             $_POST['action'] = intval($_POST['action']);
@@ -1624,13 +1626,10 @@
                             <a href="#"><i class="fa fa-futbol-o fa-fw"></i> Games<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#" data-toggle="modal" data-target="#registerGameActionModal">Register An Action on a Game</a>
-                                </li>
-                                <li>
-                                    <a href="#" data-toggle="modal" data-target="#assignTeamToEventModal">Assign Team to Event</a>
-                                </li>
-                                <li>
                                     <a href="#" data-toggle="modal" data-target="#registerNewGameModal">Register Game to Event</a>
+                                </li>
+                                <li>
+                                    <a href="#" data-toggle="modal" data-target="#registerGameActionModal">Register An Action on a Game</a>
                                 </li>
                                 <li>
                                     <a href="#">View and edit events</a>
@@ -2841,7 +2840,7 @@
                                     <button type="button" class="btn btn-dark btn-lg" data-dismiss="modal">Close</button>
                                 </div>
                                 <div class = "col-md-2">
-                                    <input name = "registerGameAction" class="btn btn-dark btn-lg" type = "submit" value = "Register game">
+                                    <input name = "registerGameAction" class="btn btn-dark btn-lg" type = "submit" value = "Register action">
                                 </div>
                             </div>
                             </div>
